@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WebGarage – Nâng cấp website ra khách cho đại lý ô tô</title>
+<meta name="description" content="WebGarage nâng cấp, sửa lỗi, tối ưu website cho đại lý và sale ô tô: nhanh gấp nhiều lần, lên Google với giá xe, nút Gọi & Zalo ở mọi trang. Chấm điểm website miễn phí trong 24 giờ.">
+<meta name="theme-color" content="#0F2A5C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F2A5C'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EWG%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="WebGarage – Nâng cấp website ra khách cho đại lý ô tô">
+<meta property="og:description" content="Chấm điểm website miễn phí trong 24 giờ. Nhanh gấp nhiều lần, lên Google với giá xe, nút Gọi & Zalo ở mọi trang.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Bố cục landing page dịch vụ kiểu agency Việt: nền trắng loang màu nhạt, chữ chìm thương hiệu, thẻ trắng đổ bóng mềm, icon vuông nền đặc, tiêu đề giữa có từ khóa tô màu. Một giao diện sáng cố định. */
+:root {
+  --bg: #FFFFFF;
+  --bg2: #F5F7FB;
+  --ink: #141B2D;
+  --muted: #5A6478;
+  --line: #EDF0F5;
+  --navy: #0F2A5C;
+  --navy-d: #0A1D42;
+  --blue: #1F5FD1;
+  --blue-soft: #EAF1FF;
+  --gold: #C9A257;
+  --pg: #129150;
+  --pg-d: #0D7240;
+  --pg-soft: #E3F6EB;
+  --fh: "Montserrat", "Be Vietnam Pro", system-ui, sans-serif;
+  --f: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sh: 0 12px 40px rgba(15, 42, 92, .08);
+  --sh2: 0 24px 60px rgba(15, 42, 92, .16);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 84px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f); font-size: 16px; line-height: 1.6; -webkit-text-size-adjust: 100%; }
+main { overflow-x: clip; }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.25; text-wrap: balance; font-family: var(--fh); }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); position: relative; }
+.hl { color: var(--blue); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; padding: 12px 22px; font: 600 .93rem/1.2 var(--f); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .25s, box-shadow .25s, background .25s, color .25s; }
+.btn::after { content: "↗"; font-size: 1rem; transition: transform .25s; }
+.btn:hover::after { transform: translate(2px, -2px); }
+.btn-main { background: var(--navy); color: #fff; box-shadow: 0 10px 24px rgba(15, 42, 92, .28); }
+.btn-main:hover { background: var(--blue); transform: translateY(-2px); }
+.btn-ghost { border-color: var(--pg); color: var(--pg); background: #fff; }
+.btn-ghost:hover { background: var(--pg-soft); transform: translateY(-2px); }
+
+/* nền loang + chữ chìm */
+.soft { position: relative; isolation: isolate; }
+.soft::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(520px 380px at 8% 18%, #E8F0FF, transparent 70%), radial-gradient(520px 420px at 92% 8%, #EEF4FF, transparent 70%), radial-gradient(420px 320px at 70% 90%, #EAF7F0, transparent 70%); }
+.wm { position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 800 clamp(160px, 30vw, 420px)/1 var(--fh); color: rgba(15, 42, 92, .035); letter-spacing: -.04em; pointer-events: none; user-select: none; white-space: nowrap; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.logo { display: inline-flex; align-items: center; gap: 8px; font: 800 1.25rem var(--fh); text-decoration: none; color: var(--navy); }
+.logo i { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--navy), var(--blue)); color: #fff; display: grid; place-items: center; font-style: normal; font-size: .85rem; }
+.logo em { font-style: normal; } .logo span { color: var(--pg); }
+.nav { display: flex; gap: 2px; background: var(--bg2); border-radius: 999px; padding: 4px; }
+.nav a { text-decoration: none; font-size: .86rem; font-weight: 500; padding: 7px 13px; border-radius: 999px; color: var(--ink); }
+.nav a:hover { background: #fff; color: var(--blue); }
+.top .btn { padding: 9px 18px; font-size: .86rem; }
+@media (max-width: 940px) { .nav { display: none; } }
+
+/* hero */
+.hero { padding-block: clamp(36px, 6vw, 70px) clamp(40px, 6vw, 80px); }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px, 5vw, 60px); align-items: center; }
+.hero-grid > div { min-width: 0; }
+.hook { display: inline-flex; align-items: center; gap: 10px; background: #fff; border-radius: 999px; padding: 6px 14px 6px 6px; font-size: .82rem; font-weight: 600; box-shadow: var(--sh); }
+.hook b { white-space: nowrap; flex: none; background: var(--pg); color: #fff; border-radius: 999px; padding: 3px 10px; font-size: .74rem; }
+.hero h1 { font-size: clamp(2.3rem, 5vw, 3.6rem); font-weight: 800; margin-top: 18px; color: var(--navy); }
+.hero h1 .hl { display: block; background: linear-gradient(90deg, var(--blue), var(--pg)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero .lead { color: var(--muted); margin-top: 16px; max-width: 54ch; }
+.hero .lead b { color: var(--ink); }
+.ticks { display: grid; gap: 8px; margin-top: 18px; }
+.ticks li { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; font-size: .95rem; }
+.ticks li::before { content: "✓"; flex: none; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: var(--pg); color: #fff; display: grid; place-items: center; font-size: .72rem; font-weight: 800; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.stage { position: relative; aspect-ratio: 1.15; max-width: 620px; margin-inline: auto; width: 100%; }
+.laptop { position: absolute; left: 6%; right: 0; top: 4%; border-radius: 14px; background: #10182b; padding: 10px 10px 14px; box-shadow: 0 30px 60px rgba(15, 42, 87, .25); animation: float 7s ease-in-out infinite; }
+.dots { display: flex; gap: 5px; padding: 0 4px 8px; }
+.dots i { width: 7px; height: 7px; border-radius: 50%; background: #3a4560; }
+.laptop img { border-radius: 6px; width: 100%; aspect-ratio: 1200/750; object-fit: cover; object-position: top; }
+.phone { position: absolute; left: 0; bottom: 2%; width: 28%; border-radius: 22px; background: #10182b; padding: 7px; box-shadow: 0 24px 50px rgba(15, 42, 87, .3); animation: float 6s ease-in-out -2s infinite; }
+.phone img { border-radius: 16px; aspect-ratio: 390/760; object-fit: cover; object-position: top; width: 100%; }
+.badge-float { position: absolute; background: #fff; border-radius: 14px; box-shadow: var(--sh2); padding: 12px 16px; display: flex; align-items: center; gap: 12px; animation: float 5s ease-in-out -1s infinite; }
+.badge-float b { font: 800 1.6rem/1 var(--fh); font-variant-numeric: tabular-nums; color: var(--pg); }
+.badge-float small { display: block; font-size: .72rem; color: var(--muted); line-height: 1.35; }
+.bf-a { right: -2%; bottom: 10%; }
+.bf-b { right: 8%; top: -4%; }
+.bf-b .ring { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 800 .95rem var(--fh); color: var(--pg); border: 4px solid var(--pg); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: clamp(36px, 5vw, 60px); align-items: start; }
+.stat { background: #fff; border-radius: 16px; padding: 22px; box-shadow: var(--sh); min-width: 0; transition: transform .3s, box-shadow .3s; }
+.stat:nth-child(2) { margin-top: 44px; } .stat:nth-child(4) { margin-top: 28px; }
+.stat:hover { transform: translateY(-6px); box-shadow: var(--sh2); }
+.stat .n { font: 800 clamp(2rem, 3.4vw, 2.6rem)/1.05 var(--fh); color: var(--navy); font-variant-numeric: tabular-nums; }
+.stat .n small { font-size: .5em; color: var(--pg); }
+.stat h3 { font-size: 1rem; margin-top: 10px; }
+.stat p { font-size: .86rem; color: var(--muted); margin-top: 6px; }
+@media (max-width: 900px) { .stats { grid-template-columns: 1fr 1fr; } .stat:nth-child(n) { margin-top: 0; } }
+@media (max-width: 460px) { .stats { grid-template-columns: 1fr; } }
+
+/* băng chạy chữ */
+.ticker { background: var(--navy); color: #fff; overflow: hidden; padding-block: 14px; }
+.ticker-in { display: flex; gap: 40px; width: max-content; animation: tick 38s linear infinite; }
+.ticker span { display: inline-flex; align-items: center; gap: 12px; font: 600 .95rem var(--fh); white-space: nowrap; }
+.ticker span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #FF6B6B; box-shadow: 0 0 0 4px rgba(255,107,107,.25); }
+.ticker span.g::before { background: #4ADE80; box-shadow: 0 0 0 4px rgba(74,222,128,.25); }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* section */
+.sec { padding-block: clamp(60px, 8vw, 100px); }
+.sec.alt { background: var(--bg2); }
+.sec-head { text-align: center; max-width: 780px; margin: 0 auto clamp(30px, 4vw, 48px); }
+.sec-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); font-weight: 700; }
+.sec-head p { color: var(--muted); margin-top: 14px; }
+.legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin-top: 18px; font-size: .85rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.lv { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex: none; }
+.lv.r { background: #E03131; } .lv.a { background: #E08A00; } .lv.b { background: #1F5FD1; } .lv.v { background: #7048E8; }
+
+/* tiến trình sửa chữa */
+[data-sev="r"] { --c: #E03131; --cs: #FFE9E9; }
+[data-sev="a"] { --c: #E08A00; --cs: #FFF3DC; }
+[data-sev="b"] { --c: #1F5FD1; --cs: #EAF1FF; }
+[data-sev="v"] { --c: #7048E8; --cs: #F0EBFF; }
+[data-sev="g"] { --c: #129150; --cs: #E3F6EB; }
+.ff-sec { --ok: #129150; --oks: #E3F6EB; }
+.ff-bar { position: sticky; top: calc(66px + env(safe-area-inset-top, 0px)); z-index: 6; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-radius: 14px; padding: 12px 18px; margin: 0 auto 40px; max-width: 760px; box-shadow: var(--sh2); transition: opacity .4s, transform .4s; }
+.ff-bar.gone { opacity: 0; transform: translateY(-12px); pointer-events: none; }
+.ff-bar-top { display: flex; justify-content: space-between; gap: 12px; font-size: .86rem; flex-wrap: wrap; }
+.ff-bar-top b { font-family: var(--fh); }
+.ff-bar-top span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.ff-bar-top #ff-count { color: var(--ok); font-weight: 800; }
+.ff-track { height: 8px; border-radius: 4px; background: var(--bg2); margin-top: 8px; overflow: hidden; }
+.ff-track i { display: block; height: 100%; width: 100%; border-radius: 4px; background: linear-gradient(90deg, #E03131, #E08A00, #1F5FD1, #7048E8, #129150); transition: width .6s cubic-bezier(.2,.7,.2,1); }
+.ff-chips { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.ff-chips { align-items: center; }
+.ff-chips button { font: 700 .76rem var(--f); padding: 4px 11px; border-radius: 999px; border: 0; cursor: pointer; background: var(--bg2); color: var(--muted); transition: background .4s, color .4s, box-shadow .4s; }
+.ff-chips button:hover { box-shadow: inset 0 0 0 1.5px var(--blue); }
+.ff-chips button.cur { background: var(--navy); color: #fff; }
+.ff-chips button.on { background: var(--oks); color: var(--ok); }
+.ff-tip { margin-left: auto; font-size: .76rem; color: var(--muted); }
+.ff-tip::before { content: "↕ "; color: var(--blue); font-weight: 700; }
+.ff { position: relative; display: grid; gap: clamp(40px, 6vw, 70px); }
+.ff-rail { position: absolute; left: 27px; top: 10px; bottom: 30px; width: 3px; border-radius: 2px; background: var(--line); }
+.ff-rail i { position: absolute; inset: 0; border-radius: 2px; background: linear-gradient(180deg, #E03131, #E08A00 30%, #1F5FD1 60%, #7048E8 80%, #129150); transform-origin: top; }
+.ff-stage { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: clamp(14px, 3vw, 30px); position: relative; }
+.ff-dot { width: 56px; height: 56px; border-radius: 16px; background: #fff; color: var(--c); box-shadow: var(--sh); display: grid; place-items: center; font: 800 1rem var(--fh); position: relative; z-index: 1; transition: background .5s, color .5s, transform .5s; }
+.ff-dot > * { grid-area: 1 / 1; transition: opacity .4s, transform .4s; }
+.ff-dot svg { width: 26px; height: 26px; opacity: 0; transform: scale(.3); }
+.ff-stage.on .ff-dot { background: var(--c); color: #fff; transform: scale(1.06); box-shadow: 0 12px 26px -8px var(--c); }
+.ff-stage.on .ff-dot::after { content: ""; position: absolute; inset: 0; border-radius: 16px; border: 3px solid var(--c); animation: ping 1.4s ease-out 2; }
+.ff-stage.ok .ff-dot, .ff-final.on .ff-dot { background: var(--ok); color: #fff; transform: none; box-shadow: 0 12px 26px -8px var(--ok); }
+.ff-stage.ok .ff-dot span, .ff-final.on .ff-dot span { opacity: 0; transform: scale(.3); }
+.ff-stage.ok .ff-dot svg, .ff-final.on .ff-dot svg { opacity: 1; transform: none; }
+@keyframes ping { to { transform: scale(1.6); opacity: 0; } }
+.ff-head { margin-bottom: 20px; max-width: 660px; }
+.ff-eye { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--c); }
+.ff-head h3 { font-size: clamp(1.3rem, 2.4vw, 1.65rem); font-weight: 700; margin-top: 4px; }
+.ff-head > p:not(.ff-eye) { color: var(--muted); margin-top: 6px; }
+.ff-lvl { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; font-size: .8rem; font-weight: 700; color: var(--c); background: var(--cs); padding: 4px 12px 4px 10px; border-radius: 999px; }
+.ff-lvl .lv { background: var(--c); }
+.ff-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 18px; }
+.fx { position: relative; overflow: hidden; background: #fff; border-radius: 16px; padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; box-shadow: var(--sh); transition: box-shadow .4s, transform .4s; }
+.fx:hover { transform: translateY(-6px); box-shadow: var(--sh2); }
+.fx::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(18,145,80,.08) 50%, transparent 70%); transform: translateX(-110%); pointer-events: none; }
+.fx.fixed::before { animation: sweep 1s ease-out; }
+@keyframes sweep { to { transform: translateX(110%); } }
+.fx-top { display: flex; align-items: center; gap: 10px; }
+.fx-ic { width: 52px; height: 52px; border-radius: 14px; background: var(--c); color: #fff; box-shadow: 0 10px 22px -8px var(--c); display: grid; place-items: center; position: relative; flex: none; transition: background .6s, box-shadow .6s; }
+.fx-ic svg { grid-area: 1 / 1; width: 26px; height: 26px; transition: opacity .45s, transform .55s cubic-bezier(.3,1.6,.5,1); }
+.fx-ic .i-ok { opacity: 0; transform: scale(.3) rotate(-40deg); }
+.fx-ic .i-ok path { stroke-dasharray: 24; stroke-dashoffset: 24; transition: stroke-dashoffset .5s .2s ease-out; }
+.fx-sev { display: inline-flex; align-items: flex-end; gap: 3px; height: 16px; }
+.fx-sev i { width: 5px; border-radius: 2px; background: var(--line); transition: background .5s; }
+.fx-sev i:nth-child(1) { height: 7px; } .fx-sev i:nth-child(2) { height: 11px; } .fx-sev i:nth-child(3) { height: 16px; }
+[data-sev="r"] .fx-sev i, [data-sev="a"] .fx-sev i:nth-child(-n+2), [data-sev="b"] .fx-sev i:nth-child(1), [data-sev="v"] .fx-sev i:nth-child(1) { background: var(--c); }
+.fx-st { margin-left: auto; display: grid; font-size: .78rem; font-weight: 700; }
+.fx-st > span { grid-area: 1 / 1; padding: 3px 10px; border-radius: 999px; transition: opacity .4s, transform .4s; text-align: center; }
+.st-bad { background: var(--cs); color: var(--c); }
+.st-ok { background: var(--oks); color: var(--ok); opacity: 0; transform: translateY(8px); }
+.fx h4 { font-size: 1rem; font-weight: 700; line-height: 1.35; }
+.fx > p { font-size: .88rem; color: var(--muted); }
+.fx-fix { display: grid; margin-top: 4px; }
+.fx-fix > p { grid-area: 1 / 1; font-size: .86rem; border-radius: 10px; padding: 10px 12px; transition: opacity .5s, transform .5s cubic-bezier(.2,.7,.2,1); }
+.fx-wait { background: var(--cs); color: var(--c); border: 1.5px dashed var(--c); opacity: 0; display: flex; align-items: center; font-weight: 600; }
+.fx-do { background: var(--oks); color: #0B5A33; }
+.ff-js .fx:not(.fixed) .fx-do { opacity: 0; transform: translateY(10px) scale(.97); }
+.ff-js .fx:not(.fixed) .fx-wait { opacity: .9; }
+.fx.alert .fx-ic { animation: shake .45s ease-in-out 2; }
+.fx.alert .fx-ic::after { content: ""; position: absolute; inset: 0; border-radius: 14px; border: 2px solid var(--c); animation: ping .9s ease-out; }
+@keyframes shake { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-9deg); } 75% { transform: rotate(9deg); } }
+.ff-js .fx:not(.fixed) { box-shadow: 0 0 0 1.5px var(--cs), var(--sh); }
+.fx.fixed .fx-ic { background: var(--ok); box-shadow: 0 10px 22px -8px var(--ok); }
+.fx.fixed .i-bad { opacity: 0; transform: scale(.3) rotate(40deg); }
+.fx.fixed .i-ok { opacity: 1; transform: none; }
+.fx.fixed .i-ok path { stroke-dashoffset: 0; }
+.fx.fixed .fx-sev i { background: var(--line); }
+.fx.fixed .st-bad { opacity: 0; transform: translateY(-8px); }
+.fx.fixed .st-ok { opacity: 1; transform: none; }
+.ff-result { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(20px, 4vw, 40px); align-items: center; background: linear-gradient(135deg, var(--navy-d), #16387A); color: #fff; border-radius: 22px; padding: clamp(22px, 4vw, 44px); position: relative; overflow: hidden; transition: opacity .9s, filter .9s, transform .9s cubic-bezier(.2,.7,.2,1); }
+.ff-result::before { content: ""; position: absolute; inset: 0; background: radial-gradient(500px 260px at 90% 0%, rgba(18,145,80,.35), transparent 70%); pointer-events: none; }
+.ff-result > div { position: relative; min-width: 0; }
+.ff-result .ff-eye { color: #6EE7A8; }
+.ff-result h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; margin-top: 6px; }
+.ff-res-txt > p:not(.ff-eye) { opacity: .88; margin-top: 10px; }
+.ff-checks { display: grid; gap: 8px; margin: 16px 0 22px; }
+.ff-checks li { display: flex; gap: 10px; align-items: center; }
+.ff-checks li::before { content: "✓"; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--pg); color: #fff; display: grid; place-items: center; font-size: .72rem; font-weight: 800; }
+.ff-result .btn-coral { background: #fff; color: var(--navy-d); display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 12px 22px; font-weight: 700; text-decoration: none; }
+.ff-result .btn-coral::after { content: "↗"; }
+.ff-browser { background: #0b1324; border-radius: 12px; padding: 8px 8px 10px; box-shadow: 0 30px 60px rgba(0,0,0,.4); transform: perspective(1200px) rotateY(-8deg) rotateX(3deg); transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.ff-browser:hover { transform: none; }
+.ff-browser .dots { padding: 0 4px 7px; }
+.ff-browser img { border-radius: 6px; }
+.ff-js .ff-final:not(.on) .ff-result { opacity: .35; filter: grayscale(.6); transform: scale(.97); }
+@media (max-width: 900px) { .ff-result { grid-template-columns: 1fr; } .ff-browser { transform: none; } }
+@media (max-width: 560px) {
+  .ff-stage { grid-template-columns: 40px minmax(0, 1fr); }
+  .ff-dot { width: 40px; height: 40px; border-radius: 12px; font-size: .8rem; }
+  .ff-dot svg { width: 18px; height: 18px; }
+  .ff-rail { left: 19px; }
+  .ff-bar { top: calc(60px + env(safe-area-inset-top, 0px)); padding: 8px 12px; margin-bottom: 26px; }
+  .ff-chips { display: none; }
+}
+
+/* so sánh trước/sau */
+.tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 22px; }
+.tab { border: 0; background: #fff; color: var(--ink); border-radius: 999px; padding: 9px 20px; font: 600 .88rem var(--f); cursor: pointer; box-shadow: var(--sh); }
+.tab[aria-selected="true"] { background: var(--navy); color: #fff; }
+.cmp { position: relative; margin-inline: auto; border-radius: 18px; overflow: hidden; box-shadow: var(--sh2); user-select: none; --p: 50%; background: #10182b; }
+.cmp.pc { max-width: 1000px; aspect-ratio: 1200/750; }
+.cmp.dt { max-width: 360px; aspect-ratio: 390/845; }
+.cmp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+.cmp .before { clip-path: inset(0 calc(100% - var(--p)) 0 0); }
+.cmp .handle { position: absolute; top: 0; bottom: 0; left: var(--p); width: 3px; margin-left: -1.5px; background: #fff; pointer-events: none; box-shadow: 0 0 12px rgba(0,0,0,.3); }
+.cmp .handle::after { content: "⟷"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 46px; height: 46px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-size: 1.1rem; box-shadow: 0 6px 16px rgba(0,0,0,.25); }
+.cmp .tagl, .cmp .tagr { position: absolute; bottom: 14px; padding: 5px 14px; border-radius: 999px; font-size: .8rem; font-weight: 700; pointer-events: none; }
+.cmp .tagl { left: 14px; background: rgba(16, 24, 43, .85); color: #fff; }
+.cmp .tagr { right: 14px; background: var(--pg); color: #fff; }
+.cmp input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+.cmp-note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 16px; }
+
+/* cam kết */
+.promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.pr { background: #fff; border-radius: 16px; padding: 26px 24px; box-shadow: var(--sh); transition: transform .3s, box-shadow .3s; min-width: 0; }
+.pr:hover { transform: translateY(-6px); box-shadow: var(--sh2); }
+.pr .ic { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--blue)); color: #fff; display: grid; place-items: center; box-shadow: 0 12px 24px -10px var(--blue); }
+.pr .ic svg { width: 26px; height: 26px; }
+.pr.g .ic { background: linear-gradient(135deg, var(--pg-d), #22B573); box-shadow: 0 12px 24px -10px var(--pg); }
+.pr h3 { font-size: 1.05rem; margin-top: 18px; }
+.pr p { font-size: .9rem; color: var(--muted); margin-top: 8px; }
+@media (max-width: 900px) { .promise { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .promise { grid-template-columns: 1fr; } }
+
+/* bảng giá */
+.prices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; }
+.plan { background: #fff; border-radius: 16px; padding: 28px 22px 24px; display: flex; flex-direction: column; gap: 14px; position: relative; min-width: 0; box-shadow: var(--sh); transition: transform .3s, box-shadow .3s; }
+.plan:hover { transform: translateY(-8px); box-shadow: var(--sh2); }
+.plan .name { font: 700 .95rem var(--fh); text-transform: uppercase; letter-spacing: .02em; }
+.plan .price { font: 800 clamp(1.6rem, 2.1vw, 1.95rem)/1 var(--fh); white-space: nowrap; color: var(--pg); font-variant-numeric: tabular-nums; }
+.plan .price small { font: 600 .9rem var(--f); color: var(--muted); }
+.plan .range { font-size: .86rem; color: var(--muted); margin-top: -6px; }
+.plan .for { font-size: .9rem; color: var(--muted); min-height: 4.2em; }
+.plan .meta span { display: inline-block; background: var(--pg-soft); color: var(--pg-d); border-radius: 999px; padding: 4px 12px; font-size: .82rem; font-weight: 600; }
+.plan .goal { font-size: .88rem; border-top: 1px dashed var(--line); padding-top: 12px; }
+.plan .goal b { display: block; font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.plan > ul, .care2 { flex: 1; }
+.plan ul { display: flex; flex-direction: column; gap: 9px; }
+.plan li { display: grid; grid-template-columns: 8px minmax(0, 1fr); gap: 10px; font-size: .88rem; line-height: 1.45; }
+.plan li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); margin-top: .55em; }
+.plan li small { display: block; color: var(--muted); font-size: .82rem; }
+.plan li.inc { font-weight: 700; }
+.plan .btn { margin-top: auto; width: 100%; }
+.plan.hot { background: linear-gradient(165deg, var(--pg), var(--pg-d)); color: #fff; box-shadow: 0 26px 56px -14px rgba(18, 145, 80, .55); }
+.plan.hot .price, .plan.hot .name { color: #fff; }
+.plan.hot .price small, .plan.hot .range, .plan.hot .for, .plan.hot li small, .plan.hot .goal b { color: rgba(255,255,255,.85); }
+.plan.hot .meta span { background: rgba(255,255,255,.18); color: #fff; }
+.plan.hot .goal { border-color: rgba(255,255,255,.35); }
+.plan.hot li::before { background: #fff; }
+.plan.hot .btn { background: #fff; color: var(--pg-d); border-color: #fff; }
+.ribbon { position: absolute; top: -12px; right: 18px; background: var(--gold); color: #fff; font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; box-shadow: 0 8px 18px -6px var(--gold); }
+.care2 { display: grid; gap: 12px; align-content: start; }
+.care2 > div { background: var(--bg2); border-radius: 12px; padding: 12px 14px; }
+.care2 h4 { display: flex; justify-content: space-between; gap: 8px; font-size: .95rem; margin-bottom: 8px; }
+.care2 h4 span { color: var(--pg); font-variant-numeric: tabular-nums; }
+.price-note { text-align: center; color: var(--muted); font-size: .88rem; margin-top: 26px; }
+.price-note b { color: var(--pg-d); }
+@media (max-width: 1100px) { .prices { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .prices { grid-template-columns: 1fr; } }
+
+
+/* gói trợ lý AI */
+.ai { margin-top: 30px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(22px, 4vw, 44px); background: linear-gradient(135deg, var(--navy-d), #16387A 60%, #1F4FA8); color: #fff; border-radius: 22px; padding: clamp(22px, 4vw, 44px); position: relative; overflow: hidden; box-shadow: 0 30px 70px -20px rgba(15, 42, 92, .5); }
+.ai::before { content: ""; position: absolute; inset: 0; background: radial-gradient(520px 300px at 85% 0%, rgba(74,222,128,.22), transparent 70%), radial-gradient(400px 300px at 0% 100%, rgba(31,95,209,.45), transparent 70%); pointer-events: none; }
+.ai > * { position: relative; min-width: 0; }
+.ai-tag { display: inline-block; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+.ai h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; margin-top: 14px; }
+.ai h3 span { display: block; background: linear-gradient(90deg, #6EE7A8, #7CC4FF); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.ai-lead { opacity: .9; margin-top: 12px; }
+.ai-price { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.ai-price > div { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 14px; padding: 10px 16px; }
+.ai-price small { display: block; font-size: .78rem; opacity: .8; }
+.ai-price b { font: 800 1.6rem var(--fh); color: #6EE7A8; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ai-price em { font-style: normal; font-size: .55em; color: rgba(255,255,255,.8); }
+.ai-gift { display: grid; gap: 7px; margin: 18px 0 14px; }
+.ai-time { font-size: .9rem; font-weight: 600; color: #6EE7A8; margin-bottom: 18px; }
+.ai-gift li { display: flex; gap: 10px; font-size: .92rem; }
+.ai-gift li::before { content: "🎁"; flex: none; }
+.ai .btn-main { background: #fff; color: var(--navy-d); }
+.ai .btn-main:hover { background: #6EE7A8; }
+.ai-chat { background: #fff; color: var(--ink); border-radius: 18px; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,.35); align-self: start; animation: float 7s ease-in-out infinite; }
+.ai-head { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.ai-head i { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, var(--pg), #22B573); color: #fff; display: grid; place-items: center; font: 800 .8rem var(--fh); font-style: normal; }
+.ai-head b { display: block; font-size: .92rem; }
+.ai-head small { font-size: .76rem; color: var(--pg); display: flex; align-items: center; gap: 6px; }
+.ai-head small span { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 0 3px rgba(34,197,94,.25); }
+.ai-msgs { display: flex; flex-direction: column; gap: 8px; padding-block: 12px; min-height: 330px; }
+.m { max-width: 86%; font-size: .87rem; line-height: 1.45; padding: 9px 12px; border-radius: 14px; transition: opacity .45s, transform .45s cubic-bezier(.2,.7,.2,1); }
+.m.u { align-self: flex-end; background: var(--navy); color: #fff; border-bottom-right-radius: 4px; }
+.m.a { align-self: flex-start; background: var(--bg2); border-bottom-left-radius: 4px; }
+.m.s { align-self: center; background: var(--pg-soft); color: var(--pg-d); font-weight: 700; font-size: .8rem; border-radius: 999px; }
+.ai-js .m.hide { opacity: 0; transform: translateY(10px); }
+.m.typing { display: inline-flex; gap: 4px; align-items: center; }
+.m.typing i { width: 6px; height: 6px; border-radius: 50%; background: #9AA4B5; animation: dot 1s infinite; }
+.m.typing i:nth-child(2) { animation-delay: .15s; } .m.typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+.ai-note { font-size: .74rem; color: var(--muted); text-align: center; }
+.ai-feats { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.ai-feats li { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 14px; transition: background .3s, transform .3s; }
+.ai-feats li:hover { background: rgba(255,255,255,.14); transform: translateY(-4px); }
+.ai-ic { flex: none; width: 40px; height: 40px; border-radius: 11px; background: linear-gradient(135deg, var(--pg), #22B573); display: grid; place-items: center; }
+.ai-ic svg { width: 20px; height: 20px; }
+.ai-feats b { display: block; font-size: .92rem; line-height: 1.3; }
+.ai-feats p { font-size: .8rem; opacity: .8; margin-top: 4px; }
+@media (max-width: 1000px) { .ai { grid-template-columns: 1fr; } .ai-feats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .ai-feats { grid-template-columns: 1fr; } .ai-msgs { min-height: 0; } }
+
+/* quy trình */
+.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.step { background: #fff; border-radius: 16px; padding: 34px 20px 22px; position: relative; text-align: center; box-shadow: var(--sh); min-width: 0; border: 1.5px solid transparent; transition: transform .3s, border-color .3s, box-shadow .3s; }
+.step:hover { transform: translateY(-6px); border-color: var(--blue); box-shadow: var(--sh2); }
+.step .no { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--navy); color: #fff; font: 700 .78rem var(--fh); padding: 5px 14px; border-radius: 999px; white-space: nowrap; }
+.step .ic { width: 70px; height: 70px; margin: 0 auto; border-radius: 50%; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; transition: background .3s, color .3s; }
+.step:hover .ic { background: var(--blue); color: #fff; }
+.step .ic svg { width: 30px; height: 30px; }
+.step h3 { font-size: 1rem; margin-top: 16px; color: var(--navy); }
+.step p { font-size: .86rem; color: var(--muted); margin-top: 8px; }
+@media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, 1fr); row-gap: 30px; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* dự án: lưới to nhỏ */
+.bento { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-auto-rows: 250px; gap: 18px; }
+.proj { position: relative; border-radius: 16px; overflow: hidden; background: #0b1324; box-shadow: var(--sh); cursor: zoom-in; border: 0; padding: 0; text-align: left; color: #fff; font: inherit; transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+.proj.big { grid-row: span 2; }
+.proj img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; transition: object-position 7s cubic-bezier(.45, 0, .3, 1); }
+.proj::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(8, 14, 30, .88)); transition: opacity .5s; }
+.proj .cap { position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 1; transition: transform .5s, opacity .5s; }
+.proj .cat { display: inline-block; background: rgba(255,255,255,.2); backdrop-filter: blur(6px); font-size: .74rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+.proj h3 { font: 700 1rem var(--fh); text-transform: uppercase; margin-top: 8px; }
+.proj .cap p { font-size: .82rem; opacity: .85; margin-top: 4px; }
+.proj:hover, .proj:focus-visible { transform: scale(1.07); z-index: 4; box-shadow: 0 34px 70px rgba(8, 14, 30, .45); }
+.proj:hover img, .proj:focus-visible img { object-position: 50% 100%; }
+.proj:hover::after, .proj:hover .cap { opacity: 0; }
+.proj:hover .cap { transform: translateY(12px); }
+.hint { text-align: center; color: var(--muted); font-size: .88rem; margin-top: 22px; }
+@media (max-width: 900px) { .bento { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .bento { grid-template-columns: 1fr; grid-auto-rows: 260px; } .proj.big { grid-row: span 1; } .proj:hover { transform: scale(1.02); } }
+
+/* kết quả */
+.res { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 44px); align-items: start; }
+.res > div { min-width: 0; }
+.card { background: #fff; border-radius: 16px; padding: clamp(20px, 3vw, 30px); box-shadow: var(--sh); }
+.card + .card { margin-top: 22px; }
+.card h3 { font-size: 1.08rem; margin-bottom: 4px; }
+.card .sub { font-size: .86rem; color: var(--muted); margin-bottom: 18px; }
+.gauges { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.gauge { text-align: center; }
+.gauge svg { width: 140px; max-width: 100%; height: auto; margin-inline: auto; display: block; }
+.gauge .arc { transition: stroke-dashoffset 1.8s cubic-bezier(.2, .7, .2, 1); }
+.gauge .v { font: 800 30px var(--fh); fill: var(--pg); }
+.gauge h4 { font-size: .95rem; margin-top: 6px; }
+.gauge p { font-size: .82rem; color: var(--muted); }
+.timeline li { display: grid; grid-template-columns: 8.4em 1fr 3em; gap: 12px; align-items: center; padding-block: 7px; font-size: .88rem; }
+.timeline .tr, .cats .tr { height: 12px; border-radius: 6px; background: var(--bg2); overflow: hidden; }
+.timeline .fl, .cats .fl { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--blue), var(--pg)); transition: width 1.4s cubic-bezier(.2, .7, .2, 1); }
+.timeline li:first-child .fl { background: #C2C8D3; }
+.timeline b { text-align: right; font: 800 1rem var(--fh); font-variant-numeric: tabular-nums; }
+.cats li { display: grid; grid-template-columns: minmax(0, 13em) 1fr 4.2em; gap: 12px; align-items: center; padding-block: 6px; font-size: .86rem; }
+.cats .tr { height: 8px; }
+.cats .fl { background: var(--pg); }
+.cats b { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.cats b small { color: var(--muted); font-weight: 500; font-size: .9em; }
+.zoom { display: block; width: 100%; padding: 0; border: 0; border-radius: 16px; overflow: hidden; background: #fff; cursor: zoom-in; position: relative; box-shadow: var(--sh); }
+.zoom img { width: 100%; height: 420px; object-fit: cover; object-position: top; transition: transform .6s, object-position 6s; }
+.zoom:hover img { transform: scale(1.03); object-position: bottom; }
+.zoom span { position: absolute; right: 12px; bottom: 12px; background: rgba(16, 24, 43, .85); color: #fff; font-size: .8rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+.zoom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.zoom-row .zoom img { height: 300px; }
+.cap2 { font-size: .84rem; color: var(--muted); margin-top: 10px; }
+@media (max-width: 900px) { .res { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .cats li { grid-template-columns: minmax(0, 9em) 1fr 3.8em; } .timeline li { grid-template-columns: 7.2em 1fr 2.6em; } }
+
+/* điều khoản + FAQ */
+.terms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.terms > div { background: #fff; border-radius: 16px; padding: 22px; box-shadow: var(--sh); min-width: 0; }
+.terms h3 { font-size: 1rem; margin-bottom: 10px; color: var(--navy); }
+.terms li { font-size: .88rem; color: var(--muted); padding: 4px 0 4px 16px; position: relative; }
+.terms li::before { content: ""; position: absolute; left: 0; top: 13px; width: 6px; height: 6px; border-radius: 50%; background: var(--pg); }
+@media (max-width: 1000px) { .terms { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .terms { grid-template-columns: 1fr; } }
+.faqwrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(24px, 5vw, 60px); margin-top: clamp(50px, 7vw, 80px); align-items: start; }
+.faqwrap > div { min-width: 0; }
+.faqwrap h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.faqwrap .intro { color: var(--muted); margin-top: 12px; }
+.faqwrap .intro b { color: var(--pg); }
+.faq { display: grid; gap: 4px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-weight: 600; padding-block: 16px; list-style: none; display: flex; gap: 14px; align-items: flex-start; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: "+"; flex: none; width: 26px; height: 26px; border-radius: 8px; background: #fff; box-shadow: var(--sh); color: var(--navy); display: grid; place-items: center; font-weight: 700; transition: transform .3s, background .3s, color .3s; }
+.faq details[open] summary::before { content: "–"; background: var(--navy); color: #fff; }
+.faq details p { color: var(--muted); font-size: .93rem; padding: 0 0 16px 40px; }
+@media (max-width: 860px) { .faqwrap { grid-template-columns: 1fr; } }
+
+/* liên hệ */
+.contact { padding-block: clamp(60px, 8vw, 96px); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 60px); align-items: center; }
+.contact-grid > div { min-width: 0; }
+.contact h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 800; color: var(--navy); }
+.contact .intro { margin-top: 14px; color: var(--muted); max-width: 52ch; }
+.ct-steps { display: grid; gap: 14px; margin-top: 26px; }
+.ct-steps li { display: flex; gap: 14px; align-items: center; }
+.ct-steps li > b { flex: none; width: 40px; height: 40px; border-radius: 12px; background: #fff; box-shadow: var(--sh); color: var(--blue); display: grid; place-items: center; font: 800 1rem var(--fh); }
+.ct-steps strong { display: block; font-family: var(--fh); font-size: .98rem; color: var(--navy); }
+.ct-steps span { font-size: .86rem; color: var(--muted); }
+.picked { margin-top: 22px; background: var(--pg-soft); color: var(--ink); border-radius: 12px; padding: 12px 16px; font-size: .95rem; }
+.picked b { color: var(--pg-d); }
+.ct-card { background: #fff; border-radius: 22px; padding: clamp(20px, 3vw, 30px); box-shadow: var(--sh2); }
+.ct-who { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.ct-who > i { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, var(--navy), var(--blue)); color: #fff; display: grid; place-items: center; font: 800 1.05rem var(--fh); font-style: normal; flex: none; }
+.ct-who > div { min-width: 0; flex: 1 1 190px; }
+.ct-who b { display: block; font: 700 1.1rem var(--fh); color: var(--navy); }
+.ct-who > div span { font-size: .86rem; color: var(--muted); }
+.ct-who em { font-style: normal; display: inline-flex; align-items: center; gap: 7px; background: var(--pg-soft); color: var(--pg-d); font-size: .78rem; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
+.ct-who em span { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; animation: live 1.6s infinite; }
+@keyframes live { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.6); } 70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
+.ct-rows { display: grid; margin-top: 6px; }
+.ct-rows li { display: flex; align-items: center; gap: 14px; padding-block: 13px; border-bottom: 1px dashed var(--line); }
+.ct-rows li:last-child { border-bottom: 0; }
+.ci { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: #fff; }
+.ci svg { width: 21px; height: 21px; }
+.ci.z { background: #0068FF; } .ci.c { background: var(--navy); } .ci.m { background: var(--pg); } .ci.g { background: #7048E8; } .ci.o { background: #E08A00; }
+.ct-rows div { min-width: 0; flex: 1; }
+.ct-rows small { display: block; font-size: .78rem; color: var(--muted); }
+.ct-rows b { font-weight: 700; font-size: .98rem; overflow-wrap: anywhere; }
+.ct-rows a { flex: none; font-size: .8rem; font-weight: 700; color: var(--blue); text-decoration: none; background: var(--blue-soft); padding: 6px 12px; border-radius: 999px; transition: background .25s, color .25s; }
+.ct-rows a:hover { background: var(--blue); color: #fff; }
+.ct-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+.ct-btns .btn { width: 100%; }
+.ct-z { background: #0068FF; color: #fff; box-shadow: 0 10px 24px rgba(0, 104, 255, .3); }
+.ct-z:hover { background: #0052cc; transform: translateY(-2px); }
+@media (max-width: 480px) { .ct-who em { margin-left: 70px; } .ct-btns { grid-template-columns: 1fr; } .ct-rows a { display: none; } }
+@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-size: .88rem; position: relative; overflow: hidden; }
+.fgrid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+.fgrid h4 { color: #fff; font-size: .95rem; margin-bottom: 12px; }
+.fgrid li { padding-block: 3px; }
+.fgrid a { text-decoration: none; } .fgrid a:hover { color: #fff; }
+.fwm { font: 800 clamp(70px, 14vw, 180px)/1 var(--fh); color: rgba(255,255,255,.05); text-align: center; margin-top: 18px; letter-spacing: -.03em; }
+.fbot { border-top: 1px solid rgba(255,255,255,.08); padding-top: 16px; font-size: .8rem; }
+@media (max-width: 760px) { .fgrid { grid-template-columns: 1fr; } footer { padding-bottom: 110px; } }
+
+.fab { position: fixed; right: 14px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 10px; z-index: 30; }
+.fab a { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; color: #fff; text-decoration: none; font-size: .72rem; font-weight: 800; box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+.fab .z { background: #0068FF; }
+.fab .c { background: var(--pg); animation: ring 2.4s infinite; }
+@keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(18,145,80,.55); } 70% { box-shadow: 0 0 0 16px rgba(18,145,80,0); } 100% { box-shadow: 0 0 0 0 rgba(18,145,80,0); } }
+@media (max-width: 560px) { .fab { right: 8px; gap: 8px; } .fab a { width: 42px; height: 42px; font-size: .66rem; } }
+
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(10, 14, 24, .9); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 56px 16px 24px; animation: fade .3s; }
+.lb img { max-width: min(1100px, 100%); border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: pop .4s cubic-bezier(.2,.7,.2,1); }
+.lb button { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; font-size: 1.3rem; cursor: pointer; }
+@keyframes fade { from { opacity: 0; } } @keyframes pop { from { transform: scale(.94); opacity: 0; } }
+
+.rv { transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.rv.pre { opacity: 0; transform: translateY(30px); }
+.rv.pre.l { transform: translateX(-36px); } .rv.pre.r { transform: translateX(36px); } .rv.pre.z { transform: scale(.94); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#dau"><i>WG</i><em>Web<span>Garage</span></em></a>
+    <nav class="nav" aria-label="Mục chính">
+      <a href="#van-de">Vấn đề</a><a href="#truoc-sau">Trước &amp; sau</a><a href="#cam-ket">Cam kết</a><a href="#bang-gia">Bảng giá</a><a href="#quy-trinh">Quy trình</a><a href="#du-an">Dự án</a><a href="#ket-qua">Kết quả</a>
+    </nav>
+    <a class="btn btn-main" href="#lien-he">Tư vấn ngay</a>
+  </div>
+</header>
+
+<main id="dau">
+  <section class="hero soft">
+    <span class="wm" aria-hidden="true">WebGarage</span>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="rv l">
+          <span class="hook"><b>Miễn phí</b>Chấm điểm website đại lý ô tô trong 24 giờ</span>
+          <h1>Nâng Cấp Website <span class="hl">Ra Khách Cho Đại Lý Xe</span></h1>
+          <p class="lead">Khách bấm quảng cáo, web quay mãi không lên, họ sang đại lý khác. <b>WebGarage biến website cũ thành kênh ra khách</b>: nhanh như chớp trên điện thoại, lên Google với giá xe, nút gọi và Zalo ở mọi trang.</p>
+          <ul class="ticks">
+            <li>Nhanh gấp nhiều lần, khách không còn bỏ đi giữa chừng</li>
+            <li>Nhiều cuộc gọi, tin Zalo, đăng ký lái thử hơn từ cùng tiền quảng cáo</li>
+            <li>Làm trên bản thử, không gián đoạn quảng cáo đang chạy</li>
+          </ul>
+          <div class="hero-btns">
+            <a class="btn btn-main" href="#lien-he">Nhận chấm điểm miễn phí</a>
+            <a class="btn btn-ghost" href="#bang-gia">Xem bảng giá</a>
+          </div>
+        </div>
+        <div class="stage rv r" aria-label="Giao diện website đại lý Hyundai sau khi nâng cấp, trên máy tính và điện thoại">
+          <div class="laptop"><div class="dots"><i></i><i></i><i></i></div><img src="img/sau-pc-top.webp" alt="Trang chủ website Hyundai Sơn Trà (Đà Nẵng) sau khi nâng cấp" width="1200" height="750"></div>
+          <div class="phone"><img src="img/sau-dt-top.webp" alt="Trang chủ trên điện thoại sau khi nâng cấp" width="390" height="845"></div>
+          <div class="badge-float bf-b"><span class="ring num" data-from="59" data-to="90">90</span><small>Điểm tốc độ<br>Google</small></div>
+          <div class="badge-float bf-a"><b>+<span class="num" data-to="47">47</span></b><small>điểm website<br>sau nâng cấp</small></div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat rv"><div class="n"><span class="num" data-to="6">6</span><small> lần</small></div><h3>Nhanh hơn</h3><p>Trang tải từ 14,1 giây còn 2,3 giây ở dự án đại lý Hyundai.</p></div>
+        <div class="stat rv"><div class="n"><span class="num" data-from="59" data-to="90">90</span><small>+</small></div><h3>Điểm tốc độ Google</h3><p>Trên điện thoại. Máy tính đạt 98/100.</p></div>
+        <div class="stat rv"><div class="n"><span class="num" data-to="100">100</span><small>%</small></div><h3>Trang có nút Gọi &amp; Zalo</h3><p>Khách ở trang nào cũng liên hệ được ngay.</p></div>
+        <div class="stat rv"><div class="n"><span class="num" data-to="233">233</span><small> trang</small></div><h3>Được kiểm tra từng trang</h3><p>Không bỏ sót trang nào, không chỉ trang chủ.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-in">
+    <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">WebGarage sửa hết trong vài ngày</span>
+    <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">WebGarage sửa hết trong vài ngày</span>
+  </div></div>
+
+  <section class="sec ff-sec" id="van-de">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Từ Website Nhiều Lỗi Đến <span class="hl">Website Hoàn Chỉnh</span></h2>
+        <p>12 vấn đề website lâu năm hay gặp, xếp theo mức độ nghiêm trọng và thứ tự chúng tôi xử lý. Cuộn xuống để xem từng bước sửa.</p>
+        <div class="legend"><span><i class="lv r"></i>Nghiêm trọng</span><span><i class="lv a"></i>Đang mất khách</span><span><i class="lv b"></i>Nên làm mới</span><span><i class="lv v"></i>Phòng ngừa</span></div>
+      </div>
+      <div class="ff-bar" aria-live="polite">
+        <div class="ff-bar-top"><b>Tiến trình sửa chữa</b><span><span id="ff-count">0</span>/12 vấn đề đã xử lý</span></div>
+        <div class="ff-track"><i id="ff-prog"></i></div>
+        <div class="ff-chips"><button type="button" data-c="r">Cứu hộ</button><button type="button" data-c="a">Chuẩn</button><button type="button" data-c="b">Toàn diện</button><button type="button" data-c="v">Bảo trì</button><span class="ff-tip">Cuộn lên để xem lại lỗi, cuộn xuống để xem sửa</span></div>
+      </div>
+      <div class="ff" id="ff">
+        <div class="ff-rail"><i id="ff-fill"></i></div>
+      <div class="ff-stage" data-sev="r" data-n="4">
+        <div class="ff-dot"><span>01</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <div class="ff-body">
+          <div class="ff-head rv"><p class="ff-eye">Bước 01 · Gói Cứu hộ</p><h3>Cấp cứu lỗi nghiêm trọng</h3><p>Những lỗi làm khách thoát ngay và mở cửa cho kẻ xấu. Xử lý trước tiên, trong 2 – 3 ngày.</p><span class="ff-lvl"><i class="lv r"></i>Nghiêm trọng · 4 vấn đề</span></div>
+          <div class="ff-cards">
+          <article class="fx" data-sev="r">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Trang tải chậm, khách thoát trước khi thấy xe</h4><p>Ảnh banner nặng cả chục MB, plugin cài chồng qua nhiều năm.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Nén ảnh WebP, cache, gỡ mã thừa. Dự án mẫu: 14,1 giây còn 2,3 giây.</p></div>
+          </article>
+          <article class="fx" data-sev="r">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Xem bằng điện thoại khó đọc, khó bấm</h4><p>Chữ quá nhỏ, bị khóa phóng to, popup che kín màn hình.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Chữ từ 16px, mở lại phóng to, bỏ popup che màn hình.</p></div>
+          </article>
+          <article class="fx" data-sev="r">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 15l-2 2a3 3 0 0 1-4-4l3-3a3 3 0 0 1 4 0"/><path d="M15 9l2-2a3 3 0 0 1 4 4l-3 3a3 3 0 0 1-4 0"/><path d="M4 4l3 3M20 20l-3-3"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Ảnh xe vỡ, link chết, báo lỗi 404</h4><p>Trang cũ bị xóa, ảnh mất, link nhảy qua nhiều bước.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Sửa link chết, ảnh lỗi, chuyển hướng về đúng trang.</p></div>
+          </article>
+          <article class="fx" data-sev="r">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Lộ tên đăng nhập, bị dò mật khẩu</h4><p>Trang đăng nhập mở sẵn, tên admin đoán được.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Che tên đăng nhập, đổi trang đăng nhập, thêm lớp bảo vệ.</p></div>
+          </article>
+          </div>
+        </div>
+      </div>
+      <div class="ff-stage" data-sev="a" data-n="5">
+        <div class="ff-dot"><span>02</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <div class="ff-body">
+          <div class="ff-head rv"><p class="ff-eye">Bước 02 · Gói Chuẩn</p><h3>Chặn chỗ đang mất khách</h3><p>Website chạy được nhưng khách đến rồi đi. Sửa để mỗi lượt truy cập thành cuộc gọi, tin Zalo.</p><span class="ff-lvl"><i class="lv a"></i>Đang mất khách · 5 vấn đề</span></div>
+          <div class="ff-cards">
+          <article class="fx" data-sev="a">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Trang xe quá dài, không lọc, không so sánh</h4><p>Khách phải cuộn hàng chục màn hình mới thấy xe hợp túi tiền.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Bộ lọc theo giá, dòng xe, số chỗ; bảng so sánh phiên bản.</p></div>
+          </article>
+          <article class="fx" data-sev="a">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Google hiểu sai trang của bạn</h4><p>Thiếu tiêu đề chính, mô tả trống, chưa khai báo giá xe.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Tiêu đề, mô tả chuẩn từng trang; khai báo giá xe cho Google.</p></div>
+          </article>
+          <article class="fx" data-sev="a">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Thông tin lệch giữa web và Google Maps</h4><p>Số điện thoại, địa chỉ hai nơi khác nhau.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Thống nhất tên, địa chỉ, số điện thoại; ghim bản đồ đúng.</p></div>
+          </article>
+          <article class="fx" data-sev="a">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Khách muốn hỏi nhưng không biết bấm đâu</h4><p>Nút gọi, Zalo chỉ có ở vài trang, form không ai nhận.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Nút gọi, Zalo ở mọi trang; form báo giá, đăng ký lái thử.</p></div>
+          </article>
+          <article class="fx" data-sev="a">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Mã theo dõi quảng cáo rối, trùng lặp</h4><p>Nhiều mã cài chồng, số liệu quảng cáo sai.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Dọn mã trùng, kiểm tra cuộc gọi, Zalo, form được ghi nhận đúng.</p></div>
+          </article>
+          </div>
+        </div>
+      </div>
+      <div class="ff-stage" data-sev="b" data-n="2">
+        <div class="ff-dot"><span>03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <div class="ff-body">
+          <div class="ff-head rv"><p class="ff-eye">Bước 03 · Gói Toàn diện</p><h3>Làm mới để vượt đối thủ</h3><p>Khi giao diện đã cũ, làm mới giúp đại lý trông chuyên nghiệp và đáng tin hơn.</p><span class="ff-lvl"><i class="lv b"></i>Nên làm mới · 2 vấn đề</span></div>
+          <div class="ff-cards">
+          <article class="fx" data-sev="b">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Trông thiếu tin cậy so với đối thủ</h4><p>Trang giới thiệu sơ sài, thiếu thông tin pháp nhân, chưa có cảm nhận khách.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Viết lại trang Giới thiệu, thêm cảm nhận khách hàng thật.</p></div>
+          </article>
+          <article class="fx" data-sev="b">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Giao diện cũ, thêm gì cũng chậm và rối</h4><p>Dựng từ nhiều năm trước, vá víu nhiều lần.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Giao diện mới, giữ nguyên bài viết, SEO và địa chỉ trang.</p></div>
+          </article>
+          </div>
+        </div>
+      </div>
+      <div class="ff-stage" data-sev="v" data-n="1">
+        <div class="ff-dot"><span>04</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <div class="ff-body">
+          <div class="ff-head rv"><p class="ff-eye">Bước 04 · Gói Bảo trì</p><h3>Giữ cho website luôn khỏe</h3><p>Sửa xong rồi thì cần người trông coi, để site không xuống cấp trở lại.</p><span class="ff-lvl"><i class="lv v"></i>Phòng ngừa · 1 vấn đề</span></div>
+          <div class="ff-cards">
+          <article class="fx" data-sev="v">
+            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
+            <h4>Không ai trông coi, sự cố mới biết</h4><p>Plugin lâu không cập nhật, không có bản sao lưu.</p>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Sao lưu hằng tuần, cập nhật, giám sát và báo ngay khi có sự cố.</p></div>
+          </article>
+          </div>
+        </div>
+      </div>
+      <div class="ff-stage ff-final" data-sev="g">
+        <div class="ff-dot"><span>★</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <div class="ff-body">
+          <div class="ff-result">
+            <div class="ff-res-txt">
+              <p class="ff-eye">Kết quả</p>
+              <h3>Website hoàn chỉnh, sẵn sàng bán xe</h3>
+              <p>Sau 4 bước, website của anh/chị đạt đủ những điều khách mua xe cần:</p>
+              <ul class="ff-checks">
+                <li>Mở nhanh, kể cả trên mạng 4G</li>
+                <li>Dễ đọc, dễ bấm trên điện thoại</li>
+                <li>Google hiểu đúng, hiện giá xe</li>
+                <li>Khách gọi, nhắn Zalo từ mọi trang</li>
+                <li>An toàn, có sao lưu, có người trông coi</li>
+              </ul>
+              
+            </div>
+            <div class="ff-res-img"><div class="ff-browser"><div class="dots"><i></i><i></i><i></i></div><img src="img/sau-pc-top.webp" alt="Trang chủ Hyundai Đà Nẵng sau khi hoàn tất nâng cấp" width="1200" height="750" loading="lazy"></div></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="truoc-sau">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Trước &amp; Sau Khi <span class="hl">Nâng Cấp</span></h2>
+        <p>Ảnh chụp thật trang chủ website đại lý Hyundai Sơn Trà (Đà Nẵng). Kéo thanh ở giữa để so sánh.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Chọn thiết bị">
+        <button class="tab" role="tab" aria-selected="true" id="tab-pc" type="button">Máy tính</button>
+        <button class="tab" role="tab" aria-selected="false" id="tab-dt" type="button">Điện thoại</button>
+      </div>
+      <div class="cmp pc rv z" id="cmp">
+        <img class="after" id="img-after" src="img/sau-pc-top.webp" alt="Sau khi nâng cấp" width="1200" height="750">
+        <img class="before" id="img-before" src="img/truoc-pc-top.webp" alt="Trước khi nâng cấp" width="1200" height="750">
+        <div class="handle"></div>
+        <span class="tagl">Trước</span><span class="tagr">Sau</span>
+        <input type="range" min="0" max="100" value="50" id="cmp-range" aria-label="Kéo để so sánh trước và sau">
+      </div>
+      <p class="cmp-note">Giao diện mới: ưu đãi nổi bật ngay đầu trang, menu gọn, thanh gọi và Zalo luôn nằm cuối màn hình.</p>
+    </div>
+  </section>
+
+  <section class="sec soft" id="cam-ket">
+    <span class="wm" aria-hidden="true">Cam kết</span>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>6 Cam Kết Của <span class="hl">WebGarage</span></h2>
+        <p>Chúng tôi chỉ nhận việc khi chắc chắn làm website của anh/chị tốt hơn rõ rệt.</p>
+      </div>
+      <div class="promise">
+        <article class="pr rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg></div><h3>Nhanh hơn rõ rệt, đo bằng Google</h3><p>Điểm tốc độ Google trên điện thoại đạt từ 80 trở lên. Không đạt, chúng tôi tối ưu tiếp miễn phí đến khi đạt.</p></article>
+        <article class="pr g rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></div><h3>Mọi trang đều ra khách</h3><p>100% trang có nút Gọi, Zalo và form báo giá. Khách quan tâm xe nào cũng liên hệ được ngay tại trang đó.</p></article>
+        <article class="pr rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h3>Không gián đoạn quảng cáo</h3><p>Làm trên bản thử, giữ nguyên địa chỉ trang và mã quảng cáo. Chiến dịch Google Ads chạy bình thường suốt quá trình.</p></article>
+        <article class="pr g rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Đúng hẹn từng ngày</h3><p>Gói Cứu hộ bàn giao trong 2 – 3 ngày. Có lịch làm việc rõ ràng, báo tiến độ qua Zalo mỗi ngày.</p></article>
+        <article class="pr rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Bảo hành 30 ngày</h3><p>Lỗi phát sinh do chúng tôi làm được sửa miễn phí, phản hồi trong ngày.</p></article>
+        <article class="pr g rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Kết quả bằng con số</h3><p>Bàn giao bảng điểm trước và sau cho 11 hạng mục. Anh/chị thấy rõ mình nhận được gì cho từng đồng bỏ ra.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="bang-gia">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Bảng Giá Dịch Vụ <span class="hl">Nâng Cấp Website</span></h2>
+        <p>Rẻ hơn làm một website mới, nhưng giữ nguyên website, tên miền và thứ hạng Google anh/chị đang có. Gói sau gồm toàn bộ gói trước.</p>
+      </div>
+      <div class="prices">
+        <article class="plan rv">
+          <p class="name">Gói Cứu hộ</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="990000">990.000</span><small>đ</small></p>
+          <p class="range">Đến 1,5 triệu tùy quy mô website</p>
+          <p class="for">Site đang chậm, hay lỗi hoặc có dấu hiệu bị tấn công. Cần ổn định ngay.</p>
+          <div class="meta"><span>Xong trong 2 – 3 ngày</span></div>
+          <p class="goal"><b>Kết quả</b>Hết chậm, hết lỗi vặt, hết hở bảo mật.</p>
+          <ul>
+            <li><span>Ảnh xe nhẹ hơn, trang mở nhanh<small>Nén ảnh, thu về đúng kích thước hiển thị</small></span></li>
+            <li><span>Ảnh chỉ tải khi khách cuộn tới<small>Lần sau vào web còn nhanh hơn</small></span></li>
+            <li><span>Gỡ phần mềm thừa làm web nặng<small>Cắt những thứ cài sẵn mà không dùng</small></span></li>
+            <li><span>Sửa trải nghiệm điện thoại<small>Chữ đủ lớn, mở phóng to, bỏ popup che màn hình</small></span></li>
+            <li><span>Giấu cửa đăng nhập quản trị<small>Kẻ xấu khó dò mật khẩu</small></span></li>
+            <li><span>Thêm các lớp khóa bảo vệ website<small>Luôn chạy kết nối an toàn</small></span></li>
+            <li><span>Sửa trang báo lỗi, link chết, ảnh vỡ<small>Khách không gặp trang trắng</small></span></li>
+            <li><span>Sao lưu và đường lui<small>Có sự cố thì quay về bản cũ ngay</small></span></li>
+          </ul>
+          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Cứu hộ">Chọn gói này</a>
+        </article>
+        <article class="plan hot rv">
+          <span class="ribbon">Bán chạy nhất</span>
+          <p class="name">Gói Chuẩn</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="1990000">1.990.000</span><small>đ</small></p>
+          <p class="range">Đến 2,5 triệu tùy quy mô website</p>
+          <p class="for">Site vẫn chạy nhưng chưa mang về đủ khách, hoặc đang chạy quảng cáo.</p>
+          <div class="meta"><span>Xong trong 5 – 7 ngày</span></div>
+          <p class="goal"><b>Kết quả</b>Website thành công cụ bán xe: nhiều cuộc gọi, Zalo, lái thử hơn.</p>
+          <ul>
+            <li class="inc"><span>Toàn bộ gói Cứu hộ, cộng thêm:</span></li>
+            <li><span>Bộ lọc xe theo giá, dòng, số chỗ</span></li>
+            <li><span>So sánh các phiên bản</span></li>
+            <li><span>Bảng giá, thông số rõ, rút ngắn trang xe</span></li>
+            <li><span>Google hiểu đúng từng trang<small>Tiêu đề, mô tả rõ ràng, không bị trùng</small></span></li>
+            <li><span>Giá xe hiện ngay trên Google<small>Khách thấy giá trước khi bấm vào web</small></span></li>
+            <li><span>Thống nhất tên, địa chỉ, SĐT<small>Dễ xuất hiện khi khách tìm “đại lý gần tôi”</small></span></li>
+            <li><span>Bản đồ ghim đúng, giờ làm việc</span></li>
+            <li><span>Nút gọi, Zalo ở mọi trang + thanh dính đáy</span></li>
+            <li><span>Form báo giá, đăng ký lái thử</span></li>
+            <li><span>Chữ dễ đọc, nút dễ bấm cho mọi người</span></li>
+            <li><span>Đếm đúng cuộc gọi, tin Zalo từ quảng cáo<small>Dọn mã trùng, chỉ thay đổi khi anh/chị đồng ý</small></span></li>
+          </ul>
+          <a class="btn" href="#lien-he" data-pick="Gói Chuẩn">Chọn gói này</a>
+        </article>
+        <article class="plan rv">
+          <p class="name">Gói Toàn diện</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="3490000">3.490.000</span><small>đ</small></p>
+          <p class="range">Đến 4,5 triệu tùy quy mô website</p>
+          <p class="for">Giao diện đã cũ, muốn nâng tầm thương hiệu và vượt đối thủ.</p>
+          <div class="meta"><span>Xong trong 10 – 14 ngày</span></div>
+          <p class="goal"><b>Kết quả</b>Website mới hoàn toàn, đẹp và đáng tin hơn đối thủ.</p>
+          <ul>
+            <li class="inc"><span>Toàn bộ gói Chuẩn, cộng thêm:</span></li>
+            <li><span>Đổi giao diện toàn site<small>Giữ nguyên bài viết, thứ hạng Google</small></span></li>
+            <li><span>Viết lại Giới thiệu, khách hàng, mô tả xe</span></li>
+            <li><span>Công cụ tính trả góp<small>Nhập giá, số năm vay ra tiền góp tháng</small></span></li>
+            <li><span>Giảm 20% khi đăng ký thêm Trợ lý AI<small>Gói AI bán hàng ngay bên dưới</small></span></li>
+            <li><span>Kiểm thử độc lập sau khi đưa lên</span></li>
+            <li><span>Báo cáo điểm trước/sau, theo dõi sau 4 tuần</span></li>
+          </ul>
+          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Toàn diện">Chọn gói này</a>
+        </article>
+        <article class="plan rv">
+          <p class="name">Gói Bảo trì</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="390000">390.000</span><small>đ/tháng</small></p>
+          <p class="range">Hai mức: Cơ bản và Nâng cao</p>
+          <p class="for">Sau khi sửa xong, giữ cho website luôn nhanh và an toàn.</p>
+          <div class="meta"><span>Hằng tháng</span></div>
+          <div class="care2">
+            <div><h4>Cơ bản <span>390.000đ</span></h4><ul><li><span>Sao lưu hằng tuần</span></li><li><span>Cập nhật phần mềm website</span></li><li><span>Giám sát, báo ngay khi site sập</span></li></ul></div>
+            <div><h4>Nâng cao <span>590.000đ</span></h4><ul><li class="inc"><span>Toàn bộ gói Cơ bản</span></li><li><span>Đo lại điểm, báo cáo tốc độ hằng tháng</span></li><li><span>Sửa lỗi phát sinh, tối đa 2 giờ/tháng</span></li><li><span>Nhập khuyến mãi hằng tháng</span></li></ul></div>
+          </div>
+          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Bảo trì">Chọn gói này</a>
+        </article>
+      </div>
+
+      <article class="ai rv z" id="tro-ly-ai">
+        <div class="ai-l">
+          <span class="ai-tag">Gói mới · Trợ lý AI bán hàng</span>
+          <h3>Trợ Lý AI Tư Vấn Xe <span>Trực 24/7</span></h3>
+          <p class="ai-lead">Một "nhân viên tư vấn" không nghỉ: trả lời khách ngay lập tức trên website, Zalo và Messenger, báo giá lăn bánh, tính trả góp, xin số điện thoại và chuyển khách nóng cho sale. Anh/chị chỉ việc gọi lại và chốt.</p>
+          <div class="ai-price">
+            <div><small>Cài đặt từ</small><b><span class="num" data-to="1990000">1.990.000</span>đ</b></div>
+            <div><small>Duy trì</small><b><span class="num" data-to="490000">490.000</span>đ<em>/tháng</em></b></div>
+          </div>
+          <ul class="ai-gift">
+            <li>Tặng bộ 50 câu hỏi khách mua xe hay hỏi, viết sẵn câu trả lời</li>
+            <li>Miễn phí tháng duy trì đầu tiên</li>
+            <li>Giảm 20% phí cài đặt khi đi kèm gói Chuẩn hoặc Toàn diện</li>
+          </ul>
+          <p class="ai-time">⏱ Cài đặt xong trong 2 – 3 ngày</p>
+          <a class="btn btn-main" href="#lien-he" data-pick="Gói Trợ lý AI">Đăng ký dùng thử</a>
+        </div>
+        <div class="ai-chat" aria-label="Ví dụ hội thoại giữa khách và trợ lý AI">
+          <div class="ai-head"><i>AI</i><div><b>Trợ lý tư vấn Hyundai</b><small><span></span>Đang trực tuyến</small></div></div>
+          <div class="ai-msgs" id="ai-msgs">
+            <p class="m u">Creta bản cao cấp lăn bánh ở Đà Nẵng bao nhiêu em?</p>
+            <p class="m a">Dạ, Creta bản cao cấp lăn bánh tại Đà Nẵng khoảng <b>7xx triệu</b>, đã gồm thuế trước bạ, biển số và bảo hiểm. Anh/chị muốn em tính thêm trả góp không ạ?</p>
+            <p class="m u">Trả trước 30% thì mỗi tháng bao nhiêu?</p>
+            <p class="m a">Vay 70%, 7 năm thì góp khoảng <b>8 – 9 triệu/tháng</b>. Anh/chị để lại số điện thoại, em gửi bảng tính chi tiết và lịch lái thử cuối tuần nhé!</p>
+            <p class="m u">0905 xxx xxx</p>
+            <p class="m s">🔔 Đã báo khách nóng cho sale qua Zalo</p>
+          </div>
+          <p class="ai-note">Ví dụ hội thoại. Giá thật lấy từ bảng giá trên website của anh/chị.</p>
+        </div>
+        <ul class="ai-feats"><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Trực 24/7, trả lời trong vài giây</b><p>Khách hỏi lúc 11 giờ đêm vẫn được tư vấn ngay, không để khách chờ rồi hỏi đại lý khác.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M17 15l2 2 3-4"/></svg></span><div><b>Báo giá lăn bánh, trả góp đúng</b><p>Lấy giá từ bảng giá trên website, tính lăn bánh theo tỉnh và tiền góp hằng tháng.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></span><div><b>Website, Zalo OA, Messenger</b><p>Một trợ lý trả lời khách trên cả 3 kênh, cùng một cách tư vấn.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></span><div><b>Chấm điểm khách nóng</b><p>Tự đánh giá khách nào sắp mua (hỏi giá, hỏi trả góp, hẹn xem xe) để sale ưu tiên gọi trước.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><div><b>Báo khách nóng về Zalo của sale</b><p>Có khách để lại số điện thoại là sale nhận tin ngay, kèm tóm tắt khách cần gì.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><div><b>Đặt lịch lái thử, xem xe</b><p>Khách chọn ngày giờ ngay trong khung chat, lịch gửi thẳng cho sale.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><div><b>Nhắn lại khách đã hỏi</b><p>Kịch bản chăm lại khách sau 1, 3, 7 ngày, đúng quy định của Zalo và Messenger.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div><b>Báo cáo khách hằng tuần</b><p>Bao nhiêu người hỏi, hỏi xe gì, bao nhiêu khách để lại số, khách nóng là ai.</p></div></li></ul>
+      </article>
+      <p class="price-note"><b>Chấm điểm miễn phí, không ưng không mất phí.</b> Giá chưa gồm VAT, chốt sau khi chấm điểm.</p>
+    </div>
+  </section>
+
+  <section class="sec soft" id="quy-trinh">
+    <span class="wm" aria-hidden="true">Quy trình</span>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Quy Trình <span class="hl">An Toàn 5 Bước</span></h2>
+        <p>Website đang chạy quảng cáo thì an toàn là trên hết. Mọi thay đổi đi qua bản thử trước khi lên site thật.</p>
+      </div>
+      <ol class="steps">
+        <li class="step rv"><span class="no">Bước 01.</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Chấm điểm miễn phí</h3><p>Đo 11 hạng mục, chỉ ra chính xác chỗ đang mất khách.</p></li>
+        <li class="step rv"><span class="no">Bước 02.</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><h3>Báo giá minh bạch</h3><p>Chốt hạng mục, thời gian, chi phí. Không phát sinh ngoài báo giá.</p></li>
+        <li class="step rv"><span class="no">Bước 03.</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>Sửa trên bản thử</h3><p>Làm trên bản sao của website, site thật vẫn bán hàng bình thường.</p></li>
+        <li class="step rv"><span class="no">Bước 04.</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 21h16"/></svg></div><h3>Đưa lên an toàn</h3><p>Sao lưu trước, có sẵn đường lui. Giữ bài viết, thứ hạng, quảng cáo.</p></li>
+        <li class="step rv"><span class="no">Bước 05.</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Nghiệm thu, bàn giao</h3><p>Quét toàn site, chấm điểm lại, bàn giao báo cáo trước/sau.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="du-an">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Dự Án <span class="hl">Đã Thực Hiện</span></h2>
+        <p>Ảnh chụp thật từ các website đã nâng cấp. Rê chuột vào để phóng to và xem cả trang, bấm để mở lớn.</p>
+      </div>
+      <div class="bento">
+        <button class="proj big rv" type="button" data-zoom="img/sau-pc-full.webp"><img src="img/sau-pc-full.webp" alt="Toàn trang chủ Hyundai Sơn Trà (Đà Nẵng) sau nâng cấp" loading="lazy" width="700" height="2516"><span class="cap"><span class="cat">Giao diện mới · Tốc độ · Bảo mật</span><h3>Hyundai Sơn Trà (Đà Nẵng)</h3><p>Đổi giao diện toàn site, nhanh gấp 6 lần, giữ nguyên quảng cáo.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/banggia-full.webp"><img src="img/banggia-full.webp" alt="Trang bảng giá xe Hyundai" loading="lazy" width="700" height="2528"><span class="cap"><span class="cat">Bảng giá</span><h3>Bảng giá xe tự động</h3><p>1.974 dòng giá khớp 100% trên 38 trang tỉnh.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/xe-full.webp"><img src="img/xe-full.webp" alt="Trang chi tiết xe Hyundai Santa Fe" loading="lazy" width="700" height="3503"><span class="cap"><span class="cat">Trang xe</span><h3>Trang chi tiết xe</h3><p>Giá, phiên bản, nút gọi, Zalo, form báo giá.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/danang-full.webp"><img src="img/danang-full.webp" alt="Website thứ hai của đại lý" loading="lazy" width="700" height="1556"><span class="cap"><span class="cat">Đo lường · Khuyến mãi</span><h3>Website thứ hai của đại lý</h3><p>Công cụ đo lường riêng, nhập khuyến mãi hàng loạt.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/quan-tri.webp"><img src="img/quan-tri.webp" alt="Trang tổng quan khách trong khu quản trị, bản mẫu" loading="lazy" width="1200" height="1472"><span class="cap"><span class="cat">Quản trị</span><h3>Trang tổng quan khách</h3><p>Xem lượt khách, nguồn khách, cuộc gọi, Zalo ngay trong quản trị.</p></span></button>
+      </div>
+      <p class="hint">Trên điện thoại: bấm vào ảnh để xem toàn trang.</p>
+    </div>
+  </section>
+
+  <section class="sec alt" id="ket-qua">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Kết Quả <span class="hl">Sau Nâng Cấp</span></h2>
+        <p>Website được chấm điểm sau mỗi bước, cùng thang 100 điểm, để anh/chị thấy rõ từng bước mang lại gì.</p>
+      </div>
+      <div class="res">
+        <div>
+          <div class="card rv l">
+            <h3>Điểm tốc độ do Google chấm (PageSpeed)</h3>
+            <p class="sub">Dự án mẫu · trước và sau nâng cấp · 3 lần đo, lấy kết quả giữa</p>
+            <div class="gauges">
+              <div class="gauge"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#EDF0F5" stroke-width="10"/><circle class="arc" cx="60" cy="60" r="52" fill="none" stroke="#129150" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="32.7" data-from="59" data-to="90" transform="rotate(-90 60 60)"/><text x="60" y="70" text-anchor="middle" class="v num" data-from="59" data-to="90">90</text></svg><h4>Điện thoại</h4><p>Trước: 59</p></div>
+              <div class="gauge"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#EDF0F5" stroke-width="10"/><circle class="arc" cx="60" cy="60" r="52" fill="none" stroke="#129150" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="6.5" data-from="73" data-to="98" transform="rotate(-90 60 60)"/><text x="60" y="70" text-anchor="middle" class="v num" data-from="73" data-to="98">98</text></svg><h4>Máy tính</h4><p>Trước: 73</p></div>
+            </div>
+          </div>
+          <div class="card rv l">
+            <h3>Mục tiêu điểm sau từng gói</h3>
+            <p class="sub">Thang 100 điểm, 11 hạng mục</p>
+            <ul class="timeline">
+              <li><span>Trước khi sửa</span><span class="tr"><i class="fl" style="width:34%" data-w="34"></i></span><b class="num" data-to="34">34</b></li>
+              <li><span>Sau Cứu hộ</span><span class="tr"><i class="fl" style="width:58%" data-w="58"></i></span><b class="num" data-to="58">58</b></li>
+              <li><span>Sau Chuẩn</span><span class="tr"><i class="fl" style="width:82%" data-w="82"></i></span><b class="num" data-to="82">82</b></li>
+              <li><span>Sau Toàn diện</span><span class="tr"><i class="fl" style="width:95%" data-w="95"></i></span><b class="num" data-to="95">95</b></li>
+              <li><span>Bảo trì định kỳ</span><span class="tr"><i class="fl" style="width:96%" data-w="96"></i></span><b class="num" data-to="96">96</b></li>
+            </ul>
+          </div>
+          <div class="card rv l">
+            <h3>Mục tiêu 11 hạng mục sau gói Toàn diện</h3>
+            <p class="sub">Tổng 95/100</p>
+            <ul class="cats">
+              <li><span>Tốc độ tải trang</span><span class="tr"><i class="fl" style="width:96.7%" data-w="96.7"></i></span><b>14,5<small>/15</small></b></li>
+              <li><span>Trải nghiệm điện thoại</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>10<small>/10</small></b></li>
+              <li><span>Danh sách, chi tiết xe</span><span class="tr"><i class="fl" style="width:96.7%" data-w="96.7"></i></span><b>14,5<small>/15</small></b></li>
+              <li><span>SEO trên trang</span><span class="tr"><i class="fl" style="width:95.0%" data-w="95.0"></i></span><b>9,5<small>/10</small></b></li>
+              <li><span>SEO địa phương</span><span class="tr"><i class="fl" style="width:87.5%" data-w="87.5"></i></span><b>7<small>/8</small></b></li>
+              <li><span>Chuyển đổi (gọi, Zalo, form)</span><span class="tr"><i class="fl" style="width:93.3%" data-w="93.3"></i></span><b>14<small>/15</small></b></li>
+              <li><span>Nội dung, ảnh, video</span><span class="tr"><i class="fl" style="width:93.8%" data-w="93.8"></i></span><b>7,5<small>/8</small></b></li>
+              <li><span>Độ tin cậy</span><span class="tr"><i class="fl" style="width:85.7%" data-w="85.7"></i></span><b>6<small>/7</small></b></li>
+              <li><span>Bảo mật, ổn định</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>6<small>/6</small></b></li>
+              <li><span>Khả năng truy cập</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>3<small>/3</small></b></li>
+              <li><span>Phân tích, đo lường</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>3<small>/3</small></b></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <button class="zoom rv r" type="button" data-zoom="img/scorecard.webp" aria-label="Phóng to bảng chấm điểm"><img src="img/scorecard.webp" alt="Bảng chấm điểm website đại lý Hyundai" loading="lazy" width="1100" height="1886"><span>Bấm để xem đủ</span></button>
+          <p class="cap2">Mẫu bảng chấm điểm gửi khách: số đo và lý do cho từng hạng mục.</p>
+          <div class="zoom-row">
+            <button class="zoom rv r" type="button" data-zoom="img/pagespeed.webp" aria-label="Phóng to báo cáo tốc độ"><img src="img/pagespeed.webp" alt="Báo cáo tốc độ website theo Google PageSpeed" loading="lazy" width="900" height="1719"><span>Báo cáo tốc độ</span></button>
+            <button class="zoom rv r" type="button" data-zoom="img/sau-dt-full.webp" aria-label="Phóng to giao diện điện thoại"><img src="img/sau-dt-top.webp" alt="Giao diện điện thoại sau nâng cấp" loading="lazy" width="390" height="845"><span>Trên điện thoại</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="dieu-khoan">
+    <div class="wrap">
+      <div class="sec-head rv"><h2>Điều Khoản <span class="hl">Rõ Ràng</span></h2></div>
+      <div class="terms">
+        <div class="rv"><h3>Anh/chị cung cấp</h3><ul><li>Quyền hosting hoặc FTP</li><li>Quyền hồ sơ Google Doanh nghiệp</li><li>Mã số thuế, thông tin pháp nhân</li><li>Nội dung thật: cảm nhận khách, ảnh showroom</li></ul></div>
+        <div class="rv"><h3>WebGarage cam kết</h3><ul><li>Làm trên bản thử, sao lưu trước khi đưa lên</li><li>Không gián đoạn quảng cáo đang chạy</li><li>Bảo hành 30 ngày, phản hồi trong ngày</li><li>Báo cáo điểm trước và sau</li></ul></div>
+        <div class="rv"><h3>Ngoài phạm vi</h3><ul><li>Chạy hoặc quản lý Google Ads</li><li>Chụp ảnh, quay video</li><li>Phí hosting, plugin bản quyền</li></ul></div>
+        <div class="rv"><h3>Thanh toán</h3><ul><li>50% khi ký, 50% khi nghiệm thu</li><li>Giá chưa gồm VAT</li><li>Tối đa 2 đợt chỉnh sửa mỗi gói</li></ul></div>
+      </div>
+      <div class="faqwrap">
+        <div class="rv l">
+          <h2><span class="hl">Câu hỏi</span> thường gặp</h2>
+          <p class="intro">Còn thắc mắc? Gọi hoặc nhắn Zalo <b>0706 006 086</b>, chúng tôi trả lời ngay.</p>
+        </div>
+        <div class="faq rv r">
+          <details><summary>Làm xong có ảnh hưởng quảng cáo đang chạy không?</summary><p>Không. Chúng tôi giữ nguyên địa chỉ trang, mã theo dõi và bài viết. Mọi thay đổi đi qua bản thử, kiểm tra xong mới đưa lên.</p></details>
+          <details><summary>Bao lâu thì thấy khác biệt?</summary><p>Tốc độ và giao diện điện thoại thấy ngay sau khi bàn giao gói Cứu hộ (2 – 3 ngày). Lượng khách gọi, nhắn Zalo tăng dần trong những tuần sau.</p></details>
+          <details><summary>Vì sao giá chỉ chốt sau khi chấm điểm?</summary><p>Site 20 trang và site 200 trang cần công sức rất khác nhau. Chấm điểm cho biết site đang yếu ở đâu, cần làm những gì.</p></details>
+          <details><summary>Tôi chưa biết cần gói nào?</summary><p>Gửi tên miền để nhận bản chấm điểm miễn phí. Từ đó chúng tôi đề xuất gói phù hợp, anh/chị không cần đoán.</p></details>
+          <details><summary>Trợ lý AI có báo sai giá cho khách không?</summary><p>Trợ lý chỉ dùng giá trong bảng giá trên website của anh/chị, cập nhật giá là trợ lý trả lời theo giá mới. Câu nào không chắc, trợ lý xin số điện thoại và chuyển cho sale.</p></details>
+          <details><summary>Có thể bắt đầu từ gói nhỏ rồi nâng lên không?</summary><p>Được. Các gói nối tiếp nhau, gói sau gồm toàn bộ gói trước, không làm lại từ đầu.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact soft" id="lien-he">
+    <span class="wm" aria-hidden="true">WebGarage</span>
+    <div class="wrap contact-grid">
+      <div class="rv l">
+        <h2>Nhận Chấm Điểm Website <span class="hl">Miễn Phí</span></h2>
+        <p class="intro">Chỉ cần gửi tên miền website. Không cần gặp mặt, không cần chuẩn bị gì thêm. Không ưng, không mất phí.</p>
+        <ol class="ct-steps">
+          <li><b>1</b><div><strong>Gửi tên miền qua Zalo</strong><span>Mất chưa tới 1 phút</span></div></li>
+          <li><b>2</b><div><strong>Nhận bảng điểm trong 24 giờ</strong><span>11 hạng mục, chỉ rõ chỗ đang mất khách</span></div></li>
+          <li><b>3</b><div><strong>Chọn gói phù hợp</strong><span>Báo giá rõ ràng, không phát sinh</span></div></li>
+        </ol>
+        <p class="picked" id="picked" hidden></p>
+      </div>
+      <div class="ct-card rv r">
+        <div class="ct-who">
+          <i>MV</i>
+          <div><b>Dương Minh Vũ</b><span>Chuyên viên nâng cấp website ngành ô tô</span></div>
+          <em><span></span>Đang nhận dự án</em>
+        </div>
+        <ul class="ct-rows">
+          <li><span class="ci z"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></span><div><small>Zalo</small><b>0706 006 086</b></div><a href="https://zalo.me/0706006086" target="_blank" rel="noopener">Nhắn ngay</a></li>
+          <li><span class="ci c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><small>Hotline</small><b>0706 006 086</b></div><a href="tel:0706006086">Gọi ngay</a></li>
+          <li><span class="ci m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><small>Email</small><b>duongminhvu1107@gmail.com</b></div><a href="mailto:duongminhvu1107@gmail.com">Gửi mail</a></li>
+          <li><span class="ci g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><div><small>Khu vực</small><b>Hỗ trợ toàn quốc, làm việc online</b></div></li>
+          <li><span class="ci o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Giờ hỗ trợ</small><b>8:00 – 21:00, cả thứ Bảy và Chủ nhật</b></div></li>
+        </ul>
+        <div class="ct-btns">
+          <a class="btn ct-z" href="https://zalo.me/0706006086" target="_blank" rel="noopener">Nhắn Zalo ngay</a>
+          <a class="btn btn-main" href="tel:0706006086">Gọi 0706 006 086</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><h4>WebGarage</h4><p>Nâng cấp, sửa lỗi, tối ưu website cho đại lý và showroom ô tô. Phụ trách: Dương Minh Vũ. Hỗ trợ toàn quốc.</p></div>
+      <div><h4>Liên hệ</h4><ul><li><a href="tel:0706006086">Hotline/Zalo: 0706 006 086</a></li><li><a href="mailto:duongminhvu1107@gmail.com">duongminhvu1107@gmail.com</a></li></ul></div>
+      <div><h4>Dịch vụ</h4><ul><li><a href="#bang-gia">Gói Cứu hộ</a></li><li><a href="#bang-gia">Gói Chuẩn</a></li><li><a href="#bang-gia">Gói Toàn diện</a></li><li><a href="#bang-gia">Gói Bảo trì</a></li></ul></div>
+    </div>
+    <p class="fwm" aria-hidden="true">WebGarage</p>
+    <p class="fbot">Giá tham khảo, chưa gồm VAT. Báo giá chính thức sau khi chấm điểm.</p>
+  </div>
+</footer>
+
+<div class="fab" aria-label="Liên hệ nhanh">
+  <a class="z" href="https://zalo.me/0706006086" target="_blank" rel="noopener" aria-label="Nhắn Zalo">Zalo</a>
+  <a class="c" href="tel:0706006086" aria-label="Gọi tư vấn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  function fmt(v, dec) {
+    return v.toLocaleString('vi-VN', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  }
+  function countUp(el) {
+    var to = parseFloat(el.dataset.to), from = parseFloat(el.dataset.from || 0), dec = +(el.dataset.dec || 0);
+    var dur = to >= 100000 ? 1400 : 1600, t0 = null;
+    function tick(t) {
+      if (!t0) t0 = t;
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = fmt(from + (to - from) * e, dec);
+      if (k < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  function animArc(c) {
+    var C = 326.7, from = +c.dataset.from, to = +c.dataset.to;
+    c.style.transition = 'none';
+    c.style.strokeDashoffset = C * (1 - from / 100);
+    c.getBoundingClientRect();
+    c.style.transition = '';
+    c.style.strokeDashoffset = C * (1 - to / 100);
+  }
+  function animBar(b) {
+    b.style.transition = 'none'; b.style.width = '0%';
+    b.getBoundingClientRect();
+    b.style.transition = ''; b.style.width = b.dataset.w + '%';
+  }
+
+  // Reveal + count-up khi cuộn tới. Phần đã nằm trong màn hình lúc tải vẫn hiện sẵn.
+  if (hasIO && !reduce) {
+    var vh = window.innerHeight;
+    document.querySelectorAll('.rv').forEach(function (el) {
+      if (el.getBoundingClientRect().top > vh * 0.92) el.classList.add('pre');
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if (el.classList.contains('rv')) el.classList.remove('pre');
+        if (el.classList.contains('num')) countUp(el);
+        if (el.classList.contains('arc')) animArc(el);
+        if (el.classList.contains('fl')) animBar(el);
+        if (el.id === 'cmp') sweep();
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.rv, .num, .arc, .fl, #cmp').forEach(function (el) { io.observe(el); });
+  }
+
+  // So sánh trước / sau
+  var cmp = document.getElementById('cmp'), range = document.getElementById('cmp-range');
+  var imgA = document.getElementById('img-after'), imgB = document.getElementById('img-before');
+  var userMoved = false;
+  function setP(p) { cmp.style.setProperty('--p', p + '%'); range.value = p; }
+  range.addEventListener('input', function () { userMoved = true; setP(+range.value); });
+  function sweep() {
+    if (reduce) return;
+    var keys = [50, 82, 18, 50], seg = 900, t0 = null;
+    function tick(t) {
+      if (userMoved) return;
+      if (!t0) t0 = t;
+      var el = t - t0, i = Math.floor(el / seg);
+      if (i >= keys.length - 1) { setP(50); return; }
+      var k = (el % seg) / seg, e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      setP(keys[i] + (keys[i + 1] - keys[i]) * e);
+      requestAnimationFrame(tick);
+    }
+    setTimeout(function () { requestAnimationFrame(tick); }, 400);
+  }
+  var tabPc = document.getElementById('tab-pc'), tabDt = document.getElementById('tab-dt');
+  function show(dev) {
+    var pc = dev === 'pc';
+    tabPc.setAttribute('aria-selected', pc); tabDt.setAttribute('aria-selected', !pc);
+    cmp.classList.toggle('pc', pc); cmp.classList.toggle('dt', !pc);
+    imgA.src = pc ? 'img/sau-pc-top.webp' : 'img/sau-dt-top.webp';
+    imgB.src = pc ? 'img/truoc-pc-top.webp' : 'img/truoc-dt-top.webp';
+    userMoved = false; setP(50); sweep();
+  }
+  tabPc.addEventListener('click', function () { show('pc'); });
+  tabDt.addEventListener('click', function () { show('dt'); });
+
+  // Phóng to ảnh
+  document.querySelectorAll('[data-zoom]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var lb = document.createElement('div'); lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', 'Ảnh phóng to');
+      var img = document.createElement('img'); img.src = b.dataset.zoom; img.alt = (b.querySelector('img') || {}).alt || '';
+      var x = document.createElement('button'); x.type = 'button'; x.textContent = '×'; x.setAttribute('aria-label', 'Đóng');
+      function close() { lb.remove(); document.removeEventListener('keydown', esc); b.focus(); }
+      function esc(e) { if (e.key === 'Escape') close(); }
+      x.addEventListener('click', close);
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', esc);
+      lb.appendChild(x); lb.appendChild(img); document.body.appendChild(lb); x.focus();
+    });
+  });
+
+
+  // Tiến trình sửa chữa: trạng thái theo vị trí cuộn, cuộn xuống thì sửa, cuộn lên thì quay lại lỗi
+  (function () {
+    var ff = document.getElementById('ff'); if (!ff) return;
+    var sec = ff.closest('.ff-sec'), bar = sec.querySelector('.ff-bar');
+    var stages = [].slice.call(ff.querySelectorAll('.ff-stage:not(.ff-final)')), fin = ff.querySelector('.ff-final');
+    var cards = [].slice.call(ff.querySelectorAll('.fx')), total = cards.length;
+    var cnt = document.getElementById('ff-count'), prog = document.getElementById('ff-prog'), fill = document.getElementById('ff-fill');
+    var chips = [].slice.call(sec.querySelectorAll('.ff-chips button'));
+    sec.classList.add('ff-js');
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        var st = ff.querySelector('.ff-stage[data-sev="' + c.dataset.c + '"]');
+        var y = st.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.22;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    });
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight, line = vh * 0.62, n = 0;
+      cards.forEach(function (c) {
+        var r = c.getBoundingClientRect(), on = r.top + r.height * 0.45 < line;
+        if (on !== c.classList.contains('fixed')) c.classList.toggle('fixed', on);
+        if (on) n++;
+      });
+      var cur = null;
+      stages.forEach(function (st) {
+        var top = st.getBoundingClientRect().top, cs = st.querySelectorAll('.fx'), done = st.querySelectorAll('.fx.fixed').length;
+        st.classList.toggle('on', top < line);
+        st.classList.toggle('ok', done === cs.length);
+        if (top < line) cur = st.dataset.sev;
+        var chip = sec.querySelector('.ff-chips [data-c="' + st.dataset.sev + '"]');
+        chip.classList.toggle('on', done === cs.length);
+      });
+      chips.forEach(function (c) { c.classList.toggle('cur', c.dataset.c === cur && !c.classList.contains('on')); });
+      var ft = fin.getBoundingClientRect().top;
+      fin.classList.toggle('on', ft < vh * 0.7);
+      bar.classList.toggle('gone', ft < vh * 0.45);
+      cnt.textContent = n; prog.style.width = (n / total * 100) + '%';
+      var r = ff.getBoundingClientRect();
+      fill.style.transform = 'scaleY(' + Math.max(0, Math.min(1, (line - r.top) / r.height)) + ')';
+    }
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', req, { passive: true });
+    window.addEventListener('resize', req);
+    update();
+  })();
+
+
+  // Khung chat mẫu: tin nhắn hiện lần lượt, lặp lại khi cuộn tới
+  (function () {
+    var box = document.getElementById('ai-msgs'); if (!box || reduce || !hasIO) return;
+    var msgs = [].slice.call(box.querySelectorAll('.m'));
+    box.closest('.ai').classList.add('ai-js');
+    var timer = [], running = false;
+    function clear() { timer.forEach(clearTimeout); timer = []; var t = box.querySelector('.typing'); if (t) t.remove(); }
+    function play() {
+      clear(); running = true;
+      msgs.forEach(function (m) { m.classList.add('hide'); });
+      var t = 300;
+      msgs.forEach(function (m) {
+        if (m.classList.contains('a')) {
+          timer.push(setTimeout(function () { var ty = document.createElement('p'); ty.className = 'm a typing'; ty.innerHTML = '<i></i><i></i><i></i>'; box.insertBefore(ty, m); }, t));
+          t += 1100;
+          timer.push(setTimeout(function () { var ty = box.querySelector('.typing'); if (ty) ty.remove(); m.classList.remove('hide'); }, t));
+        } else {
+          timer.push(setTimeout(function () { m.classList.remove('hide'); }, t));
+        }
+        t += 900;
+      });
+      timer.push(setTimeout(function () { running = false; }, t));
+    }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && !running) play(); });
+    }, { threshold: 0.4 }).observe(box);
+  })();
+
+  // Chọn gói -> nhắc khách bước tiếp theo
+  var picked = document.getElementById('picked');
+  document.querySelectorAll('[data-pick]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      picked.hidden = false;
+      picked.innerHTML = 'Anh/chị quan tâm <b>' + a.dataset.pick + '</b>. Nhắn Zalo <b>0706 006 086</b> tên miền website, chúng tôi chấm điểm miễn phí và báo giá chính xác trong ngày.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
