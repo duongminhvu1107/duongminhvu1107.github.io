@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>WebGarage – Nâng cấp website ra khách cho đại lý ô tô</title>
+<title>WebGarage – Nâng cấp website ra khách cho sale & đại lý ô tô</title>
 <meta name="description" content="WebGarage nâng cấp, sửa lỗi, tối ưu website cho đại lý và sale ô tô: nhanh gấp nhiều lần, lên Google với giá xe, nút Gọi & Zalo ở mọi trang. Chấm điểm website miễn phí trong 24 giờ.">
 <meta name="theme-color" content="#0F2A5C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F2A5C'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EWG%3C/text%3E%3C/svg%3E">
@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://duongminhvu1107.github.io/">
 <link rel="canonical" href="https://duongminhvu1107.github.io/">
 <meta property="og:locale" content="vi_VN">
-<meta property="og:title" content="WebGarage – Nâng cấp website ra khách cho đại lý ô tô">
+<meta property="og:title" content="WebGarage – Nâng cấp website ra khách cho sale & đại lý ô tô">
 <meta property="og:description" content="Chấm điểm website miễn phí trong 24 giờ. Nhanh gấp nhiều lần, lên Google với giá xe, nút Gọi & Zalo ở mọi trang.">
 <meta property="og:image" content="https://duongminhvu1107.github.io/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -93,6 +93,7 @@ a { color: inherit; }
 .ticks { display: grid; gap: 8px; margin-top: 18px; }
 .ticks li { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; font-size: .95rem; }
 .ticks li::before { content: "✓"; flex: none; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: var(--pg); color: #fff; display: grid; place-items: center; font-size: .72rem; font-weight: 800; }
+.for-sale { margin-top: 16px; font-size: .95rem; background: var(--pg-soft); color: #0B5A33; border-radius: 12px; padding: 10px 14px; display: inline-block; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .stage { position: relative; aspect-ratio: 1.12; max-width: 780px; margin-inline: auto; width: 100%; }
 .laptop { position: absolute; left: 7%; right: 0; top: 6%; border-radius: 10px; background: #10182b; padding: 4px 4px 5px; box-shadow: 0 30px 60px rgba(15, 42, 87, .25); animation: float 7s ease-in-out infinite; }
@@ -189,7 +190,8 @@ a { color: inherit; }
 .chk-list input:checked::after { transform: scale(1); }
 .chk-list input:focus-visible { outline: 3px solid #7CC4FF; outline-offset: 2px; }
 .chk-list label:has(input:checked) { background: rgba(239,68,68,.16); border-color: rgba(239,68,68,.55); }
-@media (max-width: 900px) { .chk { grid-template-columns: 1fr; } .chk-l { display: contents; } .chk-res { position: sticky; top: calc(70px + env(safe-area-inset-top, 0px)); z-index: 2; background: #12306A; box-shadow: 0 14px 30px rgba(5,15,40,.45); } .chk-msg { min-height: 0; } }
+.mb-only { display: none; }
+@media (max-width: 900px) { .chk { grid-template-columns: 1fr; } .chk-l { display: contents; } .chk-res { order: 3; margin-top: 0; } .chk-msg { min-height: 0; } .pc-only { display: none; } .mb-only { display: inline; } }
 
 /* so sánh */
 .vs { background: #fff; border-radius: 20px; box-shadow: var(--sh2); overflow-x: auto; }
@@ -201,7 +203,8 @@ a { color: inherit; }
 .vs .h-good { color: #fff; background: linear-gradient(135deg, var(--pg), var(--pg-d)); }
 .vs tbody th { font-weight: 700; width: 24%; color: var(--navy); }
 .vs td { width: 38%; }
-.vs td span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: .72rem; font-weight: 800; margin-right: 10px; vertical-align: -5px; color: #fff; }
+.vs td { position: relative; padding-left: 50px; }
+.vs td span { position: absolute; left: 18px; top: 15px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: .72rem; font-weight: 800; color: #fff; }
 .vs td.bad { color: var(--muted); background: #FFFAFA; }
 .vs td.bad span { background: #EF4444; }
 .vs td.good { font-weight: 600; background: #F4FBF7; }
@@ -216,7 +219,8 @@ a { color: inherit; }
   .vs tr { background: #fff; border-radius: 16px; box-shadow: var(--sh); overflow: hidden; margin-bottom: 14px; }
   .vs tbody th { padding: 14px 16px 6px; border: 0; font-size: 1rem; width: auto; }
   .vs td { width: auto; }
-  .vs td { border: 0; padding: 10px 16px; }
+  .vs td { border: 0; padding: 10px 16px 10px 50px; }
+  .vs td span { top: 34px; }
   .vs td::before { display: block; font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
   .vs td.bad::before { content: "Làm website mới"; color: #C62828; }
   .vs td.good::before { content: "Nâng cấp với WebGarage"; color: var(--pg-d); }
@@ -348,17 +352,16 @@ a { color: inherit; }
 .cmp input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
 .cmp-note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 16px; }
 
-/* cam kết */
-.promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.pr { background: #fff; border-radius: 16px; padding: 26px 24px; box-shadow: var(--sh); transition: transform .3s, box-shadow .3s; min-width: 0; }
-.pr:hover { transform: translateY(-6px); box-shadow: var(--sh2); }
-.pr .ic { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--blue)); color: #fff; display: grid; place-items: center; box-shadow: 0 12px 24px -10px var(--blue); }
-.pr .ic svg { width: 26px; height: 26px; }
-.pr.g .ic { background: linear-gradient(135deg, var(--pg-d), #22B573); box-shadow: 0 12px 24px -10px var(--pg); }
-.pr h3 { font-size: 1.05rem; margin-top: 18px; }
-.pr p { font-size: .9rem; color: var(--muted); margin-top: 8px; }
-@media (max-width: 900px) { .promise { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .promise { grid-template-columns: 1fr; } }
+/* cam kết (dải gọn) */
+.promise { margin-top: 30px; background: #fff; border-radius: 18px; box-shadow: var(--sh); padding: 20px 22px; }
+.promise-t { font: 700 1rem var(--fh); color: var(--navy); margin-bottom: 14px; text-align: center; }
+.promise ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 20px; }
+.promise li { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: .92rem; }
+.promise .ic { flex: none; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, var(--navy), var(--blue)); }
+.promise .pr.g .ic, .promise li.pr.g .ic { background: linear-gradient(135deg, var(--pg-d), #22B573); }
+.promise .ic svg { width: 20px; height: 20px; }
+@media (max-width: 900px) { .promise ul { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .promise ul { grid-template-columns: 1fr; } }
 
 /* bảng giá */
 .prices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; }
@@ -396,6 +399,22 @@ a { color: inherit; }
 .care2 h4 span { color: var(--pg); font-variant-numeric: tabular-nums; }
 .price-note { text-align: center; color: var(--muted); font-size: .88rem; margin-top: 26px; }
 .price-note b { color: var(--pg-d); }
+.more { display: none; margin-top: 4px; background: none; border: 1.5px dashed currentColor; color: inherit; opacity: .8; border-radius: 10px; padding: 8px; font: 600 .86rem var(--f); cursor: pointer; width: 100%; }
+@media (max-width: 600px) {
+  .plan.clip > ul > li:nth-child(n+5), .plan.clip .care2 > div + div li:nth-child(n+3) { display: none; }
+  .more { display: block; }
+  .plan .for { min-height: 0; }
+  .pains { gap: 12px; }
+  .pn { padding: 18px; display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; }
+  .pn-ic { width: 44px; height: 44px; grid-row: span 2; }
+  .pn h3 { margin-top: 0; }
+  .pn p { margin-top: 4px; font-size: .86rem; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 26px 12px; }
+  .step { padding: 28px 12px 16px; }
+  .step .ic { width: 52px; height: 52px; } .step .ic svg { width: 24px; height: 24px; }
+  .step p { font-size: .8rem; }
+  .step:last-child { grid-column: 1 / -1; }
+}
 @media (max-width: 1100px) { .prices { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .prices { grid-template-columns: 1fr; } }
 
@@ -505,6 +524,8 @@ a { color: inherit; }
 .zoom img { width: 100%; height: 420px; object-fit: cover; object-position: top; transition: transform .6s, object-position 6s; }
 .zoom:hover img { transform: scale(1.03); object-position: bottom; }
 .zoom span { position: absolute; right: 12px; bottom: 12px; background: rgba(16, 24, 43, .85); color: #fff; font-size: .8rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+.ff-checks.dark li { color: var(--ink); }
+.kq-why .zoom { margin-top: 6px; }
 .zoom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
 .zoom-row .zoom img { height: 300px; }
 .cap2 { font-size: .84rem; color: var(--muted); margin-top: 10px; }
@@ -587,7 +608,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
 .fab .z { background: #0068FF; }
 .fab .c { background: var(--pg); animation: ring 2.4s infinite; }
 @keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(18,145,80,.55); } 70% { box-shadow: 0 0 0 16px rgba(18,145,80,0); } 100% { box-shadow: 0 0 0 0 rgba(18,145,80,0); } }
-@media (max-width: 560px) { .fab { right: 8px; gap: 8px; } .fab a { width: 42px; height: 42px; font-size: .66rem; } }
+@media (max-width: 560px) { .fab { left: 0; right: 0; bottom: 0; grid-template-columns: 1fr 1fr; gap: 0; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.96); backdrop-filter: blur(8px); box-shadow: 0 -6px 20px rgba(15,42,92,.12); } .fab a { width: auto; height: 46px; border-radius: 12px; font-size: .9rem; gap: 8px; display: flex; justify-content: center; align-items: center; margin: 0 4px; animation: none; } .fab .c::after { content: "Gọi ngay"; } .fab .z::after { content: "ngay"; } body { padding-bottom: 66px; } }
 
 .lb { position: fixed; inset: 0; z-index: 50; background: rgba(10, 14, 24, .9); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 56px 16px 24px; animation: fade .3s; }
 .lb img { max-width: min(1100px, 100%); border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: pop .4s cubic-bezier(.2,.7,.2,1); }
@@ -605,7 +626,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
   <div class="wrap">
     <a class="logo" href="#dau"><i>WG</i><em>Web<span>Garage</span></em></a>
     <nav class="nav" aria-label="Mục chính">
-      <a href="#noi-dau">Vấn đề</a><a href="#tu-kiem-tra">Tự kiểm tra</a><a href="#so-sanh">So sánh</a><a href="#bang-gia">Bảng giá</a><a href="#quy-trinh">Quy trình</a><a href="#du-an">Dự án</a><a href="#ket-qua">Kết quả</a>
+      <a href="#noi-dau">Vấn đề</a><a href="#tu-kiem-tra">Tự kiểm tra</a><a href="#bang-gia">Bảng giá</a><a href="#so-sanh">So sánh</a><a href="#du-an">Dự án</a><a href="#ket-qua">Kết quả</a><a href="#lien-he">Liên hệ</a>
     </nav>
     <a class="btn btn-main" href="#lien-he">Tư vấn ngay</a>
   </div>
@@ -617,14 +638,15 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     <div class="wrap">
       <div class="hero-grid">
         <div class="rv l">
-          <span class="hook"><b>Miễn phí</b>Chấm điểm website đại lý ô tô trong 24 giờ</span>
-          <h1>Nâng Cấp Website <span class="hl">Ra Khách Cho Đại Lý Xe</span></h1>
-          <p class="lead">Khách bấm quảng cáo, web quay mãi không lên, họ sang đại lý khác. <b>WebGarage biến website cũ thành kênh ra khách</b>: nhanh như chớp trên điện thoại, lên Google với giá xe, nút gọi và Zalo ở mọi trang.</p>
+          <span class="hook"><b>Miễn phí</b>Chấm điểm website bán xe trong 24 giờ</span>
+          <h1>Nâng Cấp Website <span class="hl">Ra Khách Cho Sale &amp; Đại Lý Ô Tô</span></h1>
+          <p class="lead">Khách bấm quảng cáo, web quay mãi không lên, họ sang người khác. <b>WebGarage biến website cũ thành kênh ra khách</b>: nhanh như chớp trên điện thoại, lên Google với giá xe, nút gọi và Zalo ở mọi trang.</p>
           <ul class="ticks">
             <li>Nhanh gấp nhiều lần, khách không còn bỏ đi giữa chừng</li>
             <li>Nhiều cuộc gọi, tin Zalo, đăng ký lái thử hơn từ cùng tiền quảng cáo</li>
             <li>Làm trên bản thử, không gián đoạn quảng cáo đang chạy</li>
           </ul>
+          <p class="for-sale">Sale tự chạy web cá nhân? <b>Gói Cứu hộ từ 990.000đ</b> là đủ để web nhanh và ra khách trở lại.</p>
           <div class="hero-btns">
             <a class="btn btn-main" href="#lien-he">Nhận chấm điểm miễn phí</a>
             <a class="btn btn-ghost" href="#bang-gia">Xem bảng giá</a>
@@ -634,21 +656,21 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
           <div class="laptop"><div class="dots"><i></i><i></i><i></i></div><img src="img/sau-pc-top.webp" alt="Trang chủ website Hyundai Sơn Trà (Đà Nẵng) sau khi nâng cấp" width="1200" height="750"></div>
           <div class="phone"><img src="img/sau-dt-top.webp" alt="Trang chủ trên điện thoại sau khi nâng cấp" width="390" height="845"></div>
           <div class="badge-float bf-b"><span class="ring num" data-from="59" data-to="90">90</span><small>Điểm tốc độ<br>Google</small></div>
-          <div class="badge-float bf-a"><b>+<span class="num" data-to="47">47</span></b><small>điểm website<br>sau nâng cấp</small></div>
+          <div class="badge-float bf-a"><b><span class="num" data-from="34" data-to="95">95</span></b><small>điểm website /100<br>sau nâng cấp</small></div>
         </div>
       </div>
       <div class="stats">
-        <div class="stat rv"><div class="n"><span class="num" data-to="6">6</span><small> lần</small></div><h3>Nhanh hơn</h3><p>Trang tải từ 14,1 giây còn 2,3 giây ở dự án đại lý Hyundai.</p></div>
+        <div class="stat rv"><div class="n"><span class="num" data-from="34" data-to="95">95</span><small>/100</small></div><h3>Điểm website sau nâng cấp</h3><p>Từ 34 điểm trước khi sửa, chấm theo 11 hạng mục.</p></div>
         <div class="stat rv"><div class="n"><span class="num" data-from="59" data-to="90">90</span><small>+</small></div><h3>Điểm tốc độ Google</h3><p>Trên điện thoại. Máy tính đạt 98/100.</p></div>
         <div class="stat rv"><div class="n"><span class="num" data-to="100">100</span><small>%</small></div><h3>Trang có nút Gọi &amp; Zalo</h3><p>Khách ở trang nào cũng liên hệ được ngay.</p></div>
-        <div class="stat rv"><div class="n"><span class="num" data-to="233">233</span><small> trang</small></div><h3>Được kiểm tra từng trang</h3><p>Không bỏ sót trang nào, không chỉ trang chủ.</p></div>
+        <div class="stat rv"><div class="n"><span class="num" data-to="6">6</span><small> lần</small></div><h3>Nhanh hơn</h3><p>Trang tải từ 14,1 giây còn 2,3 giây ở dự án đại lý Hyundai.</p></div>
       </div>
     </div>
   </section>
 
   <div class="ticker" aria-hidden="true"><div class="ticker-in">
-    <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">WebGarage sửa hết trong vài ngày</span>
-    <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">WebGarage sửa hết trong vài ngày</span>
+    <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">Lỗi gấp, WebGarage xử lý trong 2 – 3 ngày</span>
+    <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">Lỗi gấp, WebGarage xử lý trong 2 – 3 ngày</span>
   </div></div>
 
 
@@ -663,11 +685,11 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         <svg class="decay-line" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dg" x1="0" x2="1"><stop offset="0" stop-color="#129150"/><stop offset=".5" stop-color="#E08A00"/><stop offset="1" stop-color="#E03131"/></linearGradient></defs><path d="M0 18 C 200 18, 280 24, 380 40 S 600 70, 700 84 S 900 104, 1000 108" fill="none" stroke="url(#dg)" stroke-width="5" stroke-linecap="round"/></svg>
         <div class="decay-row">
           <div class="dc g"><span class="dc-y">Năm đầu</span><h3>Mới, nhanh, đẹp</h3><ul><li>Giá xe đúng, khuyến mãi mới</li><li>Khách vào là thấy nút gọi</li><li>Lên Google nhờ còn mới</li></ul></div>
-          <div class="dc a"><span class="dc-y">Năm thứ 2</span><h3>Bắt đầu ì ạch</h3><ul><li>Ảnh up thẳng từ điện thoại, mỗi tấm vài MB</li><li>Cài thêm plugin này, plugin kia</li><li>Giá, khuyến mãi quên cập nhật</li><li>Plugin báo cập nhật nhưng không dám bấm</li></ul></div>
+          <div class="dc a"><span class="dc-y">Năm thứ 2</span><h3>Bắt đầu ì ạch</h3><ul><li>Ảnh up thẳng từ điện thoại, mỗi tấm vài MB</li><li>Cài thêm đủ thứ phần mềm gắn thêm</li><li>Giá, khuyến mãi quên cập nhật</li><li>Web báo có bản cập nhật nhưng không dám bấm</li></ul></div>
           <div class="dc r"><span class="dc-y">Năm thứ 3 trở đi</span><h3>Âm thầm đuổi khách</h3><ul><li>Tải 10 giây trên 4G, khách bỏ đi</li><li>Ảnh vỡ, link chết, form không về</li><li>Bị chèn mã độc, Google cảnh báo</li><li>Quảng cáo tốn tiền mà ít cuộc gọi</li></ul></div>
         </div>
       </div>
-      <div class="pains"><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg></span><h3>Mất khách ngay từ 3 giây đầu</h3><p>Theo Google, 53% người dùng điện thoại bỏ đi nếu trang tải quá 3 giây. Web chậm là khách bấm sang trang đồng nghiệp khác.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Đốt tiền quảng cáo</h3><p>Google Ads chấm "trải nghiệm trang đích". Web chậm, lỗi bị chấm thấp nên mỗi lượt bấm đắt hơn mà ít ra cuộc gọi.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span><h3>Bị hack, Google gắn cảnh báo đỏ</h3><p>Plugin lâu không cập nhật là cửa cho mã độc. Web bị chuyển sang trang cờ bạc, Google hiện cảnh báo, quảng cáo bị khóa.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M15 15l6 6M21 15l-6 6"/></svg></span><h3>Giá sai, khuyến mãi hết hạn</h3><p>Khách đọc giá tháng trước, đến showroom thấy khác. Mất uy tín ngay từ lần gặp đầu tiên.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/><path d="M8 11h6"/></svg></span><h3>Rơi khỏi Google</h3><p>Web chậm, lỗi, nội dung cũ thì Google đẩy xuống dần. Khách tìm "giá xe + tên tỉnh" không còn thấy anh/chị.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span><h3>Phụ thuộc người làm web cũ</h3><p>Người làm web đã nghỉ, không nhớ mật khẩu, không biết ai giữ tên miền. Hết hạn một hôm là web biến mất.</p></article></div>
+      <div class="pains"><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg></span><h3>Mất khách ngay từ 3 giây đầu</h3><p>Theo Google, 53% người dùng điện thoại bỏ đi nếu trang tải quá 3 giây. Web chậm là khách bấm sang trang đồng nghiệp khác.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Đốt tiền quảng cáo</h3><p>Google Ads chấm "trải nghiệm trang đích". Web chậm, lỗi bị chấm thấp nên mỗi lượt bấm đắt hơn mà ít ra cuộc gọi.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span><h3>Bị hack, Google gắn cảnh báo đỏ</h3><p>Phần mềm gắn thêm (plugin) lâu không cập nhật là cửa cho mã độc. Web bị chuyển sang trang cờ bạc, Google hiện cảnh báo, quảng cáo bị khóa.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M15 15l6 6M21 15l-6 6"/></svg></span><h3>Giá sai, khuyến mãi hết hạn</h3><p>Khách đọc giá tháng trước, đến showroom thấy khác. Mất uy tín ngay từ lần gặp đầu tiên.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/><path d="M8 11h6"/></svg></span><h3>Rơi khỏi Google</h3><p>Web chậm, lỗi, nội dung cũ thì Google đẩy xuống dần. Khách tìm "giá xe + tên tỉnh" không còn thấy anh/chị.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span><h3>Phụ thuộc người làm web cũ</h3><p>Người làm web đã nghỉ, không nhớ mật khẩu, không biết ai giữ tên miền. Hết hạn một hôm là web biến mất.</p></article></div>
     </div>
   </section>
 
@@ -677,11 +699,11 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         <div class="chk-l">
           <span class="chk-tag">Tự kiểm tra trong 1 phút</span>
           <h2>Website của anh/chị có bao nhiêu <span>dấu hiệu "đuổi khách"?</span></h2>
-          <p>Đánh dấu những điều đang xảy ra với website của mình. Kết quả hiện ngay bên dưới.</p>
+          <p>Đánh dấu những điều đang xảy ra với website của mình<span class="pc-only">, bấm vào các dòng bên phải</span><span class="mb-only">, bấm vào các dòng bên dưới</span>. Kết quả hiện ngay.</p>
           <div class="chk-res" id="chk-res" aria-live="polite">
             <div class="chk-meter"><i id="chk-bar"></i></div>
             <p class="chk-n"><b id="chk-n">0</b>/12 dấu hiệu</p>
-            <p class="chk-msg" id="chk-msg">Bấm vào các dòng bên phải để bắt đầu.</p>
+            <p class="chk-msg" id="chk-msg">Chưa đánh dấu dòng nào.</p>
             <a class="btn chk-btn" id="chk-btn" href="#lien-he">Nhận chấm điểm miễn phí</a>
           </div>
         </div>
@@ -696,10 +718,129 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
           <li><label><input type="checkbox" id="c8"><span>Không chắc ai đang giữ tên miền, hosting, khi nào hết hạn</span></label></li>
           <li><label><input type="checkbox" id="c9"><span>Chạy quảng cáo tốn tiền nhưng ít cuộc gọi, tin Zalo</span></label></li>
           <li><label><input type="checkbox" id="c10"><span>Web nhìn cũ hơn web của đồng nghiệp, đối thủ</span></label></li>
-          <li><label><input type="checkbox" id="c11"><span>Plugin báo cập nhật nhưng không dám bấm vì sợ hỏng</span></label></li>
+          <li><label><input type="checkbox" id="c11"><span>Web báo có bản cập nhật nhưng không dám bấm vì sợ hỏng</span></label></li>
           <li><label><input type="checkbox" id="c12"><span>Xem web trên điện thoại chữ nhỏ, phải phóng to mới đọc được</span></label></li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="bang-gia">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Bảng Giá Dịch Vụ <span class="hl">Nâng Cấp Website</span></h2>
+        <p>Không phải làm lại web: giữ nguyên website, tên miền và thứ hạng Google anh/chị đang có. Gói sau gồm toàn bộ gói trước.</p>
+      </div>
+      <div class="prices">
+        <article class="plan rv">
+          <p class="name">Gói Cứu hộ</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="990000">990.000</span><small>đ</small></p>
+          <p class="range">Đến 1,5 triệu tùy quy mô website</p>
+          <p class="for">Site đang chậm, hay lỗi hoặc có dấu hiệu bị tấn công. Cần ổn định ngay.</p>
+          <div class="meta"><span>Xong trong 2 – 3 ngày</span></div>
+          <p class="goal"><b>Kết quả</b>Hết chậm, hết lỗi vặt, hết hở bảo mật.</p>
+          <ul>
+            <li><span>Ảnh xe nhẹ hơn, trang mở nhanh<small>Nén ảnh, thu về đúng kích thước hiển thị</small></span></li>
+            <li><span>Ảnh chỉ tải khi khách cuộn tới<small>Trang mở lần đầu nhanh hơn</small></span></li>
+            <li><span>Gỡ phần mềm thừa làm web nặng<small>Cắt những thứ cài sẵn mà không dùng</small></span></li>
+            <li><span>Sửa trải nghiệm điện thoại<small>Chữ đủ lớn, mở phóng to, bỏ popup che màn hình</small></span></li>
+            <li><span>Giấu cửa đăng nhập quản trị<small>Kẻ xấu khó dò mật khẩu</small></span></li>
+            <li><span>Thêm các lớp khóa bảo vệ website<small>Luôn chạy kết nối an toàn</small></span></li>
+            <li><span>Sửa trang báo lỗi, link chết, ảnh vỡ<small>Khách không gặp trang trắng</small></span></li>
+            <li><span>Sao lưu và đường lui<small>Có sự cố thì quay về bản cũ ngay</small></span></li>
+          </ul>
+          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Cứu hộ">Chọn gói này</a>
+        </article>
+        <article class="plan hot rv">
+          <span class="ribbon">Nên chọn</span>
+          <p class="name">Gói Chuẩn</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="1990000">1.990.000</span><small>đ</small></p>
+          <p class="range">Đến 2,5 triệu tùy quy mô website</p>
+          <p class="for">Site vẫn chạy nhưng chưa mang về đủ khách, hoặc đang chạy quảng cáo.</p>
+          <div class="meta"><span>Xong trong 5 – 7 ngày</span></div>
+          <p class="goal"><b>Kết quả</b>Website thành công cụ bán xe: nhiều cuộc gọi, Zalo, lái thử hơn.</p>
+          <ul>
+            <li class="inc"><span>Toàn bộ gói Cứu hộ, cộng thêm:</span></li>
+            <li><span>Bộ lọc xe theo giá, dòng, số chỗ</span></li>
+            <li><span>So sánh các phiên bản</span></li>
+            <li><span>Bảng giá, thông số rõ, rút ngắn trang xe</span></li>
+            <li><span>Google hiểu đúng từng trang<small>Tiêu đề, mô tả rõ ràng, không bị trùng</small></span></li>
+            <li><span>Giá xe hiện ngay trên Google<small>Khách thấy giá trước khi bấm vào web</small></span></li>
+            <li><span>Thống nhất tên, địa chỉ, SĐT<small>Dễ xuất hiện khi khách tìm “đại lý gần tôi”</small></span></li>
+            <li><span>Bản đồ ghim đúng, giờ làm việc</span></li>
+            <li><span>Nút gọi, Zalo ở mọi trang + thanh dính đáy</span></li>
+            <li><span>Form báo giá, đăng ký lái thử</span></li>
+            <li><span>Chữ dễ đọc, nút dễ bấm cho mọi người</span></li>
+            <li><span>Đếm đúng cuộc gọi, tin Zalo từ quảng cáo<small>Dọn mã trùng, chỉ thay đổi khi anh/chị đồng ý</small></span></li>
+            <li><span>Giảm 20% khi đăng ký thêm Trợ lý AI</span></li>
+          </ul>
+          <a class="btn" href="#lien-he" data-pick="Gói Chuẩn">Chọn gói này</a>
+        </article>
+        <article class="plan rv">
+          <p class="name">Gói Toàn diện</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="3490000">3.490.000</span><small>đ</small></p>
+          <p class="range">Đến 4,5 triệu tùy quy mô website</p>
+          <p class="for">Giao diện đã cũ, muốn đẹp hơn đối thủ mà không phải làm web mới.</p>
+          <div class="meta"><span>Xong trong 10 – 14 ngày</span></div>
+          <p class="goal"><b>Kết quả</b>Giao diện mới trên nền web cũ, giữ nguyên bài viết, đường dẫn và thứ hạng Google.</p>
+          <ul>
+            <li class="inc"><span>Toàn bộ gói Chuẩn, cộng thêm:</span></li>
+            <li><span>Giao diện mới cho toàn bộ web<small>Không phải làm lại web, không mất thứ hạng</small></span></li>
+            <li><span>Viết lại Giới thiệu, khách hàng, mô tả xe</span></li>
+            <li><span>Công cụ tính trả góp<small>Nhập giá, số năm vay ra tiền góp tháng</small></span></li>
+            <li><span>Giảm 20% khi đăng ký thêm Trợ lý AI<small>Gói AI bán hàng ngay bên dưới</small></span></li>
+            <li><span>Kiểm thử độc lập sau khi đưa lên</span></li>
+            <li><span>Báo cáo điểm trước/sau, theo dõi sau 4 tuần</span></li>
+          </ul>
+          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Toàn diện">Chọn gói này</a>
+        </article>
+        <article class="plan rv">
+          <p class="name">Gói Bảo trì</p>
+          <p class="price"><small>Từ </small><span class="num" data-to="390000">390.000</span><small>đ/tháng</small></p>
+          <p class="range">Hai mức: Cơ bản và Nâng cao</p>
+          <p class="for">Sau khi sửa xong, giữ cho website luôn nhanh và an toàn.</p>
+          <div class="meta"><span>Hằng tháng</span></div>
+          <div class="care2">
+            <div><h4>Cơ bản <span>390.000đ</span></h4><ul><li><span>Sao lưu hằng tuần</span></li><li><span>Cập nhật phần mềm website</span></li><li><span>Giám sát, báo ngay khi site sập</span></li></ul></div>
+            <div><h4>Nâng cao <span>590.000đ</span></h4><ul><li class="inc"><span>Toàn bộ gói Cơ bản</span></li><li><span>Đo lại điểm, báo cáo tốc độ hằng tháng</span></li><li><span>Sửa lỗi phát sinh, tối đa 2 giờ/tháng</span></li><li><span>Nhập khuyến mãi hằng tháng</span></li></ul></div>
+          </div>
+          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Bảo trì">Chọn gói này</a>
+        </article>
+      </div>
+
+      <article class="ai rv z" id="tro-ly-ai">
+        <div class="ai-l">
+          <span class="ai-tag">Gói mới · Trợ lý AI bán hàng</span>
+          <h3>Trợ Lý AI Tư Vấn Xe <span>Trực 24/7</span></h3>
+          <p class="ai-lead">Một "nhân viên tư vấn" không nghỉ: trả lời khách ngay lập tức trên website, Zalo và Messenger, báo giá lăn bánh, tính trả góp, xin số điện thoại và chuyển khách nóng cho sale. Anh/chị chỉ việc gọi lại và chốt.</p>
+          <div class="ai-price">
+            <div><small>Cài đặt từ</small><b><span class="num" data-to="1990000">1.990.000</span>đ</b></div>
+            <div><small>Duy trì</small><b><span class="num" data-to="490000">490.000</span>đ<em>/tháng</em></b></div>
+          </div>
+          <ul class="ai-gift">
+            <li>Tặng bộ 50 câu hỏi khách mua xe hay hỏi, viết sẵn câu trả lời</li>
+            <li>Miễn phí tháng duy trì đầu tiên</li>
+            <li>Giảm 20% phí cài đặt khi đi kèm gói Chuẩn hoặc Toàn diện</li>
+          </ul>
+          <p class="ai-time">⏱ Cài đặt xong trong 2 – 3 ngày</p>
+          <a class="btn btn-main" href="#lien-he" data-pick="Gói Trợ lý AI">Nhận tư vấn Trợ lý AI</a>
+        </div>
+        <div class="ai-chat" aria-label="Ví dụ hội thoại giữa khách và trợ lý AI">
+          <div class="ai-head"><i>AI</i><div><b>Trợ lý tư vấn Hyundai</b><small><span></span>Đang trực tuyến</small></div></div>
+          <div class="ai-msgs" id="ai-msgs">
+            <p class="m u">Creta bản cao cấp lăn bánh ở Đà Nẵng bao nhiêu em?</p>
+            <p class="m a">Dạ, Creta bản cao cấp lăn bánh tại Đà Nẵng khoảng <b>760 triệu</b>, đã gồm thuế trước bạ, biển số và bảo hiểm. Anh/chị muốn em tính thêm trả góp không ạ?</p>
+            <p class="m u">Trả trước 30% thì mỗi tháng bao nhiêu?</p>
+            <p class="m a">Vay 70%, 7 năm thì góp khoảng <b>8 – 9 triệu/tháng</b>. Anh/chị để lại số điện thoại, em gửi bảng tính chi tiết và lịch lái thử cuối tuần nhé!</p>
+            <p class="m u">0905 xxx xxx</p>
+            <p class="m s">🔔 Đã báo khách nóng cho sale qua Zalo</p>
+          </div>
+          <p class="ai-note">Ví dụ hội thoại, số liệu minh họa. Giá thật lấy từ bảng giá trên website của anh/chị.</p>
+        </div>
+        <ul class="ai-feats"><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Trực 24/7, trả lời trong vài giây</b><p>Khách hỏi lúc 11 giờ đêm vẫn được tư vấn ngay, không để khách chờ rồi hỏi đại lý khác.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M17 15l2 2 3-4"/></svg></span><div><b>Báo giá lăn bánh, trả góp đúng</b><p>Lấy giá từ bảng giá trên website, tính lăn bánh theo tỉnh và tiền góp hằng tháng.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></span><div><b>Website, Zalo, Messenger</b><p>Một trợ lý trả lời khách trên website, Zalo doanh nghiệp và Messenger, cùng một cách tư vấn.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></span><div><b>Chấm điểm khách nóng</b><p>Tự đánh giá khách nào sắp mua (hỏi giá, hỏi trả góp, hẹn xem xe) để sale ưu tiên gọi trước.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><div><b>Báo khách nóng về Zalo của sale</b><p>Có khách để lại số điện thoại là sale nhận tin ngay, kèm tóm tắt khách cần gì.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><div><b>Đặt lịch lái thử, xem xe</b><p>Khách chọn ngày giờ ngay trong khung chat, lịch gửi thẳng cho sale.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><div><b>Nhắn lại khách đã hỏi</b><p>Kịch bản chăm lại khách sau 1, 3, 7 ngày, đúng quy định của Zalo và Messenger.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div><b>Báo cáo khách hằng tuần</b><p>Bao nhiêu người hỏi, hỏi xe gì, bao nhiêu khách để lại số, khách nóng là ai.</p></div></li></ul>
+      </article>
+<div class="promise rv"><p class="promise-t">6 cam kết của WebGarage</p><ul><li class="pr"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg></span>Điểm tốc độ Google 90+</li><li class="pr g"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></span>Mọi trang đều ra khách</li><li class="pr"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>Không gián đoạn quảng cáo</li><li class="pr g"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Đúng hẹn từng ngày</li><li class="pr"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>Bảo hành 30 ngày</li><li class="pr g"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>Kết quả bằng con số</li></ul></div>
+      <p class="price-note"><b>Chấm điểm miễn phí, không ưng không mất phí.</b> Giá chưa gồm VAT, chốt sau khi chấm điểm.</p>
     </div>
   </section>
 
@@ -707,11 +848,11 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     <div class="wrap">
       <div class="sec-head rv">
         <h2>Từ Website Nhiều Lỗi Đến <span class="hl">Website Hoàn Chỉnh</span></h2>
-        <p>12 vấn đề website lâu năm hay gặp, xếp theo mức độ nghiêm trọng và thứ tự chúng tôi xử lý. Cuộn xuống để xem từng bước sửa.</p>
+        <p>6 vấn đề lớn nhất, xếp theo mức độ nghiêm trọng và thứ tự chúng tôi xử lý. Cuộn xuống để xem từng bước sửa.</p>
         <div class="legend"><span><i class="lv r"></i>Nghiêm trọng</span><span><i class="lv a"></i>Đang mất khách</span><span><i class="lv b"></i>Nên làm mới</span><span><i class="lv v"></i>Phòng ngừa</span></div>
       </div>
       <div class="ff-bar" aria-live="polite">
-        <div class="ff-bar-top"><b>Tiến trình sửa chữa</b><span><span id="ff-count">0</span>/12 vấn đề đã xử lý</span></div>
+        <div class="ff-bar-top"><b>Tiến trình sửa chữa</b><span><span id="ff-count">0</span>/6 vấn đề đã xử lý</span></div>
         <div class="ff-track"><i id="ff-prog"></i></div>
         <div class="ff-chips"><button type="button" data-c="r">Cứu hộ</button><button type="button" data-c="a">Chuẩn</button><button type="button" data-c="b">Toàn diện</button><button type="button" data-c="v">Bảo trì</button><span class="ff-tip">Cuộn lên để xem lại lỗi, cuộn xuống để xem sửa</span></div>
       </div>
@@ -720,22 +861,12 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
       <div class="ff-stage" data-sev="r" data-n="4">
         <div class="ff-dot"><span>01</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         <div class="ff-body">
-          <div class="ff-head rv"><p class="ff-eye">Bước 01 · Gói Cứu hộ</p><h3>Cấp cứu lỗi nghiêm trọng</h3><p>Những lỗi làm khách thoát ngay và mở cửa cho kẻ xấu. Xử lý trước tiên, trong 2 – 3 ngày.</p><span class="ff-lvl"><i class="lv r"></i>Nghiêm trọng · 4 vấn đề</span></div>
+          <div class="ff-head rv"><p class="ff-eye">01 · Gói Cứu hộ</p><h3>Cấp cứu lỗi nghiêm trọng</h3><p>Những lỗi làm khách thoát ngay và mở cửa cho kẻ xấu. Xử lý trước tiên, trong 2 – 3 ngày.</p><span class="ff-lvl"><i class="lv r"></i>Nghiêm trọng</span></div>
           <div class="ff-cards">
           <article class="fx" data-sev="r">
             <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
             <h4>Trang tải chậm, khách thoát trước khi thấy xe</h4><p>Ảnh banner nặng cả chục MB, plugin cài chồng qua nhiều năm.</p>
-            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Nén ảnh WebP, cache, gỡ mã thừa. Dự án mẫu: 14,1 giây còn 2,3 giây.</p></div>
-          </article>
-          <article class="fx" data-sev="r">
-            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
-            <h4>Xem bằng điện thoại khó đọc, khó bấm</h4><p>Chữ quá nhỏ, bị khóa phóng to, popup che kín màn hình.</p>
-            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Chữ từ 16px, mở lại phóng to, bỏ popup che màn hình.</p></div>
-          </article>
-          <article class="fx" data-sev="r">
-            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 15l-2 2a3 3 0 0 1-4-4l3-3a3 3 0 0 1 4 0"/><path d="M15 9l2-2a3 3 0 0 1 4 4l-3 3a3 3 0 0 1-4 0"/><path d="M4 4l3 3M20 20l-3-3"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
-            <h4>Ảnh xe vỡ, link chết, báo lỗi 404</h4><p>Trang cũ bị xóa, ảnh mất, link nhảy qua nhiều bước.</p>
-            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Sửa link chết, ảnh lỗi, chuyển hướng về đúng trang.</p></div>
+            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Nén ảnh, gỡ phần mềm thừa. Dự án mẫu: 14,1 giây còn 2,3 giây.</p></div>
           </article>
           <article class="fx" data-sev="r">
             <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
@@ -748,32 +879,17 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
       <div class="ff-stage" data-sev="a" data-n="5">
         <div class="ff-dot"><span>02</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         <div class="ff-body">
-          <div class="ff-head rv"><p class="ff-eye">Bước 02 · Gói Chuẩn</p><h3>Chặn chỗ đang mất khách</h3><p>Website chạy được nhưng khách đến rồi đi. Sửa để mỗi lượt truy cập thành cuộc gọi, tin Zalo.</p><span class="ff-lvl"><i class="lv a"></i>Đang mất khách · 5 vấn đề</span></div>
+          <div class="ff-head rv"><p class="ff-eye">02 · Gói Chuẩn</p><h3>Chặn chỗ đang mất khách</h3><p>Website chạy được nhưng khách đến rồi đi. Sửa để mỗi lượt truy cập thành cuộc gọi, tin Zalo.</p><span class="ff-lvl"><i class="lv a"></i>Đang mất khách</span></div>
           <div class="ff-cards">
-          <article class="fx" data-sev="a">
-            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
-            <h4>Trang xe quá dài, không lọc, không so sánh</h4><p>Khách phải cuộn hàng chục màn hình mới thấy xe hợp túi tiền.</p>
-            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Bộ lọc theo giá, dòng xe, số chỗ; bảng so sánh phiên bản.</p></div>
-          </article>
           <article class="fx" data-sev="a">
             <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
             <h4>Google hiểu sai trang của bạn</h4><p>Thiếu tiêu đề chính, mô tả trống, chưa khai báo giá xe.</p>
             <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Tiêu đề, mô tả chuẩn từng trang; khai báo giá xe cho Google.</p></div>
           </article>
           <article class="fx" data-sev="a">
-            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
-            <h4>Thông tin lệch giữa web và Google Maps</h4><p>Số điện thoại, địa chỉ hai nơi khác nhau.</p>
-            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Thống nhất tên, địa chỉ, số điện thoại; ghim bản đồ đúng.</p></div>
-          </article>
-          <article class="fx" data-sev="a">
             <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
             <h4>Khách muốn hỏi nhưng không biết bấm đâu</h4><p>Nút gọi, Zalo chỉ có ở vài trang, form không ai nhận.</p>
             <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Nút gọi, Zalo ở mọi trang; form báo giá, đăng ký lái thử.</p></div>
-          </article>
-          <article class="fx" data-sev="a">
-            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
-            <h4>Mã theo dõi quảng cáo rối, trùng lặp</h4><p>Nhiều mã cài chồng, số liệu quảng cáo sai.</p>
-            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Dọn mã trùng, kiểm tra cuộc gọi, Zalo, form được ghi nhận đúng.</p></div>
           </article>
           </div>
         </div>
@@ -781,16 +897,11 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
       <div class="ff-stage" data-sev="b" data-n="2">
         <div class="ff-dot"><span>03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         <div class="ff-body">
-          <div class="ff-head rv"><p class="ff-eye">Bước 03 · Gói Toàn diện</p><h3>Làm mới để vượt đối thủ</h3><p>Khi giao diện đã cũ, làm mới giúp đại lý trông chuyên nghiệp và đáng tin hơn.</p><span class="ff-lvl"><i class="lv b"></i>Nên làm mới · 2 vấn đề</span></div>
+          <div class="ff-head rv"><p class="ff-eye">03 · Gói Toàn diện</p><h3>Làm mới để vượt đối thủ</h3><p>Khi giao diện đã cũ, làm mới giúp đại lý trông chuyên nghiệp và đáng tin hơn.</p><span class="ff-lvl"><i class="lv b"></i>Nên làm mới</span></div>
           <div class="ff-cards">
           <article class="fx" data-sev="b">
-            <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
-            <h4>Trông thiếu tin cậy so với đối thủ</h4><p>Trang giới thiệu sơ sài, thiếu thông tin pháp nhân, chưa có cảm nhận khách.</p>
-            <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Viết lại trang Giới thiệu, thêm cảm nhận khách hàng thật.</p></div>
-          </article>
-          <article class="fx" data-sev="b">
             <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
-            <h4>Giao diện cũ, thêm gì cũng chậm và rối</h4><p>Dựng từ nhiều năm trước, vá víu nhiều lần.</p>
+            <h4>Giao diện cũ, thiếu tin cậy so với đối thủ</h4><p>Dựng từ nhiều năm trước, vá víu nhiều lần, trang giới thiệu sơ sài.</p>
             <div class="fx-fix"><p class="fx-wait">Chờ xử lý ở bước này</p><p class="fx-do"><b>Cách sửa:</b> Giao diện mới, giữ nguyên bài viết, SEO và địa chỉ trang.</p></div>
           </article>
           </div>
@@ -799,7 +910,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
       <div class="ff-stage" data-sev="v" data-n="1">
         <div class="ff-dot"><span>04</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         <div class="ff-body">
-          <div class="ff-head rv"><p class="ff-eye">Bước 04 · Gói Bảo trì</p><h3>Giữ cho website luôn khỏe</h3><p>Sửa xong rồi thì cần người trông coi, để site không xuống cấp trở lại.</p><span class="ff-lvl"><i class="lv v"></i>Phòng ngừa · 1 vấn đề</span></div>
+          <div class="ff-head rv"><p class="ff-eye">04 · Gói Bảo trì</p><h3>Giữ cho website luôn khỏe</h3><p>Sửa xong rồi thì cần người trông coi, để site không xuống cấp trở lại.</p><span class="ff-lvl"><i class="lv v"></i>Phòng ngừa</span></div>
           <div class="ff-cards">
           <article class="fx" data-sev="v">
             <div class="fx-top"><div class="fx-ic"><svg class="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="fx-sev" aria-hidden="true"><i></i><i></i><i></i></span><span class="fx-st"><span class="st-bad">Đang lỗi</span><span class="st-ok">Đã xử lý</span></span></div>
@@ -864,7 +975,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
       <div class="vs rv z">
         <table>
           <thead><tr><th scope="col"></th><th scope="col" class="h-bad">Làm website mới</th><th scope="col" class="h-good">Nâng cấp với WebGarage</th></tr></thead>
-          <tbody><tr><th scope="row">Chi phí</th><td class="bad"><span>✕</span>Khoảng 3 – 3,5 triệu, chưa tính công nhập lại nội dung</td><td class="good"><span>✓</span>Từ 990.000đ</td></tr><tr><th scope="row">Thời gian</th><td class="bad"><span>✕</span>2 – 4 tuần</td><td class="good"><span>✓</span>Gói Cứu hộ xong trong 2 – 3 ngày</td></tr><tr><th scope="row">Thứ hạng Google</th><td class="bad"><span>✕</span>Mất. Đường dẫn đổi hết, Google coi như web mới, phải leo lại từ đầu trong nhiều tháng</td><td class="good"><span>✓</span>Giữ nguyên và còn tăng nhờ web nhanh, chuẩn hơn</td></tr><tr><th scope="row">Bài viết, ảnh xe đã đăng</th><td class="bad"><span>✕</span>Phải nhập lại từ đầu hoặc bỏ đi</td><td class="good"><span>✓</span>Giữ nguyên toàn bộ</td></tr><tr><th scope="row">Link đã gửi khách, QR trên danh thiếp, băng rôn</th><td class="bad"><span>✕</span>Thành link chết, khách bấm vào gặp trang lỗi</td><td class="good"><span>✓</span>Vẫn mở đúng trang như cũ</td></tr><tr><th scope="row">Quảng cáo đang chạy</th><td class="bad"><span>✕</span>Phải dừng, sửa đường dẫn, cài lại mã theo dõi</td><td class="good"><span>✓</span>Chạy bình thường, không gián đoạn</td></tr><tr><th scope="row">Tuổi đời, uy tín tên miền</th><td class="bad"><span>✕</span>Đổi tên miền là mất hết uy tín tích lũy</td><td class="good"><span>✓</span>Giữ nguyên</td></tr><tr><th scope="row">Cách quản trị</th><td class="bad"><span>✕</span>Học lại từ đầu</td><td class="good"><span>✓</span>Quen như cũ, có hướng dẫn thêm</td></tr><tr><th scope="row">Trong lúc làm</th><td class="bad"><span>✕</span>Web có thể gián đoạn, khách vào không được</td><td class="good"><span>✓</span>Làm trên bản thử, web thật vẫn bán bình thường</td></tr></tbody>
+          <tbody><tr><th scope="row">Chi phí</th><td class="bad"><span>✕</span>Trả tiền làm lại từ đầu, cộng công nhập lại toàn bộ nội dung</td><td class="good"><span>✓</span>Từ 990.000đ, chỉ trả cho phần cần sửa</td></tr><tr><th scope="row">Thời gian</th><td class="bad"><span>✕</span>2 – 4 tuần mới xong</td><td class="good"><span>✓</span>Gói Cứu hộ xong trong 2 – 3 ngày</td></tr><tr><th scope="row">Thứ hạng Google</th><td class="bad"><span>✕</span>Mất. Đường dẫn đổi hết, phải leo lại từ đầu trong nhiều tháng</td><td class="good"><span>✓</span>Giữ nguyên và còn tăng nhờ web nhanh, chuẩn hơn</td></tr><tr><th scope="row">Link đã gửi khách, QR trên danh thiếp</th><td class="bad"><span>✕</span>Thành link chết, khách bấm vào gặp trang lỗi</td><td class="good"><span>✓</span>Vẫn mở đúng trang như cũ</td></tr><tr><th scope="row">Quảng cáo đang chạy</th><td class="bad"><span>✕</span>Phải dừng, sửa đường dẫn, cài lại mã theo dõi</td><td class="good"><span>✓</span>Chạy bình thường, không gián đoạn</td></tr></tbody>
         </table>
       </div>
       <div class="vs-note rv">
@@ -874,138 +985,66 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     </div>
   </section>
 
-  <section class="sec soft" id="cam-ket">
-    <span class="wm" aria-hidden="true">Cam kết</span>
+  <section class="sec alt" id="du-an">
     <div class="wrap">
       <div class="sec-head rv">
-        <h2>6 Cam Kết Của <span class="hl">WebGarage</span></h2>
-        <p>Chúng tôi chỉ nhận việc khi chắc chắn làm website của anh/chị tốt hơn rõ rệt.</p>
+        <h2>Dự Án <span class="hl">Đã Thực Hiện</span></h2>
+        <p>Ảnh chụp thật từ các website đã nâng cấp. Rê chuột vào để phóng to và xem cả trang, bấm để mở lớn.</p>
       </div>
-      <div class="promise">
-        <article class="pr rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg></div><h3>Nhanh hơn rõ rệt, đo bằng Google</h3><p>Điểm tốc độ Google trên điện thoại đạt từ 80 trở lên. Không đạt, chúng tôi tối ưu tiếp miễn phí đến khi đạt.</p></article>
-        <article class="pr g rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></div><h3>Mọi trang đều ra khách</h3><p>100% trang có nút Gọi, Zalo và form báo giá. Khách quan tâm xe nào cũng liên hệ được ngay tại trang đó.</p></article>
-        <article class="pr rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h3>Không gián đoạn quảng cáo</h3><p>Làm trên bản thử, giữ nguyên địa chỉ trang và mã quảng cáo. Chiến dịch Google Ads chạy bình thường suốt quá trình.</p></article>
-        <article class="pr g rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Đúng hẹn từng ngày</h3><p>Gói Cứu hộ bàn giao trong 2 – 3 ngày. Có lịch làm việc rõ ràng, báo tiến độ qua Zalo mỗi ngày.</p></article>
-        <article class="pr rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Bảo hành 30 ngày</h3><p>Lỗi phát sinh do chúng tôi làm được sửa miễn phí, phản hồi trong ngày.</p></article>
-        <article class="pr g rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Kết quả bằng con số</h3><p>Bàn giao bảng điểm trước và sau cho 11 hạng mục. Anh/chị thấy rõ mình nhận được gì cho từng đồng bỏ ra.</p></article>
+      <div class="bento">
+        <button class="proj big rv" type="button" data-zoom="img/sau-pc-full.webp"><img src="img/sau-pc-full.webp" alt="Toàn trang chủ Hyundai Sơn Trà (Đà Nẵng) sau nâng cấp" loading="lazy" width="700" height="2516"><span class="cap"><span class="cat">Giao diện mới · Tốc độ · Bảo mật</span><h3>Hyundai Sơn Trà (Đà Nẵng)</h3><p>Đổi giao diện toàn site, nhanh gấp 6 lần, giữ nguyên quảng cáo.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/banggia-full.webp"><img src="img/banggia-full.webp" alt="Trang bảng giá xe Hyundai" loading="lazy" width="700" height="2528"><span class="cap"><span class="cat">Bảng giá</span><h3>Bảng giá xe tự động</h3><p>1.974 dòng giá khớp 100% trên 38 trang tỉnh.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/xe-full.webp"><img src="img/xe-full.webp" alt="Trang chi tiết xe Hyundai Santa Fe" loading="lazy" width="700" height="3503"><span class="cap"><span class="cat">Trang xe</span><h3>Trang chi tiết xe</h3><p>Giá, phiên bản, nút gọi, Zalo, form báo giá.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/danang-full.webp"><img src="img/danang-full.webp" alt="Website thứ hai của đại lý" loading="lazy" width="700" height="1556"><span class="cap"><span class="cat">Đo lường · Khuyến mãi</span><h3>Website thứ hai của đại lý</h3><p>Công cụ đo lường riêng, nhập khuyến mãi hàng loạt.</p></span></button>
+        <button class="proj rv" type="button" data-zoom="img/quan-tri.webp"><img src="img/quan-tri.webp" alt="Trang tổng quan khách trong khu quản trị, bản mẫu" loading="lazy" width="1200" height="1472"><span class="cap"><span class="cat">Quản trị</span><h3>Trang tổng quan khách</h3><p>Xem lượt khách, nguồn khách, cuộc gọi, Zalo ngay trong quản trị.</p></span></button>
       </div>
+      <p class="hint">Trên điện thoại: bấm vào ảnh để xem toàn trang.</p>
     </div>
   </section>
 
-  <section class="sec alt" id="bang-gia">
+  <section class="sec" id="ket-qua">
     <div class="wrap">
       <div class="sec-head rv">
-        <h2>Bảng Giá Dịch Vụ <span class="hl">Nâng Cấp Website</span></h2>
-        <p>Rẻ hơn làm một website mới, nhưng giữ nguyên website, tên miền và thứ hạng Google anh/chị đang có. Gói sau gồm toàn bộ gói trước.</p>
+        <h2>Kết Quả <span class="hl">Sau Nâng Cấp</span></h2>
+        <p>Website được chấm điểm sau mỗi bước, cùng thang 100 điểm, để anh/chị thấy rõ từng bước mang lại gì.</p>
       </div>
-      <div class="prices">
-        <article class="plan rv">
-          <p class="name">Gói Cứu hộ</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="990000">990.000</span><small>đ</small></p>
-          <p class="range">Đến 1,5 triệu tùy quy mô website</p>
-          <p class="for">Site đang chậm, hay lỗi hoặc có dấu hiệu bị tấn công. Cần ổn định ngay.</p>
-          <div class="meta"><span>Xong trong 2 – 3 ngày</span></div>
-          <p class="goal"><b>Kết quả</b>Hết chậm, hết lỗi vặt, hết hở bảo mật.</p>
-          <ul>
-            <li><span>Ảnh xe nhẹ hơn, trang mở nhanh<small>Nén ảnh, thu về đúng kích thước hiển thị</small></span></li>
-            <li><span>Ảnh chỉ tải khi khách cuộn tới<small>Lần sau vào web còn nhanh hơn</small></span></li>
-            <li><span>Gỡ phần mềm thừa làm web nặng<small>Cắt những thứ cài sẵn mà không dùng</small></span></li>
-            <li><span>Sửa trải nghiệm điện thoại<small>Chữ đủ lớn, mở phóng to, bỏ popup che màn hình</small></span></li>
-            <li><span>Giấu cửa đăng nhập quản trị<small>Kẻ xấu khó dò mật khẩu</small></span></li>
-            <li><span>Thêm các lớp khóa bảo vệ website<small>Luôn chạy kết nối an toàn</small></span></li>
-            <li><span>Sửa trang báo lỗi, link chết, ảnh vỡ<small>Khách không gặp trang trắng</small></span></li>
-            <li><span>Sao lưu và đường lui<small>Có sự cố thì quay về bản cũ ngay</small></span></li>
-          </ul>
-          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Cứu hộ">Chọn gói này</a>
-        </article>
-        <article class="plan hot rv">
-          <span class="ribbon">Bán chạy nhất</span>
-          <p class="name">Gói Chuẩn</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="1990000">1.990.000</span><small>đ</small></p>
-          <p class="range">Đến 2,5 triệu tùy quy mô website</p>
-          <p class="for">Site vẫn chạy nhưng chưa mang về đủ khách, hoặc đang chạy quảng cáo.</p>
-          <div class="meta"><span>Xong trong 5 – 7 ngày</span></div>
-          <p class="goal"><b>Kết quả</b>Website thành công cụ bán xe: nhiều cuộc gọi, Zalo, lái thử hơn.</p>
-          <ul>
-            <li class="inc"><span>Toàn bộ gói Cứu hộ, cộng thêm:</span></li>
-            <li><span>Bộ lọc xe theo giá, dòng, số chỗ</span></li>
-            <li><span>So sánh các phiên bản</span></li>
-            <li><span>Bảng giá, thông số rõ, rút ngắn trang xe</span></li>
-            <li><span>Google hiểu đúng từng trang<small>Tiêu đề, mô tả rõ ràng, không bị trùng</small></span></li>
-            <li><span>Giá xe hiện ngay trên Google<small>Khách thấy giá trước khi bấm vào web</small></span></li>
-            <li><span>Thống nhất tên, địa chỉ, SĐT<small>Dễ xuất hiện khi khách tìm “đại lý gần tôi”</small></span></li>
-            <li><span>Bản đồ ghim đúng, giờ làm việc</span></li>
-            <li><span>Nút gọi, Zalo ở mọi trang + thanh dính đáy</span></li>
-            <li><span>Form báo giá, đăng ký lái thử</span></li>
-            <li><span>Chữ dễ đọc, nút dễ bấm cho mọi người</span></li>
-            <li><span>Đếm đúng cuộc gọi, tin Zalo từ quảng cáo<small>Dọn mã trùng, chỉ thay đổi khi anh/chị đồng ý</small></span></li>
-          </ul>
-          <a class="btn" href="#lien-he" data-pick="Gói Chuẩn">Chọn gói này</a>
-        </article>
-        <article class="plan rv">
-          <p class="name">Gói Toàn diện</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="3490000">3.490.000</span><small>đ</small></p>
-          <p class="range">Đến 4,5 triệu tùy quy mô website</p>
-          <p class="for">Giao diện đã cũ, muốn nâng tầm thương hiệu và vượt đối thủ.</p>
-          <div class="meta"><span>Xong trong 10 – 14 ngày</span></div>
-          <p class="goal"><b>Kết quả</b>Website mới hoàn toàn, đẹp và đáng tin hơn đối thủ.</p>
-          <ul>
-            <li class="inc"><span>Toàn bộ gói Chuẩn, cộng thêm:</span></li>
-            <li><span>Đổi giao diện toàn site<small>Giữ nguyên bài viết, thứ hạng Google</small></span></li>
-            <li><span>Viết lại Giới thiệu, khách hàng, mô tả xe</span></li>
-            <li><span>Công cụ tính trả góp<small>Nhập giá, số năm vay ra tiền góp tháng</small></span></li>
-            <li><span>Giảm 20% khi đăng ký thêm Trợ lý AI<small>Gói AI bán hàng ngay bên dưới</small></span></li>
-            <li><span>Kiểm thử độc lập sau khi đưa lên</span></li>
-            <li><span>Báo cáo điểm trước/sau, theo dõi sau 4 tuần</span></li>
-          </ul>
-          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Toàn diện">Chọn gói này</a>
-        </article>
-        <article class="plan rv">
-          <p class="name">Gói Bảo trì</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="390000">390.000</span><small>đ/tháng</small></p>
-          <p class="range">Hai mức: Cơ bản và Nâng cao</p>
-          <p class="for">Sau khi sửa xong, giữ cho website luôn nhanh và an toàn.</p>
-          <div class="meta"><span>Hằng tháng</span></div>
-          <div class="care2">
-            <div><h4>Cơ bản <span>390.000đ</span></h4><ul><li><span>Sao lưu hằng tuần</span></li><li><span>Cập nhật phần mềm website</span></li><li><span>Giám sát, báo ngay khi site sập</span></li></ul></div>
-            <div><h4>Nâng cao <span>590.000đ</span></h4><ul><li class="inc"><span>Toàn bộ gói Cơ bản</span></li><li><span>Đo lại điểm, báo cáo tốc độ hằng tháng</span></li><li><span>Sửa lỗi phát sinh, tối đa 2 giờ/tháng</span></li><li><span>Nhập khuyến mãi hằng tháng</span></li></ul></div>
+      <div class="res">
+        <div>
+          <div class="card rv l">
+            <h3>Điểm tốc độ do Google chấm (PageSpeed)</h3>
+            <p class="sub">Dự án đại lý Hyundai · trước và sau nâng cấp</p>
+            <div class="gauges">
+              <div class="gauge"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#EDF0F5" stroke-width="10"/><circle class="arc" cx="60" cy="60" r="52" fill="none" stroke="#129150" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="32.7" data-from="59" data-to="90" transform="rotate(-90 60 60)"/><text x="60" y="70" text-anchor="middle" class="v num" data-from="59" data-to="90">90</text></svg><h4>Điện thoại</h4><p>Trước: 59</p></div>
+              <div class="gauge"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#EDF0F5" stroke-width="10"/><circle class="arc" cx="60" cy="60" r="52" fill="none" stroke="#129150" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="6.5" data-from="73" data-to="98" transform="rotate(-90 60 60)"/><text x="60" y="70" text-anchor="middle" class="v num" data-from="73" data-to="98">98</text></svg><h4>Máy tính</h4><p>Trước: 73</p></div>
+            </div>
           </div>
-          <a class="btn btn-ghost" href="#lien-he" data-pick="Gói Bảo trì">Chọn gói này</a>
-        </article>
+          <div class="card rv l">
+            <h3>Mục tiêu điểm sau từng gói</h3>
+            <p class="sub">Thang 100 điểm, 11 hạng mục</p>
+            <ul class="timeline">
+              <li><span>Trước khi sửa</span><span class="tr"><i class="fl" style="width:34%" data-w="34"></i></span><b class="num" data-to="34">34</b></li>
+              <li><span>Sau Cứu hộ</span><span class="tr"><i class="fl" style="width:58%" data-w="58"></i></span><b class="num" data-to="58">58</b></li>
+              <li><span>Sau Chuẩn</span><span class="tr"><i class="fl" style="width:82%" data-w="82"></i></span><b class="num" data-to="82">82</b></li>
+              <li><span>Sau Toàn diện</span><span class="tr"><i class="fl" style="width:95%" data-w="95"></i></span><b class="num" data-to="95">95</b></li>
+              <li><span>Bảo trì định kỳ</span><span class="tr"><i class="fl" style="width:96%" data-w="96"></i></span><b class="num" data-to="96">96</b></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="card rv r kq-why">
+            <h3>Anh/chị nhận được gì khi bàn giao</h3>
+            <p class="sub">Không nói suông, mọi thứ đều có số đo trước và sau.</p>
+            <ul class="ff-checks dark">
+              <li>Bảng điểm 11 hạng mục trước và sau khi sửa</li>
+              <li>Điểm tốc độ Google trên điện thoại và máy tính</li>
+              <li>Danh sách từng lỗi đã sửa, chụp ảnh minh chứng</li>
+              <li>Hướng dẫn tự cập nhật giá, khuyến mãi</li>
+              <li>Bảo hành 30 ngày, phản hồi trong ngày</li>
+            </ul>
+            <button class="zoom" type="button" data-zoom="img/sau-dt-full.webp" aria-label="Phóng to giao diện điện thoại"><img src="img/sau-pc-top.webp" alt="Giao diện website đại lý Hyundai sau nâng cấp" loading="lazy" width="1200" height="750" style="height:auto;aspect-ratio:1200/750"><span>Xem giao diện điện thoại</span></button>
+          </div>
+        </div>
       </div>
-
-      <article class="ai rv z" id="tro-ly-ai">
-        <div class="ai-l">
-          <span class="ai-tag">Gói mới · Trợ lý AI bán hàng</span>
-          <h3>Trợ Lý AI Tư Vấn Xe <span>Trực 24/7</span></h3>
-          <p class="ai-lead">Một "nhân viên tư vấn" không nghỉ: trả lời khách ngay lập tức trên website, Zalo và Messenger, báo giá lăn bánh, tính trả góp, xin số điện thoại và chuyển khách nóng cho sale. Anh/chị chỉ việc gọi lại và chốt.</p>
-          <div class="ai-price">
-            <div><small>Cài đặt từ</small><b><span class="num" data-to="1990000">1.990.000</span>đ</b></div>
-            <div><small>Duy trì</small><b><span class="num" data-to="490000">490.000</span>đ<em>/tháng</em></b></div>
-          </div>
-          <ul class="ai-gift">
-            <li>Tặng bộ 50 câu hỏi khách mua xe hay hỏi, viết sẵn câu trả lời</li>
-            <li>Miễn phí tháng duy trì đầu tiên</li>
-            <li>Giảm 20% phí cài đặt khi đi kèm gói Chuẩn hoặc Toàn diện</li>
-          </ul>
-          <p class="ai-time">⏱ Cài đặt xong trong 2 – 3 ngày</p>
-          <a class="btn btn-main" href="#lien-he" data-pick="Gói Trợ lý AI">Đăng ký dùng thử</a>
-        </div>
-        <div class="ai-chat" aria-label="Ví dụ hội thoại giữa khách và trợ lý AI">
-          <div class="ai-head"><i>AI</i><div><b>Trợ lý tư vấn Hyundai</b><small><span></span>Đang trực tuyến</small></div></div>
-          <div class="ai-msgs" id="ai-msgs">
-            <p class="m u">Creta bản cao cấp lăn bánh ở Đà Nẵng bao nhiêu em?</p>
-            <p class="m a">Dạ, Creta bản cao cấp lăn bánh tại Đà Nẵng khoảng <b>7xx triệu</b>, đã gồm thuế trước bạ, biển số và bảo hiểm. Anh/chị muốn em tính thêm trả góp không ạ?</p>
-            <p class="m u">Trả trước 30% thì mỗi tháng bao nhiêu?</p>
-            <p class="m a">Vay 70%, 7 năm thì góp khoảng <b>8 – 9 triệu/tháng</b>. Anh/chị để lại số điện thoại, em gửi bảng tính chi tiết và lịch lái thử cuối tuần nhé!</p>
-            <p class="m u">0905 xxx xxx</p>
-            <p class="m s">🔔 Đã báo khách nóng cho sale qua Zalo</p>
-          </div>
-          <p class="ai-note">Ví dụ hội thoại. Giá thật lấy từ bảng giá trên website của anh/chị.</p>
-        </div>
-        <ul class="ai-feats"><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Trực 24/7, trả lời trong vài giây</b><p>Khách hỏi lúc 11 giờ đêm vẫn được tư vấn ngay, không để khách chờ rồi hỏi đại lý khác.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M17 15l2 2 3-4"/></svg></span><div><b>Báo giá lăn bánh, trả góp đúng</b><p>Lấy giá từ bảng giá trên website, tính lăn bánh theo tỉnh và tiền góp hằng tháng.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></span><div><b>Website, Zalo OA, Messenger</b><p>Một trợ lý trả lời khách trên cả 3 kênh, cùng một cách tư vấn.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></span><div><b>Chấm điểm khách nóng</b><p>Tự đánh giá khách nào sắp mua (hỏi giá, hỏi trả góp, hẹn xem xe) để sale ưu tiên gọi trước.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><div><b>Báo khách nóng về Zalo của sale</b><p>Có khách để lại số điện thoại là sale nhận tin ngay, kèm tóm tắt khách cần gì.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><div><b>Đặt lịch lái thử, xem xe</b><p>Khách chọn ngày giờ ngay trong khung chat, lịch gửi thẳng cho sale.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><div><b>Nhắn lại khách đã hỏi</b><p>Kịch bản chăm lại khách sau 1, 3, 7 ngày, đúng quy định của Zalo và Messenger.</p></div></li><li><span class="ai-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div><b>Báo cáo khách hằng tuần</b><p>Bao nhiêu người hỏi, hỏi xe gì, bao nhiêu khách để lại số, khách nóng là ai.</p></div></li></ul>
-      </article>
-      <p class="price-note"><b>Chấm điểm miễn phí, không ưng không mất phí.</b> Giá chưa gồm VAT, chốt sau khi chấm điểm.</p>
     </div>
   </section>
 
@@ -1026,88 +1065,14 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     </div>
   </section>
 
-  <section class="sec" id="du-an">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <h2>Dự Án <span class="hl">Đã Thực Hiện</span></h2>
-        <p>Ảnh chụp thật từ các website đã nâng cấp. Rê chuột vào để phóng to và xem cả trang, bấm để mở lớn.</p>
-      </div>
-      <div class="bento">
-        <button class="proj big rv" type="button" data-zoom="img/sau-pc-full.webp"><img src="img/sau-pc-full.webp" alt="Toàn trang chủ Hyundai Sơn Trà (Đà Nẵng) sau nâng cấp" loading="lazy" width="700" height="2516"><span class="cap"><span class="cat">Giao diện mới · Tốc độ · Bảo mật</span><h3>Hyundai Sơn Trà (Đà Nẵng)</h3><p>Đổi giao diện toàn site, nhanh gấp 6 lần, giữ nguyên quảng cáo.</p></span></button>
-        <button class="proj rv" type="button" data-zoom="img/banggia-full.webp"><img src="img/banggia-full.webp" alt="Trang bảng giá xe Hyundai" loading="lazy" width="700" height="2528"><span class="cap"><span class="cat">Bảng giá</span><h3>Bảng giá xe tự động</h3><p>1.974 dòng giá khớp 100% trên 38 trang tỉnh.</p></span></button>
-        <button class="proj rv" type="button" data-zoom="img/xe-full.webp"><img src="img/xe-full.webp" alt="Trang chi tiết xe Hyundai Santa Fe" loading="lazy" width="700" height="3503"><span class="cap"><span class="cat">Trang xe</span><h3>Trang chi tiết xe</h3><p>Giá, phiên bản, nút gọi, Zalo, form báo giá.</p></span></button>
-        <button class="proj rv" type="button" data-zoom="img/danang-full.webp"><img src="img/danang-full.webp" alt="Website thứ hai của đại lý" loading="lazy" width="700" height="1556"><span class="cap"><span class="cat">Đo lường · Khuyến mãi</span><h3>Website thứ hai của đại lý</h3><p>Công cụ đo lường riêng, nhập khuyến mãi hàng loạt.</p></span></button>
-        <button class="proj rv" type="button" data-zoom="img/quan-tri.webp"><img src="img/quan-tri.webp" alt="Trang tổng quan khách trong khu quản trị, bản mẫu" loading="lazy" width="1200" height="1472"><span class="cap"><span class="cat">Quản trị</span><h3>Trang tổng quan khách</h3><p>Xem lượt khách, nguồn khách, cuộc gọi, Zalo ngay trong quản trị.</p></span></button>
-      </div>
-      <p class="hint">Trên điện thoại: bấm vào ảnh để xem toàn trang.</p>
-    </div>
-  </section>
-
-  <section class="sec alt" id="ket-qua">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <h2>Kết Quả <span class="hl">Sau Nâng Cấp</span></h2>
-        <p>Website được chấm điểm sau mỗi bước, cùng thang 100 điểm, để anh/chị thấy rõ từng bước mang lại gì.</p>
-      </div>
-      <div class="res">
-        <div>
-          <div class="card rv l">
-            <h3>Điểm tốc độ do Google chấm (PageSpeed)</h3>
-            <p class="sub">Dự án mẫu · trước và sau nâng cấp · 3 lần đo, lấy kết quả giữa</p>
-            <div class="gauges">
-              <div class="gauge"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#EDF0F5" stroke-width="10"/><circle class="arc" cx="60" cy="60" r="52" fill="none" stroke="#129150" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="32.7" data-from="59" data-to="90" transform="rotate(-90 60 60)"/><text x="60" y="70" text-anchor="middle" class="v num" data-from="59" data-to="90">90</text></svg><h4>Điện thoại</h4><p>Trước: 59</p></div>
-              <div class="gauge"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#EDF0F5" stroke-width="10"/><circle class="arc" cx="60" cy="60" r="52" fill="none" stroke="#129150" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="6.5" data-from="73" data-to="98" transform="rotate(-90 60 60)"/><text x="60" y="70" text-anchor="middle" class="v num" data-from="73" data-to="98">98</text></svg><h4>Máy tính</h4><p>Trước: 73</p></div>
-            </div>
-          </div>
-          <div class="card rv l">
-            <h3>Mục tiêu điểm sau từng gói</h3>
-            <p class="sub">Thang 100 điểm, 11 hạng mục</p>
-            <ul class="timeline">
-              <li><span>Trước khi sửa</span><span class="tr"><i class="fl" style="width:34%" data-w="34"></i></span><b class="num" data-to="34">34</b></li>
-              <li><span>Sau Cứu hộ</span><span class="tr"><i class="fl" style="width:58%" data-w="58"></i></span><b class="num" data-to="58">58</b></li>
-              <li><span>Sau Chuẩn</span><span class="tr"><i class="fl" style="width:82%" data-w="82"></i></span><b class="num" data-to="82">82</b></li>
-              <li><span>Sau Toàn diện</span><span class="tr"><i class="fl" style="width:95%" data-w="95"></i></span><b class="num" data-to="95">95</b></li>
-              <li><span>Bảo trì định kỳ</span><span class="tr"><i class="fl" style="width:96%" data-w="96"></i></span><b class="num" data-to="96">96</b></li>
-            </ul>
-          </div>
-          <div class="card rv l">
-            <h3>Mục tiêu 11 hạng mục sau gói Toàn diện</h3>
-            <p class="sub">Tổng 95/100</p>
-            <ul class="cats">
-              <li><span>Tốc độ tải trang</span><span class="tr"><i class="fl" style="width:96.7%" data-w="96.7"></i></span><b>14,5<small>/15</small></b></li>
-              <li><span>Trải nghiệm điện thoại</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>10<small>/10</small></b></li>
-              <li><span>Danh sách, chi tiết xe</span><span class="tr"><i class="fl" style="width:96.7%" data-w="96.7"></i></span><b>14,5<small>/15</small></b></li>
-              <li><span>SEO trên trang</span><span class="tr"><i class="fl" style="width:95.0%" data-w="95.0"></i></span><b>9,5<small>/10</small></b></li>
-              <li><span>SEO địa phương</span><span class="tr"><i class="fl" style="width:87.5%" data-w="87.5"></i></span><b>7<small>/8</small></b></li>
-              <li><span>Chuyển đổi (gọi, Zalo, form)</span><span class="tr"><i class="fl" style="width:93.3%" data-w="93.3"></i></span><b>14<small>/15</small></b></li>
-              <li><span>Nội dung, ảnh, video</span><span class="tr"><i class="fl" style="width:93.8%" data-w="93.8"></i></span><b>7,5<small>/8</small></b></li>
-              <li><span>Độ tin cậy</span><span class="tr"><i class="fl" style="width:85.7%" data-w="85.7"></i></span><b>6<small>/7</small></b></li>
-              <li><span>Bảo mật, ổn định</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>6<small>/6</small></b></li>
-              <li><span>Khả năng truy cập</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>3<small>/3</small></b></li>
-              <li><span>Phân tích, đo lường</span><span class="tr"><i class="fl" style="width:100.0%" data-w="100.0"></i></span><b>3<small>/3</small></b></li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <button class="zoom rv r" type="button" data-zoom="img/scorecard.webp" aria-label="Phóng to bảng chấm điểm"><img src="img/scorecard.webp" alt="Bảng chấm điểm website đại lý Hyundai" loading="lazy" width="1100" height="1886"><span>Bấm để xem đủ</span></button>
-          <p class="cap2">Mẫu bảng chấm điểm gửi khách: số đo và lý do cho từng hạng mục.</p>
-          <div class="zoom-row">
-            <button class="zoom rv r" type="button" data-zoom="img/pagespeed.webp" aria-label="Phóng to báo cáo tốc độ"><img src="img/pagespeed.webp" alt="Báo cáo tốc độ website theo Google PageSpeed" loading="lazy" width="900" height="1719"><span>Báo cáo tốc độ</span></button>
-            <button class="zoom rv r" type="button" data-zoom="img/sau-dt-full.webp" aria-label="Phóng to giao diện điện thoại"><img src="img/sau-dt-top.webp" alt="Giao diện điện thoại sau nâng cấp" loading="lazy" width="390" height="845"><span>Trên điện thoại</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="dieu-khoan">
+  <section class="sec alt" id="dieu-khoan">
     <div class="wrap">
       <div class="sec-head rv"><h2>Điều Khoản <span class="hl">Rõ Ràng</span></h2></div>
       <div class="terms">
-        <div class="rv"><h3>Anh/chị cung cấp</h3><ul><li>Quyền hosting hoặc FTP</li><li>Quyền hồ sơ Google Doanh nghiệp</li><li>Mã số thuế, thông tin pháp nhân</li><li>Nội dung thật: cảm nhận khách, ảnh showroom</li></ul></div>
+        <div class="rv"><h3>Anh/chị cung cấp</h3><ul><li>Tài khoản quản trị web và nơi đặt web (hosting)</li><li>Sale cá nhân: chỉ cần vậy là đủ</li><li>Đại lý: thêm quyền hồ sơ Google Doanh nghiệp, mã số thuế</li><li>Ảnh thật, cảm nhận khách nếu có</li></ul></div>
         <div class="rv"><h3>WebGarage cam kết</h3><ul><li>Làm trên bản thử, sao lưu trước khi đưa lên</li><li>Không gián đoạn quảng cáo đang chạy</li><li>Bảo hành 30 ngày, phản hồi trong ngày</li><li>Báo cáo điểm trước và sau</li></ul></div>
         <div class="rv"><h3>Ngoài phạm vi</h3><ul><li>Chạy hoặc quản lý Google Ads</li><li>Chụp ảnh, quay video</li><li>Phí hosting, plugin bản quyền</li></ul></div>
-        <div class="rv"><h3>Thanh toán</h3><ul><li>50% khi ký, 50% khi nghiệm thu</li><li>Giá chưa gồm VAT</li><li>Tối đa 2 đợt chỉnh sửa mỗi gói</li></ul></div>
+        <div class="rv"><h3>Thanh toán</h3><ul><li>Gói Cứu hộ: chuyển khoản khi bắt đầu, không cần hợp đồng giấy</li><li>Gói lớn hơn: 50% khi bắt đầu, 50% khi nghiệm thu</li><li>Giá chưa gồm VAT</li><li>Tối đa 2 đợt chỉnh sửa mỗi gói</li></ul></div>
       </div>
       <div class="faqwrap">
         <div class="rv l">
@@ -1164,7 +1129,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
 <footer>
   <div class="wrap">
     <div class="fgrid">
-      <div><h4>WebGarage</h4><p>Nâng cấp, sửa lỗi, tối ưu website cho đại lý và showroom ô tô. Phụ trách: Dương Minh Vũ. Hỗ trợ toàn quốc.</p></div>
+      <div><h4>WebGarage</h4><p>Nâng cấp, sửa lỗi, tối ưu website cho sale và đại lý ô tô. Phụ trách: Dương Minh Vũ. Hỗ trợ toàn quốc.</p></div>
       <div><h4>Liên hệ</h4><ul><li><a href="tel:0706006086">Hotline/Zalo: 0706 006 086</a></li><li><a href="mailto:duongminhvu1107@gmail.com">duongminhvu1107@gmail.com</a></li></ul></div>
       <div><h4>Dịch vụ</h4><ul><li><a href="#bang-gia">Gói Cứu hộ</a></li><li><a href="#bang-gia">Gói Chuẩn</a></li><li><a href="#bang-gia">Gói Toàn diện</a></li><li><a href="#bang-gia">Gói Bảo trì</a></li></ul></div>
     </div>
@@ -1374,17 +1339,29 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     function upd() {
       var k = boxes.filter(function (b) { return b.checked; }).length;
       n.textContent = k; bar.style.width = (k / 12 * 100) + '%'; bar.style.backgroundPosition = (k / 12 * 100) + '% 0';
+      var urgent = ['c5', 'c7', 'c8'].some(function (id) { return document.getElementById(id).checked; });
       var pick;
-      if (k === 0) { msg.textContent = 'Bấm vào các dòng bên phải để bắt đầu.'; btn.textContent = 'Nhận chấm điểm miễn phí'; pick = null; }
-      else if (k <= 2) { msg.innerHTML = 'Website còn khá ổn. Nên có người trông coi để không xuống cấp: <b>Gói Bảo trì</b>.'; btn.textContent = 'Xem Gói Bảo trì'; pick = 'Gói Bảo trì'; }
-      else if (k <= 5) { msg.innerHTML = 'Website <b>đang mất khách mỗi ngày</b>. Nên xử lý sớm với <b>Gói Chuẩn</b> để biến web thành kênh ra khách.'; btn.textContent = 'Xem Gói Chuẩn'; pick = 'Gói Chuẩn'; }
-      else { msg.innerHTML = '<b>Báo động đỏ!</b> Website đang đuổi khách và có rủi ro bị hack. Cần <b>Gói Cứu hộ</b> ngay trong tuần này.'; btn.textContent = 'Cứu hộ website ngay'; pick = 'Gói Cứu hộ'; }
+      if (k === 0) { msg.textContent = 'Chưa đánh dấu dòng nào.'; btn.textContent = 'Nhận chấm điểm miễn phí'; pick = null; }
+      else if (urgent || k >= 6) { msg.innerHTML = '<b>Báo động đỏ!</b> Website đang đuổi khách' + (urgent ? ' và có nguy cơ mất web' : '') + '. Cần <b>Gói Cứu hộ</b> ngay trong tuần này' + (k >= 6 ? ', sau đó lên <b>Gói Chuẩn</b>' : '') + '.'; btn.textContent = 'Cứu hộ website ngay'; pick = 'Gói Cứu hộ'; }
+      else if (k <= 2) { msg.innerHTML = 'Website còn khá ổn. Sửa nhanh chỗ lỗi với <b>Gói Cứu hộ</b>, rồi có người trông coi bằng <b>Gói Bảo trì</b>.'; btn.textContent = 'Xem bảng giá'; pick = 'Gói Cứu hộ'; }
+      else { msg.innerHTML = 'Website <b>đang mất khách mỗi ngày</b>. Nên xử lý với <b>Gói Chuẩn</b> để web thành kênh ra khách.'; btn.textContent = 'Xem Gói Chuẩn'; pick = 'Gói Chuẩn'; }
       btn.dataset.pick = pick || '';
       btn.setAttribute('href', pick ? '#bang-gia' : '#lien-he');
     }
     boxes.forEach(function (b) { b.addEventListener('change', upd); });
     upd();
   })();
+
+
+  // Điện thoại: gói giá chỉ hiện 4 hạng mục đầu, bấm để xem đủ
+  document.querySelectorAll('.plan').forEach(function (pl) {
+    var n = pl.querySelectorAll(':scope > ul > li').length;
+    if (n <= 4 && !pl.querySelector('.care2')) return;
+    pl.classList.add('clip');
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'more'; b.textContent = 'Xem đủ hạng mục ▾';
+    b.addEventListener('click', function () { var c = pl.classList.toggle('clip'); b.textContent = c ? 'Xem đủ hạng mục ▾' : 'Thu gọn ▴'; });
+    pl.insertBefore(b, pl.querySelector(':scope > .btn'));
+  });
 
   // Chọn gói -> nhắc khách bước tiếp theo
   var picked = document.getElementById('picked');
