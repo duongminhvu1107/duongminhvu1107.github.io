@@ -309,22 +309,31 @@ a { color: inherit; }
 .fx.fixed .fx-sev i { background: var(--line); }
 .fx.fixed .st-bad { opacity: 0; transform: translateY(-8px); }
 .fx.fixed .st-ok { opacity: 1; transform: none; }
-.ff-result { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(20px, 4vw, 40px); align-items: center; background: linear-gradient(135deg, #2357B8, #3F86E0); color: #fff; border-radius: 22px; padding: clamp(22px, 4vw, 44px); position: relative; overflow: hidden; transition: opacity .9s, filter .9s, transform .9s cubic-bezier(.2,.7,.2,1); }
-.ff-result::before { content: ""; position: absolute; inset: 0; background: radial-gradient(500px 260px at 90% 0%, rgba(110,231,168,.28), transparent 70%), radial-gradient(420px 300px at 0% 100%, rgba(255,255,255,.12), transparent 70%); pointer-events: none; }
-.ff-result > div { position: relative; min-width: 0; }
-.ff-result .ff-eye { color: #6EE7A8; }
-.ff-result h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; margin-top: 6px; }
-.ff-res-txt > p:not(.ff-eye) { opacity: .88; margin-top: 10px; }
-.ff-checks { display: grid; gap: 8px; margin: 16px 0 22px; }
-.ff-checks li { display: flex; gap: 10px; align-items: center; }
-.ff-checks li::before { content: "✓"; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--pg); color: #fff; display: grid; place-items: center; font-size: .72rem; font-weight: 800; }
-.ff-result .btn-coral { background: #fff; color: var(--navy-d); display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 12px 22px; font-weight: 700; text-decoration: none; }
+.ff-result { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(20px, 4vw, 44px); align-items: center; background: #fff; color: var(--ink); border-radius: 24px; padding: clamp(22px, 4vw, 46px); position: relative; overflow: hidden; box-shadow: 0 30px 70px -18px rgba(15, 42, 92, .22), 0 2px 0 rgba(15,42,92,.03); transition: opacity .9s, filter .9s, transform .9s cubic-bezier(.2,.7,.2,1); }
+.ff-result::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px 300px at 100% 0%, #E3F6EB, transparent 70%), radial-gradient(460px 320px at 0% 100%, #E8F0FF, transparent 70%); pointer-events: none; }
+.ff-result::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 220px; height: 220px; border-radius: 50%; border: 28px solid rgba(18, 145, 80, .06); pointer-events: none; }
+.ff-result > div { position: relative; min-width: 0; z-index: 1; }
+.ff-result .ff-eye { color: var(--pg); display: inline-flex; align-items: center; gap: 8px; background: var(--pg-soft); padding: 4px 12px; border-radius: 999px; }
+.ff-result h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; margin-top: 12px; color: var(--navy); }
+.ff-result h3 span { color: var(--pg); }
+.ff-res-txt > p:not(.ff-eye) { color: var(--muted); margin-top: 10px; }
+.ff-checks { display: grid; gap: 10px; margin: 18px 0 24px; }
+.ff-checks li { display: flex; gap: 12px; align-items: center; font-weight: 500; }
+.ff-checks li::before { content: "✓"; flex: none; width: 24px; height: 24px; border-radius: 8px; background: linear-gradient(135deg, var(--pg), #22B573); color: #fff; display: grid; place-items: center; font-size: .75rem; font-weight: 800; box-shadow: 0 6px 14px -6px var(--pg); }
+.ff-result .btn-coral { background: var(--navy); color: #fff; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 13px 24px; font-weight: 700; text-decoration: none; box-shadow: 0 12px 26px -8px rgba(15,42,92,.45); transition: background .25s, transform .25s; }
+.ff-result .btn-coral:hover { background: var(--blue); transform: translateY(-2px); }
 .ff-result .btn-coral::after { content: "↗"; }
-.ff-browser { background: #0b1324; border-radius: 9px; padding: 3px 3px 4px; box-shadow: 0 30px 60px rgba(0,0,0,.4); transform: perspective(1200px) rotateY(-8deg) rotateX(3deg); transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+@media (max-width: 560px) { .ff-result .btn-coral { width: 100%; justify-content: center; white-space: nowrap; } .ff-res-img .rb { font-size: .72rem; padding: 7px 10px; } .ff-res-img .rb b { font-size: 1rem; } }
+.ff-res-img { position: relative; padding: 18px 10px 26px; }
+.ff-res-img .rb { position: absolute; z-index: 2; background: #fff; border-radius: 14px; padding: 9px 13px; box-shadow: 0 16px 36px -10px rgba(15,42,92,.3); display: flex; align-items: center; gap: 10px; font-size: .78rem; color: var(--muted); line-height: 1.3; animation: float 5.5s ease-in-out infinite; }
+.ff-res-img .rb b { font: 800 1.15rem var(--fh); color: var(--pg); }
+.ff-res-img .rb.r1 { left: -6px; top: 0; }
+.ff-res-img .rb.r2 { right: -4px; bottom: 4px; animation-delay: -2.5s; }
+.ff-browser { background: #0b1324; border-radius: 10px; padding: 3px 3px 4px; box-shadow: 0 30px 60px -12px rgba(15,42,92,.45); transform: perspective(1200px) rotateY(-8deg) rotateX(3deg); transition: transform .8s cubic-bezier(.2,.7,.2,1); }
 .ff-browser:hover { transform: none; }
 .ff-browser .dots { padding: 1px 3px 3px; }
 .ff-browser img { border-radius: 6px; }
-.ff-js .ff-final:not(.on) .ff-result { opacity: .35; filter: grayscale(.6); transform: scale(.97); }
+.ff-js .ff-final:not(.on) .ff-result { opacity: .45; filter: grayscale(.7); transform: scale(.97); }
 @media (max-width: 900px) { .ff-result { grid-template-columns: 1fr; } .ff-browser { transform: none; } }
 @media (max-width: 560px) {
   .ff-stage { grid-template-columns: 40px minmax(0, 1fr); }
@@ -974,7 +983,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
           <div class="ff-result">
             <div class="ff-res-txt">
               <p class="ff-eye">Kết quả</p>
-              <h3>Website hoàn chỉnh, sẵn sàng bán xe</h3>
+              <h3>Website hoàn chỉnh, <span>sẵn sàng bán xe</span></h3>
               <p>Sau 4 bước, website của anh/chị đạt đủ những điều khách mua xe cần:</p>
               <ul class="ff-checks">
                 <li>Mở nhanh, kể cả trên mạng 4G</li>
@@ -983,9 +992,9 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
                 <li>Khách gọi, nhắn Zalo từ mọi trang</li>
                 <li>An toàn, có sao lưu, có người trông coi</li>
               </ul>
-              
+              <a class="btn btn-coral" href="#lien-he">Nhận chấm điểm miễn phí</a>
             </div>
-            <div class="ff-res-img"><div class="ff-browser"><div class="dots"><i></i><i></i><i></i></div><img src="img/sau-pc-top.webp" alt="Trang chủ Hyundai Đà Nẵng sau khi hoàn tất nâng cấp" width="1200" height="750" loading="lazy"></div></div>
+            <div class="ff-res-img"><span class="rb r1"><b>6/6</b>vấn đề<br>đã xử lý</span><span class="rb r2"><b>90+</b>điểm tốc độ<br>Google</span><div class="ff-browser"><div class="dots"><i></i><i></i><i></i></div><img src="img/sau-pc-top.webp" alt="Trang chủ Hyundai Đà Nẵng sau khi hoàn tất nâng cấp" width="1200" height="750" loading="lazy"></div></div>
           </div>
         </div>
       </div>
