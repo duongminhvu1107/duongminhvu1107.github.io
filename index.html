@@ -610,6 +610,54 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
 @keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(18,145,80,.55); } 70% { box-shadow: 0 0 0 16px rgba(18,145,80,0); } 100% { box-shadow: 0 0 0 0 rgba(18,145,80,0); } }
 @media (max-width: 560px) { .fab { left: 0; right: 0; bottom: 0; grid-template-columns: 1fr 1fr; gap: 0; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,.96); backdrop-filter: blur(8px); box-shadow: 0 -6px 20px rgba(15,42,92,.12); } .fab a { width: auto; height: 46px; border-radius: 12px; font-size: .9rem; gap: 8px; display: flex; justify-content: center; align-items: center; margin: 0 4px; animation: none; } .fab .c::after { content: "Gọi ngay"; } .fab .z::after { content: "ngay"; } body { padding-bottom: 66px; } }
 
+
+/* ===== tối ưu điện thoại ===== */
+@media (max-width: 560px) {
+  .hero { padding-block: 22px 36px; }
+  .hero h1 { font-size: 2.15rem; margin-top: 14px; }
+  .hero .lead { font-size: .95rem; margin-top: 12px; }
+  .ticks { display: none; }
+  .for-sale { font-size: .9rem; margin-top: 12px; }
+  .hero-btns { margin-top: 16px; }
+  .hero-btns .btn { flex: 1 1 auto; padding: 12px 16px; }
+  .hook { font-size: .78rem; }
+  .stage { margin-top: 8px; }
+  .badge-float { padding: 8px 10px; gap: 8px; }
+  .badge-float b { font-size: 1.25rem; }
+  .bf-b .ring { width: 36px; height: 36px; font-size: .8rem; border-width: 3px; }
+  .stats { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+  .stat { padding: 16px 14px; }
+  .stat .n { font-size: 1.8rem; }
+  .stat h3 { font-size: .9rem; margin-top: 6px; }
+  .stat p { font-size: .8rem; }
+  .sec { padding-block: 52px; }
+  .sec-head { margin-bottom: 26px; }
+  .sec-head h2 { font-size: 1.55rem; }
+  .sec-head p { font-size: .93rem; margin-top: 10px; }
+  .decay { padding: 14px; }
+  .dc { padding: 14px; }
+  .chk { padding: 20px 16px; border-radius: 18px; }
+  .chk-list label { padding: 10px 12px; font-size: .9rem; }
+  .ai { padding: 20px 16px; border-radius: 18px; }
+  .ai-feats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .ai-feats li { flex-direction: column; gap: 8px; padding: 12px; }
+  .ai-feats p { display: none; }
+  .ai-feats b { font-size: .85rem; }
+  .ai-ic { width: 34px; height: 34px; }
+  .ai-chat { animation: none; }
+  .terms { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-inline: -16px; padding: 4px 16px 16px; scrollbar-width: none; }
+  .terms::-webkit-scrollbar { display: none; }
+  .terms > div { flex: 0 0 82%; scroll-snap-align: start; }
+  .swipe-hint { display: block; }
+  .faqwrap { margin-top: 36px; }
+  .bento { grid-auto-rows: 230px; gap: 14px; }
+  .fwm { font-size: 15vw; }
+  .ct-card { padding: 18px 16px; }
+  .contact h2 { font-size: 1.6rem; }
+}
+@media (max-width: 400px) { .ct-rows b.em { font-size: .86rem; overflow-wrap: normal; word-break: keep-all; } }
+.swipe-hint { display: none; text-align: center; font-size: .8rem; color: var(--muted); margin-top: -4px; }
+
 .lb { position: fixed; inset: 0; z-index: 50; background: rgba(10, 14, 24, .9); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 56px 16px 24px; animation: fade .3s; }
 .lb img { max-width: min(1100px, 100%); border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: pop .4s cubic-bezier(.2,.7,.2,1); }
 .lb button { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; font-size: 1.3rem; cursor: pointer; }
@@ -638,7 +686,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     <div class="wrap">
       <div class="hero-grid">
         <div class="rv l">
-          <span class="hook"><b>Miễn phí</b>Chấm điểm website bán xe trong 24 giờ</span>
+          <span class="hook"><b>Miễn phí</b>Chấm điểm web bán xe trong 24 giờ</span>
           <h1>Nâng Cấp Website <span class="hl">Ra Khách Cho Sale &amp; Đại Lý Ô Tô</span></h1>
           <p class="lead">Khách bấm quảng cáo, web quay mãi không lên, họ sang người khác. <b>WebGarage biến website cũ thành kênh ra khách</b>: nhanh như chớp trên điện thoại, lên Google với giá xe, nút gọi và Zalo ở mọi trang.</p>
           <ul class="ticks">
@@ -734,7 +782,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
       <div class="prices">
         <article class="plan rv">
           <p class="name">Gói Cứu hộ</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="990000">990.000</span><small>đ</small></p>
+          <p class="price"><small>Từ </small><span>990.000</span><small>đ</small></p>
           <p class="range">Đến 1,5 triệu tùy quy mô website</p>
           <p class="for">Site đang chậm, hay lỗi hoặc có dấu hiệu bị tấn công. Cần ổn định ngay.</p>
           <div class="meta"><span>Xong trong 2 – 3 ngày</span></div>
@@ -754,7 +802,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         <article class="plan hot rv">
           <span class="ribbon">Nên chọn</span>
           <p class="name">Gói Chuẩn</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="1990000">1.990.000</span><small>đ</small></p>
+          <p class="price"><small>Từ </small><span>1.990.000</span><small>đ</small></p>
           <p class="range">Đến 2,5 triệu tùy quy mô website</p>
           <p class="for">Site vẫn chạy nhưng chưa mang về đủ khách, hoặc đang chạy quảng cáo.</p>
           <div class="meta"><span>Xong trong 5 – 7 ngày</span></div>
@@ -778,7 +826,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         </article>
         <article class="plan rv">
           <p class="name">Gói Toàn diện</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="3490000">3.490.000</span><small>đ</small></p>
+          <p class="price"><small>Từ </small><span>3.490.000</span><small>đ</small></p>
           <p class="range">Đến 4,5 triệu tùy quy mô website</p>
           <p class="for">Giao diện đã cũ, muốn đẹp hơn đối thủ mà không phải làm web mới.</p>
           <div class="meta"><span>Xong trong 10 – 14 ngày</span></div>
@@ -796,7 +844,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         </article>
         <article class="plan rv">
           <p class="name">Gói Bảo trì</p>
-          <p class="price"><small>Từ </small><span class="num" data-to="390000">390.000</span><small>đ/tháng</small></p>
+          <p class="price"><small>Từ </small><span>390.000</span><small>đ/tháng</small></p>
           <p class="range">Hai mức: Cơ bản và Nâng cao</p>
           <p class="for">Sau khi sửa xong, giữ cho website luôn nhanh và an toàn.</p>
           <div class="meta"><span>Hằng tháng</span></div>
@@ -814,8 +862,8 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
           <h3>Trợ Lý AI Tư Vấn Xe <span>Trực 24/7</span></h3>
           <p class="ai-lead">Một "nhân viên tư vấn" không nghỉ: trả lời khách ngay lập tức trên website, Zalo và Messenger, báo giá lăn bánh, tính trả góp, xin số điện thoại và chuyển khách nóng cho sale. Anh/chị chỉ việc gọi lại và chốt.</p>
           <div class="ai-price">
-            <div><small>Cài đặt từ</small><b><span class="num" data-to="1990000">1.990.000</span>đ</b></div>
-            <div><small>Duy trì</small><b><span class="num" data-to="490000">490.000</span>đ<em>/tháng</em></b></div>
+            <div><small>Cài đặt từ</small><b><span>1.990.000</span>đ</b></div>
+            <div><small>Duy trì</small><b><span>490.000</span>đ<em>/tháng</em></b></div>
           </div>
           <ul class="ai-gift">
             <li>Tặng bộ 50 câu hỏi khách mua xe hay hỏi, viết sẵn câu trả lời</li>
@@ -1069,11 +1117,12 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     <div class="wrap">
       <div class="sec-head rv"><h2>Điều Khoản <span class="hl">Rõ Ràng</span></h2></div>
       <div class="terms">
-        <div class="rv"><h3>Anh/chị cung cấp</h3><ul><li>Tài khoản quản trị web và nơi đặt web (hosting)</li><li>Sale cá nhân: chỉ cần vậy là đủ</li><li>Đại lý: thêm quyền hồ sơ Google Doanh nghiệp, mã số thuế</li><li>Ảnh thật, cảm nhận khách nếu có</li></ul></div>
-        <div class="rv"><h3>WebGarage cam kết</h3><ul><li>Làm trên bản thử, sao lưu trước khi đưa lên</li><li>Không gián đoạn quảng cáo đang chạy</li><li>Bảo hành 30 ngày, phản hồi trong ngày</li><li>Báo cáo điểm trước và sau</li></ul></div>
-        <div class="rv"><h3>Ngoài phạm vi</h3><ul><li>Chạy hoặc quản lý Google Ads</li><li>Chụp ảnh, quay video</li><li>Phí hosting, plugin bản quyền</li></ul></div>
-        <div class="rv"><h3>Thanh toán</h3><ul><li>Gói Cứu hộ: chuyển khoản khi bắt đầu, không cần hợp đồng giấy</li><li>Gói lớn hơn: 50% khi bắt đầu, 50% khi nghiệm thu</li><li>Giá chưa gồm VAT</li><li>Tối đa 2 đợt chỉnh sửa mỗi gói</li></ul></div>
+        <div><h3>Anh/chị cung cấp</h3><ul><li>Tài khoản quản trị web và nơi đặt web (hosting)</li><li>Sale cá nhân: chỉ cần vậy là đủ</li><li>Đại lý: thêm quyền hồ sơ Google Doanh nghiệp, mã số thuế</li><li>Ảnh thật, cảm nhận khách nếu có</li></ul></div>
+        <div><h3>WebGarage cam kết</h3><ul><li>Làm trên bản thử, sao lưu trước khi đưa lên</li><li>Không gián đoạn quảng cáo đang chạy</li><li>Bảo hành 30 ngày, phản hồi trong ngày</li><li>Báo cáo điểm trước và sau</li></ul></div>
+        <div><h3>Ngoài phạm vi</h3><ul><li>Chạy hoặc quản lý Google Ads</li><li>Chụp ảnh, quay video</li><li>Phí hosting, plugin bản quyền</li></ul></div>
+        <div><h3>Thanh toán</h3><ul><li>Gói Cứu hộ: chuyển khoản khi bắt đầu, không cần hợp đồng giấy</li><li>Gói lớn hơn: 50% khi bắt đầu, 50% khi nghiệm thu</li><li>Giá chưa gồm VAT</li><li>Tối đa 2 đợt chỉnh sửa mỗi gói</li></ul></div>
       </div>
+      <p class="swipe-hint">← Vuốt ngang để xem thêm →</p>
       <div class="faqwrap">
         <div class="rv l">
           <h2><span class="hl">Câu hỏi</span> thường gặp</h2>
@@ -1113,7 +1162,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         <ul class="ct-rows">
           <li><span class="ci z"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg></span><div><small>Zalo</small><b>0706 006 086</b></div><a href="https://zalo.me/0706006086" target="_blank" rel="noopener">Nhắn ngay</a></li>
           <li><span class="ci c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><small>Hotline</small><b>0706 006 086</b></div><a href="tel:0706006086">Gọi ngay</a></li>
-          <li><span class="ci m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><small>Email</small><b>duongminhvu1107@gmail.com</b></div><a href="mailto:duongminhvu1107@gmail.com">Gửi mail</a></li>
+          <li><span class="ci m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><small>Email</small><b class="em">duongminhvu1107@gmail.com</b></div><a href="mailto:duongminhvu1107@gmail.com">Gửi mail</a></li>
           <li><span class="ci g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><div><small>Khu vực</small><b>Hỗ trợ toàn quốc, làm việc online</b></div></li>
           <li><span class="ci o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Giờ hỗ trợ</small><b>8:00 – 21:00, cả thứ Bảy và Chủ nhật</b></div></li>
         </ul>
