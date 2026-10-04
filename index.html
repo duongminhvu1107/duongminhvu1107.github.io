@@ -141,6 +141,90 @@ a { color: inherit; }
 .lv { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex: none; }
 .lv.r { background: #E03131; } .lv.a { background: #E08A00; } .lv.b { background: #1F5FD1; } .lv.v { background: #7048E8; }
 
+
+/* website xuống cấp */
+.decay { position: relative; background: #fff; border-radius: 20px; box-shadow: var(--sh); padding: clamp(18px, 3vw, 30px); }
+.decay-line { width: 100%; height: 70px; display: block; }
+.decay-line path { stroke-dasharray: 1100; stroke-dashoffset: 0; transition: stroke-dashoffset 2.2s cubic-bezier(.3,.6,.2,1); }
+.decay.pre-draw .decay-line path { stroke-dashoffset: 1100; }
+.decay-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+.dc { border-radius: 14px; padding: 18px; min-width: 0; background: var(--dcs); }
+.dc.g { --dc: #129150; --dcs: #E8F7EF; } .dc.a { --dc: #C77700; --dcs: #FFF4DF; } .dc.r { --dc: #D32F2F; --dcs: #FFECEC; }
+.dc-y { display: inline-block; background: var(--dc); color: #fff; font: 700 .74rem var(--fh); padding: 4px 11px; border-radius: 999px; }
+.dc h3 { font-size: 1.1rem; margin-top: 10px; color: var(--dc); }
+.dc ul { margin-top: 10px; display: grid; gap: 6px; }
+.dc li { font-size: .9rem; padding-left: 18px; position: relative; }
+.dc li::before { content: ""; position: absolute; left: 2px; top: .6em; width: 7px; height: 7px; border-radius: 2px; background: var(--dc); }
+.pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+.pn { background: #fff; border-radius: 16px; padding: 24px 22px; box-shadow: var(--sh); min-width: 0; transition: transform .3s, box-shadow .3s; }
+.pn:hover { transform: translateY(-6px); box-shadow: var(--sh2); }
+.pn-ic { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #E03131, #FF6B6B); box-shadow: 0 12px 24px -10px #E03131; }
+.pn-ic svg { width: 26px; height: 26px; }
+.pn h3 { font-size: 1.05rem; margin-top: 16px; }
+.pn p { font-size: .9rem; color: var(--muted); margin-top: 8px; }
+@media (max-width: 900px) { .decay-row, .pains { grid-template-columns: 1fr 1fr; } .decay-row .dc.r { grid-column: 1 / -1; } }
+@media (max-width: 600px) { .decay-row, .pains { grid-template-columns: 1fr; } .decay-line { height: 44px; } }
+
+/* tự kiểm tra */
+.chk { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(22px, 4vw, 44px); background: linear-gradient(135deg, var(--navy-d), #16387A); color: #fff; border-radius: 22px; padding: clamp(22px, 4vw, 44px); box-shadow: 0 30px 70px -20px rgba(15,42,92,.5); }
+.chk-tag { display: inline-block; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+.chk h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; margin-top: 14px; }
+.chk h2 span { color: #FFB4B4; }
+.chk-l > p { opacity: .85; margin-top: 10px; }
+.chk-res { margin-top: 22px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 16px; padding: 18px; }
+.chk-meter { height: 12px; border-radius: 6px; background: rgba(255,255,255,.15); overflow: hidden; }
+.chk-meter i { display: block; height: 100%; width: 0; border-radius: 6px; background: linear-gradient(90deg, #4ADE80, #FACC15, #F87171); background-size: 300% 100%; transition: width .5s cubic-bezier(.2,.7,.2,1); }
+.chk-n { margin-top: 12px; font-size: .95rem; opacity: .9; }
+.chk-n b { font: 800 2rem var(--fh); font-variant-numeric: tabular-nums; }
+.chk-msg { margin-top: 6px; font-size: .95rem; min-height: 3em; }
+.chk-msg b { color: #FFD166; }
+.chk-btn { margin-top: 14px; background: #fff; color: var(--navy-d); }
+.chk-btn:hover { background: #6EE7A8; }
+.chk-list { display: grid; gap: 8px; align-content: start; }
+.chk-list label { display: flex; gap: 12px; align-items: center; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 11px 14px; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; font-size: .93rem; }
+.chk-list label:hover { background: rgba(255,255,255,.12); transform: translateX(4px); }
+.chk-list input { appearance: none; -webkit-appearance: none; flex: none; width: 22px; height: 22px; border-radius: 7px; border: 2px solid rgba(255,255,255,.5); display: grid; place-items: center; margin: 0; cursor: pointer; transition: background .2s, border-color .2s; }
+.chk-list input::after { content: "!"; font: 800 .8rem var(--fh); color: #fff; transform: scale(0); transition: transform .25s cubic-bezier(.3,1.6,.5,1); }
+.chk-list input:checked { background: #EF4444; border-color: #EF4444; }
+.chk-list input:checked::after { transform: scale(1); }
+.chk-list input:focus-visible { outline: 3px solid #7CC4FF; outline-offset: 2px; }
+.chk-list label:has(input:checked) { background: rgba(239,68,68,.16); border-color: rgba(239,68,68,.55); }
+@media (max-width: 900px) { .chk { grid-template-columns: 1fr; } .chk-l { display: contents; } .chk-res { position: sticky; top: calc(70px + env(safe-area-inset-top, 0px)); z-index: 2; background: #12306A; box-shadow: 0 14px 30px rgba(5,15,40,.45); } .chk-msg { min-height: 0; } }
+
+/* so sánh */
+.vs { background: #fff; border-radius: 20px; box-shadow: var(--sh2); overflow-x: auto; }
+.vs table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.vs th, .vs td { padding: 15px 18px; text-align: left; vertical-align: top; font-size: .92rem; border-bottom: 1px solid var(--line); }
+.vs tbody tr:last-child th, .vs tbody tr:last-child td { border-bottom: 0; }
+.vs thead th { font: 700 1rem var(--fh); padding-block: 18px; }
+.vs .h-bad { color: #C62828; background: #FFF3F3; }
+.vs .h-good { color: #fff; background: linear-gradient(135deg, var(--pg), var(--pg-d)); }
+.vs tbody th { font-weight: 700; width: 24%; color: var(--navy); }
+.vs td { width: 38%; }
+.vs td span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: .72rem; font-weight: 800; margin-right: 10px; vertical-align: -5px; color: #fff; }
+.vs td.bad { color: var(--muted); background: #FFFAFA; }
+.vs td.bad span { background: #EF4444; }
+.vs td.good { font-weight: 600; background: #F4FBF7; }
+.vs td.good span { background: var(--pg); }
+.vs tbody tr { transition: background .2s; }
+.vs tbody tr:hover td.good { background: var(--pg-soft); }
+@media (max-width: 640px) {
+  .vs { overflow: visible; background: transparent; box-shadow: none; }
+  .vs table { min-width: 0; }
+  .vs thead { display: none; }
+  .vs table, .vs tbody, .vs tr, .vs th, .vs td { display: block; width: auto; }
+  .vs tr { background: #fff; border-radius: 16px; box-shadow: var(--sh); overflow: hidden; margin-bottom: 14px; }
+  .vs tbody th { padding: 14px 16px 6px; border: 0; font-size: 1rem; width: auto; }
+  .vs td { width: auto; }
+  .vs td { border: 0; padding: 10px 16px; }
+  .vs td::before { display: block; font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+  .vs td.bad::before { content: "Làm website mới"; color: #C62828; }
+  .vs td.good::before { content: "Nâng cấp với WebGarage"; color: var(--pg-d); }
+}
+.vs-note { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 22px; background: var(--blue-soft); border-radius: 16px; padding: 18px 22px; }
+.vs-note p { flex: 1 1 420px; font-size: .93rem; color: var(--ink); }
+.vs-note b { color: var(--navy); }
+
 /* tiến trình sửa chữa */
 [data-sev="r"] { --c: #E03131; --cs: #FFE9E9; }
 [data-sev="a"] { --c: #E08A00; --cs: #FFF3DC; }
@@ -521,7 +605,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
   <div class="wrap">
     <a class="logo" href="#dau"><i>WG</i><em>Web<span>Garage</span></em></a>
     <nav class="nav" aria-label="Mục chính">
-      <a href="#van-de">Vấn đề</a><a href="#truoc-sau">Trước &amp; sau</a><a href="#cam-ket">Cam kết</a><a href="#bang-gia">Bảng giá</a><a href="#quy-trinh">Quy trình</a><a href="#du-an">Dự án</a><a href="#ket-qua">Kết quả</a>
+      <a href="#noi-dau">Vấn đề</a><a href="#tu-kiem-tra">Tự kiểm tra</a><a href="#so-sanh">So sánh</a><a href="#bang-gia">Bảng giá</a><a href="#quy-trinh">Quy trình</a><a href="#du-an">Dự án</a><a href="#ket-qua">Kết quả</a>
     </nav>
     <a class="btn btn-main" href="#lien-he">Tư vấn ngay</a>
   </div>
@@ -566,6 +650,58 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">WebGarage sửa hết trong vài ngày</span>
     <span>Web quay mãi không lên</span><span>Ảnh xe bị vỡ</span><span>Không thấy nút Zalo</span><span>Sai số điện thoại trên Google Maps</span><span>Bị chèn mã độc</span><span>Giao diện cũ kỹ</span><span class="g">WebGarage sửa hết trong vài ngày</span>
   </div></div>
+
+
+  <section class="sec soft" id="noi-dau">
+    <span class="wm" aria-hidden="true">Website</span>
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Website Sale Tự Chạy Lâu Năm <span class="hl">Sẽ Bị Gì?</span></h2>
+        <p>Website không hỏng một lần. Nó xuống cấp âm thầm từng tháng, trong lúc anh/chị bận bán xe, và lượng khách từ web cứ thế vơi dần.</p>
+      </div>
+      <div class="decay rv z">
+        <svg class="decay-line" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dg" x1="0" x2="1"><stop offset="0" stop-color="#129150"/><stop offset=".5" stop-color="#E08A00"/><stop offset="1" stop-color="#E03131"/></linearGradient></defs><path d="M0 18 C 200 18, 280 24, 380 40 S 600 70, 700 84 S 900 104, 1000 108" fill="none" stroke="url(#dg)" stroke-width="5" stroke-linecap="round"/></svg>
+        <div class="decay-row">
+          <div class="dc g"><span class="dc-y">Năm đầu</span><h3>Mới, nhanh, đẹp</h3><ul><li>Giá xe đúng, khuyến mãi mới</li><li>Khách vào là thấy nút gọi</li><li>Lên Google nhờ còn mới</li></ul></div>
+          <div class="dc a"><span class="dc-y">Năm thứ 2</span><h3>Bắt đầu ì ạch</h3><ul><li>Ảnh up thẳng từ điện thoại, mỗi tấm vài MB</li><li>Cài thêm plugin này, plugin kia</li><li>Giá, khuyến mãi quên cập nhật</li><li>Plugin báo cập nhật nhưng không dám bấm</li></ul></div>
+          <div class="dc r"><span class="dc-y">Năm thứ 3 trở đi</span><h3>Âm thầm đuổi khách</h3><ul><li>Tải 10 giây trên 4G, khách bỏ đi</li><li>Ảnh vỡ, link chết, form không về</li><li>Bị chèn mã độc, Google cảnh báo</li><li>Quảng cáo tốn tiền mà ít cuộc gọi</li></ul></div>
+        </div>
+      </div>
+      <div class="pains"><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></svg></span><h3>Mất khách ngay từ 3 giây đầu</h3><p>Theo Google, 53% người dùng điện thoại bỏ đi nếu trang tải quá 3 giây. Web chậm là khách bấm sang trang đồng nghiệp khác.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Đốt tiền quảng cáo</h3><p>Google Ads chấm "trải nghiệm trang đích". Web chậm, lỗi bị chấm thấp nên mỗi lượt bấm đắt hơn mà ít ra cuộc gọi.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span><h3>Bị hack, Google gắn cảnh báo đỏ</h3><p>Plugin lâu không cập nhật là cửa cho mã độc. Web bị chuyển sang trang cờ bạc, Google hiện cảnh báo, quảng cáo bị khóa.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M15 15l6 6M21 15l-6 6"/></svg></span><h3>Giá sai, khuyến mãi hết hạn</h3><p>Khách đọc giá tháng trước, đến showroom thấy khác. Mất uy tín ngay từ lần gặp đầu tiên.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/><path d="M8 11h6"/></svg></span><h3>Rơi khỏi Google</h3><p>Web chậm, lỗi, nội dung cũ thì Google đẩy xuống dần. Khách tìm "giá xe + tên tỉnh" không còn thấy anh/chị.</p></article><article class="pn rv"><span class="pn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span><h3>Phụ thuộc người làm web cũ</h3><p>Người làm web đã nghỉ, không nhớ mật khẩu, không biết ai giữ tên miền. Hết hạn một hôm là web biến mất.</p></article></div>
+    </div>
+  </section>
+
+  <section class="sec" id="tu-kiem-tra">
+    <div class="wrap">
+      <div class="chk rv z">
+        <div class="chk-l">
+          <span class="chk-tag">Tự kiểm tra trong 1 phút</span>
+          <h2>Website của anh/chị có bao nhiêu <span>dấu hiệu "đuổi khách"?</span></h2>
+          <p>Đánh dấu những điều đang xảy ra với website của mình. Kết quả hiện ngay bên dưới.</p>
+          <div class="chk-res" id="chk-res" aria-live="polite">
+            <div class="chk-meter"><i id="chk-bar"></i></div>
+            <p class="chk-n"><b id="chk-n">0</b>/12 dấu hiệu</p>
+            <p class="chk-msg" id="chk-msg">Bấm vào các dòng bên phải để bắt đầu.</p>
+            <a class="btn chk-btn" id="chk-btn" href="#lien-he">Nhận chấm điểm miễn phí</a>
+          </div>
+        </div>
+        <ul class="chk-list" id="chk-list">
+          <li><label><input type="checkbox" id="c1"><span>Mở web trên 4G mất hơn 3 giây</span></label></li>
+          <li><label><input type="checkbox" id="c2"><span>Giá xe, khuyến mãi trên web chưa cập nhật tháng này</span></label></li>
+          <li><label><input type="checkbox" id="c3"><span>Có ảnh xe bị vỡ hoặc trang báo lỗi</span></label></li>
+          <li><label><input type="checkbox" id="c4"><span>Gõ "giá xe + tên tỉnh" trên Google không thấy web mình</span></label></li>
+          <li><label><input type="checkbox" id="c5"><span>Web từng bị chuyển sang trang lạ hoặc Google cảnh báo</span></label></li>
+          <li><label><input type="checkbox" id="c6"><span>Form báo giá gửi đi mà không thấy tin về</span></label></li>
+          <li><label><input type="checkbox" id="c7"><span>Không nhớ mật khẩu quản trị, người làm web cũ đã nghỉ</span></label></li>
+          <li><label><input type="checkbox" id="c8"><span>Không chắc ai đang giữ tên miền, hosting, khi nào hết hạn</span></label></li>
+          <li><label><input type="checkbox" id="c9"><span>Chạy quảng cáo tốn tiền nhưng ít cuộc gọi, tin Zalo</span></label></li>
+          <li><label><input type="checkbox" id="c10"><span>Web nhìn cũ hơn web của đồng nghiệp, đối thủ</span></label></li>
+          <li><label><input type="checkbox" id="c11"><span>Plugin báo cập nhật nhưng không dám bấm vì sợ hỏng</span></label></li>
+          <li><label><input type="checkbox" id="c12"><span>Xem web trên điện thoại chữ nhỏ, phải phóng to mới đọc được</span></label></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <section class="sec ff-sec" id="van-de">
     <div class="wrap">
@@ -716,6 +852,25 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         <input type="range" min="0" max="100" value="50" id="cmp-range" aria-label="Kéo để so sánh trước và sau">
       </div>
       <p class="cmp-note">Giao diện mới: ưu đãi nổi bật ngay đầu trang, menu gọn, thanh gọi và Zalo luôn nằm cuối màn hình.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="so-sanh">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Làm Web Mới Hay <span class="hl">Nâng Cấp Web Cũ?</span></h2>
+        <p>Làm web mới nghe có vẻ gọn, nhưng anh/chị sẽ mất những thứ đã mất nhiều năm mới gây dựng được. Nâng cấp thì giữ lại tất cả, chỉ sửa chỗ hỏng.</p>
+      </div>
+      <div class="vs rv z">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col" class="h-bad">Làm website mới</th><th scope="col" class="h-good">Nâng cấp với WebGarage</th></tr></thead>
+          <tbody><tr><th scope="row">Chi phí</th><td class="bad"><span>✕</span>Khoảng 3 – 3,5 triệu, chưa tính công nhập lại nội dung</td><td class="good"><span>✓</span>Từ 990.000đ</td></tr><tr><th scope="row">Thời gian</th><td class="bad"><span>✕</span>2 – 4 tuần</td><td class="good"><span>✓</span>Gói Cứu hộ xong trong 2 – 3 ngày</td></tr><tr><th scope="row">Thứ hạng Google</th><td class="bad"><span>✕</span>Mất. Đường dẫn đổi hết, Google coi như web mới, phải leo lại từ đầu trong nhiều tháng</td><td class="good"><span>✓</span>Giữ nguyên và còn tăng nhờ web nhanh, chuẩn hơn</td></tr><tr><th scope="row">Bài viết, ảnh xe đã đăng</th><td class="bad"><span>✕</span>Phải nhập lại từ đầu hoặc bỏ đi</td><td class="good"><span>✓</span>Giữ nguyên toàn bộ</td></tr><tr><th scope="row">Link đã gửi khách, QR trên danh thiếp, băng rôn</th><td class="bad"><span>✕</span>Thành link chết, khách bấm vào gặp trang lỗi</td><td class="good"><span>✓</span>Vẫn mở đúng trang như cũ</td></tr><tr><th scope="row">Quảng cáo đang chạy</th><td class="bad"><span>✕</span>Phải dừng, sửa đường dẫn, cài lại mã theo dõi</td><td class="good"><span>✓</span>Chạy bình thường, không gián đoạn</td></tr><tr><th scope="row">Tuổi đời, uy tín tên miền</th><td class="bad"><span>✕</span>Đổi tên miền là mất hết uy tín tích lũy</td><td class="good"><span>✓</span>Giữ nguyên</td></tr><tr><th scope="row">Cách quản trị</th><td class="bad"><span>✕</span>Học lại từ đầu</td><td class="good"><span>✓</span>Quen như cũ, có hướng dẫn thêm</td></tr><tr><th scope="row">Trong lúc làm</th><td class="bad"><span>✕</span>Web có thể gián đoạn, khách vào không được</td><td class="good"><span>✓</span>Làm trên bản thử, web thật vẫn bán bình thường</td></tr></tbody>
+        </table>
+      </div>
+      <div class="vs-note rv">
+        <p><b>Khi nào nên làm web mới?</b> Khi web cũ dựng trên nền tảng không cho sửa, đã mất hẳn quyền quản trị, hoặc anh/chị muốn đổi hẳn tên miền. Sau khi chấm điểm miễn phí, chúng tôi nói thật nên nâng cấp hay làm mới, không ép gói.</p>
+        <a class="btn btn-main" href="#lien-he">Chấm điểm để biết nên chọn gì</a>
+      </div>
     </div>
   </section>
 
@@ -1072,7 +1227,7 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
         if (el.classList.contains('fl')) animBar(el);
         if (el.id === 'cmp') sweep();
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.01, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.rv, .num, .arc, .fl, #cmp').forEach(function (el) { io.observe(el); });
   }
 
@@ -1199,6 +1354,36 @@ footer { background: #0A1226; color: #AEB8CC; padding-block: 44px 30px; font-siz
     new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting && !running) play(); });
     }, { threshold: 0.4 }).observe(box);
+  })();
+
+
+  // Đường xuống cấp tự vẽ khi cuộn tới
+  (function () {
+    var d = document.querySelector('.decay'); if (!d || reduce || !hasIO) return;
+    if (d.getBoundingClientRect().top > innerHeight * .8) {
+      d.classList.add('pre-draw');
+      new IntersectionObserver(function (es, o) { es.forEach(function (e) { if (e.isIntersecting) { d.classList.remove('pre-draw'); o.disconnect(); } }); }, { threshold: .4 }).observe(d);
+    }
+  })();
+
+  // Tự kiểm tra 12 dấu hiệu
+  (function () {
+    var list = document.getElementById('chk-list'); if (!list) return;
+    var boxes = [].slice.call(list.querySelectorAll('input')), bar = document.getElementById('chk-bar');
+    var n = document.getElementById('chk-n'), msg = document.getElementById('chk-msg'), btn = document.getElementById('chk-btn');
+    function upd() {
+      var k = boxes.filter(function (b) { return b.checked; }).length;
+      n.textContent = k; bar.style.width = (k / 12 * 100) + '%'; bar.style.backgroundPosition = (k / 12 * 100) + '% 0';
+      var pick;
+      if (k === 0) { msg.textContent = 'Bấm vào các dòng bên phải để bắt đầu.'; btn.textContent = 'Nhận chấm điểm miễn phí'; pick = null; }
+      else if (k <= 2) { msg.innerHTML = 'Website còn khá ổn. Nên có người trông coi để không xuống cấp: <b>Gói Bảo trì</b>.'; btn.textContent = 'Xem Gói Bảo trì'; pick = 'Gói Bảo trì'; }
+      else if (k <= 5) { msg.innerHTML = 'Website <b>đang mất khách mỗi ngày</b>. Nên xử lý sớm với <b>Gói Chuẩn</b> để biến web thành kênh ra khách.'; btn.textContent = 'Xem Gói Chuẩn'; pick = 'Gói Chuẩn'; }
+      else { msg.innerHTML = '<b>Báo động đỏ!</b> Website đang đuổi khách và có rủi ro bị hack. Cần <b>Gói Cứu hộ</b> ngay trong tuần này.'; btn.textContent = 'Cứu hộ website ngay'; pick = 'Gói Cứu hộ'; }
+      btn.dataset.pick = pick || '';
+      btn.setAttribute('href', pick ? '#bang-gia' : '#lien-he');
+    }
+    boxes.forEach(function (b) { b.addEventListener('change', upd); });
+    upd();
   })();
 
   // Chọn gói -> nhắc khách bước tiếp theo
